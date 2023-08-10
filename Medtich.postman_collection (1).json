@@ -1,0 +1,2602 @@
+{
+	"info": {
+		"_postman_id": "df283a30-9ff4-436d-8895-dfcea7f25085",
+		"name": "Medtich",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26713172",
+		"_collection_link": "https://www.postman.com/gold-resonance-982638/workspace/medtich/collection/26713172-df283a30-9ff4-436d-8895-dfcea7f25085?action=share&creator=26713172&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Authenticate",
+			"item": [
+				{
+					"name": "Forgot Password",
+					"item": [
+						{
+							"name": "forgot",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var data = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"token\", data.token)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Apipassword",
+										"value": "{{password}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/auth/password/forgot",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"auth",
+										"password",
+										"forgot"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "check code",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var data = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"token\", data.token)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Apipassword",
+										"value": "{{password}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phone\":\"+201021690242\",\r\n    \"code\":\"1111\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/auth/password/code/check",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"auth",
+										"password",
+										"code",
+										"check"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reset password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var data = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"token\", data.token)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Apipassword",
+										"value": "{{password}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"code\":\"1111\",\r\n    \"password\":\"666666\",\r\n    \"password_confirmation\":\"666666\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/auth/password/reset",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"auth",
+										"password",
+										"reset"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Verify Account",
+					"item": [
+						{
+							"name": "send code",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Apipassword",
+										"value": "{{password}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"ahmedfci2018@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/auth/verify/send-code",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"auth",
+										"verify",
+										"send-code"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "verify Account",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Apipassword",
+										"value": "{{password}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"code\":\"9435\",\r\n    \"email\":\"ahmedfci2018@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/auth/verify/account",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"auth",
+										"verify",
+										"account"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/{{version}}/auth/profile",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"auth",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Ahmed Ali\",\r\n    \"last_name\":\"Mohamed\",\r\n    \"email\":\"a@a.com\",\r\n    \"phone\":\"+201021690242\",\r\n    \"age\":26,\r\n    \"hour_rate\":120.00,\r\n    \"specialization\":\"Software\",\r\n    \"about\":\"about me\",\r\n    \"info\":{\r\n        \"address\":\"Cairo Egypt\",\r\n        \"certificates\":[\r\n            {\r\n                \"year\":\"2015\",\r\n                \"title\":\"Computers & Information\"\r\n            },\r\n            {\r\n                \"year\":\"2020\",\r\n                \"title\":\"Nanodegree\"\r\n            }\r\n        ],\r\n        \"graduation_year\":\"2018\",\r\n        \"university\":\"Cairo university\",\r\n        \"experiences\":[\r\n            {\r\n                \"year\":\"2010-2013\",\r\n                \"title\":\"PHP Developer\",\r\n                \"desc\":\"php web developer at company name\"\r\n            },\r\n            {\r\n                \"year\":\"2014-2017\",\r\n                \"title\":\"Front Developer\",\r\n                \"desc\":\"front end web developer at company name\"\r\n            }\r\n        ],\r\n        \"skills\":[\r\n            \"HTML\",\r\n            \"Js\"\r\n        ]\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/auth/profile",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"auth",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Apipassword",
+								"value": "{{password}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Ahmed Ali\",\r\n    // \"last_name\":\"Ali\",\r\n    // \"email\":\"ahmedfci2018@gmail.com\",\r\n    \"password\":\"123456\",\r\n    \"password_confirmation\":\"123456\",\r\n    \"phone\":\"+201021690244\",\r\n    \"type\":\"technical\"  //technical - hospital\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{version}}/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{version}}",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"token\", data.access_token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Apipassword",
+								"value": "{{password}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\":\"012\",\r\n    \"password\":\"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{version}}/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{version}}",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"token\", data.token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Apipassword",
+								"value": "{{password}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/{{version}}/auth/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{version}}",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "General",
+			"item": [
+				{
+					"name": "Slider",
+					"item": [
+						{
+							"name": "sliders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{version}}/sliders?title&id=",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"sliders"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": null,
+											"description": "fillter with title"
+										},
+										{
+											"key": "id",
+											"value": "",
+											"description": "fillter with id"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Locations",
+					"item": [
+						{
+							"name": "States",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{version}}/states",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"states"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": null,
+											"description": "fillter by id",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "",
+											"description": "fillter by name",
+											"disabled": true
+										},
+										{
+											"key": "key",
+											"value": null,
+											"description": "fillter by key",
+											"disabled": true
+										},
+										{
+											"key": "code",
+											"value": null,
+											"description": "fillter by code",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cities",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{version}}/cities?state=&pagination=false&id&name",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"cities"
+									],
+									"query": [
+										{
+											"key": "state",
+											"value": "",
+											"description": "fillter by state_id"
+										},
+										{
+											"key": "pagination",
+											"value": "false"
+										},
+										{
+											"key": "limit",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "id",
+											"value": null
+										},
+										{
+											"key": "name",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Categories",
+					"item": [
+						{
+							"name": "Categories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{version}}/categories?pagination=true&limit=10",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"categories"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": null,
+											"description": "fillter with title",
+											"disabled": true
+										},
+										{
+											"key": "id",
+											"value": "",
+											"description": "fillter with id",
+											"disabled": true
+										},
+										{
+											"key": "desc",
+											"value": null,
+											"description": "fillter with description",
+											"disabled": true
+										},
+										{
+											"key": "pagination",
+											"value": "true"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Blogs",
+					"item": [
+						{
+							"name": "Comment",
+							"item": [
+								{
+									"name": "Comments",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/{{version}}/comments?blog=2",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"{{version}}",
+												"comments"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": null,
+													"disabled": true
+												},
+												{
+													"key": "blog",
+													"value": "2"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Comment",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"hamada\",\n    \"email\": \"hamada@eg.com\",\n    \"message\": \"message form this \",\n    \"blog_id\": 1\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/{{version}}/comments",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"{{version}}",
+												"comments"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Comment",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/{{version}}/comments/1",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"{{version}}",
+												"comments",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Categories-Blogs",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{version}}/categories_blogs?pagination=true&limit=10",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"categories_blogs"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": null,
+											"description": "fillter with title",
+											"disabled": true
+										},
+										{
+											"key": "id",
+											"value": "",
+											"description": "fillter with id",
+											"disabled": true
+										},
+										{
+											"key": "desc",
+											"value": null,
+											"description": "fillter with description",
+											"disabled": true
+										},
+										{
+											"key": "pagination",
+											"value": "true"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Blogs",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{version}}/blogs?id=1&pagination=true&limit=10",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"blogs"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "",
+											"description": "fillter with title",
+											"disabled": true
+										},
+										{
+											"key": "id",
+											"value": "1",
+											"description": "fillter with id"
+										},
+										{
+											"key": "desc",
+											"value": "",
+											"description": "fillter with description",
+											"disabled": true
+										},
+										{
+											"key": "category",
+											"value": "",
+											"description": "fillter with category_id",
+											"disabled": true
+										},
+										{
+											"key": "pagination",
+											"value": "true"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Setting",
+			"item": [
+				{
+					"name": "Setting",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/{{version}}/setting",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{version}}",
+								"setting"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Technical",
+			"item": [
+				{
+					"name": "Offers",
+					"item": [
+						{
+							"name": "Offers",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/{{version}}/technical/offers?limit=10&pagination=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"technical",
+										"offers"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "",
+											"description": "fillter with title",
+											"disabled": true
+										},
+										{
+											"key": "id",
+											"value": "",
+											"description": "fillter with id",
+											"disabled": true
+										},
+										{
+											"key": "price",
+											"value": "",
+											"description": "fillter with price",
+											"disabled": true
+										},
+										{
+											"key": "message",
+											"value": "",
+											"description": "fillter with message",
+											"disabled": true
+										},
+										{
+											"key": "order",
+											"value": "",
+											"description": "fillter with order_id",
+											"disabled": true
+										},
+										{
+											"key": "technical",
+											"value": "",
+											"description": "fillter with technical_id",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "pagination",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Offer",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"hours_number\":\"10\",\n    \"price\":\"50\",\n    \"message\": \"your message\",\n    \"order_id\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/technical/offers",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"technical",
+										"offers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Offer",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"hours_number\":\"10\",\n    \"price\":\"50\",\n    \"message\": \"your message\",\n    \"order_id\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/technical/offers/50?pagination=false",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"technical",
+										"offers",
+										"50"
+									],
+									"query": [
+										{
+											"key": "pagination",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Offer",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"hours_number\":\"10\",\n    \"price\":\"50\",\n    \"message\": \"your message 000 \",\n    \"order_id\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/technical/offers/51",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"technical",
+										"offers",
+										"51"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Offer",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/technical/offers/51",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"technical",
+										"offers",
+										"51"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Favourite",
+					"item": [
+						{
+							"name": "Favourites",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{version}}/technical/favourites?limit=10&pagination=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"technical",
+										"favourites"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "",
+											"description": "fillter with title",
+											"disabled": true
+										},
+										{
+											"key": "id",
+											"value": "",
+											"description": "fillter with id",
+											"disabled": true
+										},
+										{
+											"key": "price",
+											"value": "",
+											"description": "fillter with price",
+											"disabled": true
+										},
+										{
+											"key": "message",
+											"value": "",
+											"description": "fillter with message",
+											"disabled": true
+										},
+										{
+											"key": "order",
+											"value": "",
+											"description": "fillter with order_id",
+											"disabled": true
+										},
+										{
+											"key": "technical",
+											"value": "",
+											"description": "fillter with technical_id",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "pagination",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Favourite",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"technical_id\":\"7\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/technical/favourites",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"technical",
+										"favourites"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Favourite",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{version}}/technical/favourites/7",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"technical",
+										"favourites",
+										"7"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "",
+											"description": "fillter with title",
+											"disabled": true
+										},
+										{
+											"key": "id",
+											"value": "",
+											"description": "fillter with id",
+											"disabled": true
+										},
+										{
+											"key": "price",
+											"value": "",
+											"description": "fillter with price",
+											"disabled": true
+										},
+										{
+											"key": "message",
+											"value": "",
+											"description": "fillter with message",
+											"disabled": true
+										},
+										{
+											"key": "order",
+											"value": "",
+											"description": "fillter with order_id",
+											"disabled": true
+										},
+										{
+											"key": "technical",
+											"value": "",
+											"description": "fillter with technical_id",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Favourite",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/technical/favourites/8",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"technical",
+										"favourites",
+										"8"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Rate",
+					"item": [
+						{
+							"name": "Rates",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{version}}/technical/rates?limit=10&pagination=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"technical",
+										"rates"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "pagination",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Rate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"hospital_id\": \"2\",\n    \"value\": 3,\n    \"comment\": \"good hospital\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/technical/rates",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"technical",
+										"rates"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Rate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/{{version}}/technical/rates/3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"technical",
+										"rates",
+										"3"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "",
+											"description": "fillter with title",
+											"disabled": true
+										},
+										{
+											"key": "id",
+											"value": "",
+											"description": "fillter with id",
+											"disabled": true
+										},
+										{
+											"key": "price",
+											"value": "",
+											"description": "fillter with price",
+											"disabled": true
+										},
+										{
+											"key": "message",
+											"value": "",
+											"description": "fillter with message",
+											"disabled": true
+										},
+										{
+											"key": "order",
+											"value": "",
+											"description": "fillter with order_id",
+											"disabled": true
+										},
+										{
+											"key": "technical",
+											"value": "",
+											"description": "fillter with technical_id",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Rate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/technical/rates/3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"technical",
+										"rates",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Statistic",
+					"item": [
+						{
+							"name": "offer-status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/{{version}}/technical/statistics/offer",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"technical",
+										"statistics",
+										"offer"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10",
+											"disabled": true
+										},
+										{
+											"key": "pagination",
+											"value": "true",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "search about technical",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/{{version}}/technical/search?keyword=فني&limit=10&pagination=true",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{version}}",
+								"technical",
+								"search"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "فني",
+									"description": "fillter with specialization"
+								},
+								{
+									"key": "city_id",
+									"value": "1",
+									"description": "fillter with message",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "ahmed ali",
+									"description": "filter with name",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "3",
+									"description": "fillter with id",
+									"disabled": true
+								},
+								{
+									"key": "last_name",
+									"value": "mohammed",
+									"description": "fillter with last name",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "pagination",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hospital",
+			"item": [
+				{
+					"name": "Orders",
+					"item": [
+						{
+							"name": "Orders",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/hospital/orders?pagination=false&limit=10&category=1&orderBy=id-ASC&experience=1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"hospital",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "",
+											"description": "fillter with title",
+											"disabled": true
+										},
+										{
+											"key": "id",
+											"value": "",
+											"description": "fillter with id",
+											"disabled": true
+										},
+										{
+											"key": "desc",
+											"value": "",
+											"description": "fillter with description",
+											"disabled": true
+										},
+										{
+											"key": "hospital",
+											"value": "",
+											"description": "fillter with doctor_id",
+											"disabled": true
+										},
+										{
+											"key": "cost",
+											"value": "",
+											"description": "fillter with expected_cost",
+											"disabled": true
+										},
+										{
+											"key": "pagination",
+											"value": "false"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "category",
+											"value": "1"
+										},
+										{
+											"key": "hours",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "orderBy",
+											"value": "id-ASC",
+											"description": "id-ASC || id-DESC"
+										},
+										{
+											"key": "experience",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Order",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"your title\",\n    \"description\":\"YOur description\",\n    \"expected_cost\" : 10,\n    \"expected_hours\": 9,\n    \"currency_code\": \"EGP\",\n    \"qualification\": \"your qualification\",\n    \"experience_years\": 10,\n    \"category_id\": 1,\n    \"city_id\":1,\n    \"latitude\":\"27.9654\",\n    \"longitude\":\"34.3618\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/hospital/orders",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"hospital",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Order",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/{{version}}/hospital/orders/20?pagination=false",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"hospital",
+										"orders",
+										"20"
+									],
+									"query": [
+										{
+											"key": "pagination",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Order",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"your title 000 2\",\n    \"description\":\"YOur description 444 123\",\n    \"expected_cost\" : 10,\n    \"currency_code\": \"EGP\",\n    \"qualification\": \"your qualification\",\n    \"experience_years\": \"10 years\",\n    \"category_id\": 1,\n    \"city_id\":1,\n    \"latitude\":\"27.9654\",\n    \"longitude\":\"34.3618\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/hospital/orders/53",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"hospital",
+										"orders",
+										"53"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Order",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"your title 000 2\",\n    \"description\":\"YOur description 444 123\",\n    \"expected_cost\" : 10,\n    \"currency_code\": \"EGP\",\n    \"qualification\": \"your qualification\",\n    \"experience_years\": \"10 years\",\n    \"category_id\": 1,\n    \"city_id\":1,\n    \"latitude\":\"27.9654\",\n    \"longitude\":\"34.3618\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/hospital/orders/53",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"hospital",
+										"orders",
+										"53"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Applay-Offer",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"offer_id\": 49\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/hospital/orders/apply-offer/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"hospital",
+										"orders",
+										"apply-offer",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Favourite",
+					"item": [
+						{
+							"name": "Favourites",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/{{version}}/hospital/favourites?limit=10&pagination=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"hospital",
+										"favourites"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "",
+											"description": "fillter with title",
+											"disabled": true
+										},
+										{
+											"key": "id",
+											"value": "",
+											"description": "fillter with id",
+											"disabled": true
+										},
+										{
+											"key": "price",
+											"value": "",
+											"description": "fillter with price",
+											"disabled": true
+										},
+										{
+											"key": "message",
+											"value": "",
+											"description": "fillter with message",
+											"disabled": true
+										},
+										{
+											"key": "order",
+											"value": "",
+											"description": "fillter with order_id",
+											"disabled": true
+										},
+										{
+											"key": "technical",
+											"value": "",
+											"description": "fillter with technical_id",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "pagination",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Favourite",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"technical_id\":\"7\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/hospital/favourites",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"hospital",
+										"favourites"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Favourite",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/{{version}}/hospital/favourites/7",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"hospital",
+										"favourites",
+										"7"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "",
+											"description": "fillter with title",
+											"disabled": true
+										},
+										{
+											"key": "id",
+											"value": "",
+											"description": "fillter with id",
+											"disabled": true
+										},
+										{
+											"key": "price",
+											"value": "",
+											"description": "fillter with price",
+											"disabled": true
+										},
+										{
+											"key": "message",
+											"value": "",
+											"description": "fillter with message",
+											"disabled": true
+										},
+										{
+											"key": "order",
+											"value": "",
+											"description": "fillter with order_id",
+											"disabled": true
+										},
+										{
+											"key": "technical",
+											"value": "",
+											"description": "fillter with technical_id",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Favourite",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/hospital/favourites/8",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"hospital",
+										"favourites",
+										"8"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Rate",
+					"item": [
+						{
+							"name": "Rates",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/{{version}}/hospital/rates?limit=10&pagination=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"hospital",
+										"rates"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "pagination",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Rate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"technical_id\": \"3\",\n    \"order_id\": \"3\",\n    \"value\": 3,\n    \"comment\": \"good technical\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/hospital/rates",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"hospital",
+										"rates"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Rate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/{{version}}/hospital/rates/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"hospital",
+										"rates",
+										"4"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "",
+											"description": "fillter with title",
+											"disabled": true
+										},
+										{
+											"key": "id",
+											"value": "",
+											"description": "fillter with id",
+											"disabled": true
+										},
+										{
+											"key": "price",
+											"value": "",
+											"description": "fillter with price",
+											"disabled": true
+										},
+										{
+											"key": "message",
+											"value": "",
+											"description": "fillter with message",
+											"disabled": true
+										},
+										{
+											"key": "order",
+											"value": "",
+											"description": "fillter with order_id",
+											"disabled": true
+										},
+										{
+											"key": "technical",
+											"value": "",
+											"description": "fillter with technical_id",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Rate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{version}}/hospital/rates/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{version}}",
+										"hospital",
+										"rates",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Best Technical",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/{{version}}/hospital/best-technical?pagination=false",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{version}}",
+								"hospital",
+								"best-technical"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "",
+									"description": "fillter with title",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "",
+									"description": "fillter with id",
+									"disabled": true
+								},
+								{
+									"key": "desc",
+									"value": "",
+									"description": "fillter with description",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "",
+									"description": "fillter with category_id",
+									"disabled": true
+								},
+								{
+									"key": "hospital",
+									"value": "",
+									"description": "fillter with doctor_id",
+									"disabled": true
+								},
+								{
+									"key": "cost",
+									"value": "",
+									"description": "fillter with expected_cost",
+									"disabled": true
+								},
+								{
+									"key": "pagination",
+									"value": "false"
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

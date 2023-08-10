@@ -1,0 +1,176 @@
+{
+  "Index": {
+    "title": "مرحبا بالعالم!"
+  },
+  "Home": {
+    "title": "مرحبا بك في ميدتك",
+    "subtitle": "ابحث عن أفضل الفنيين والمستشفيات في مدينتك",
+    "browseCategories": "تصفح الاقسام",
+    "allSectionsAndCategories": "جميع الأقسام",
+    "showAllCategories": "عرض جميع الاقسام",
+    "browseAds": "تصفح الإعلانات",
+    "newAdsForMaintenance": "إعلانات جديدة للصيانة",
+    "showAllAds": "عرض جميع الإعلانات",
+    "whyChooseMedtich": "لماذا تختار ميدتك؟",
+    "medtichNumbers": "أرقام ميدتك في مصر",
+    "completedProjects": "المشاريع المكتملة",
+    "jobOffers": "عروض الوظائف",
+    "positiveReviews": "التقيمات الإيجابية",
+    "totalTechnicians": "إجمالي الفنيين",
+    "ourTechnicians": "فنيينا",
+    "ourTechniciansSubtitle": "فنيينا متخصصون في مجالات متعددة",
+    "showAllTechnicians": "عرض جميع الفنيين",
+    "complaintsOrQuestions": "هل لديك مشكلة أو استفسار معين ؟",
+    "contactUsByPhoneOrSocial": "قم بالاتصال بنا عبر الهاتف او عبر التواصل من رسائل الموقع",
+    "contactUs": "اتصل بنا",
+    "latestBlogs": "أحدث المقالات",
+    "showAllBlogs": "عرض جميع المقالات",
+    "ourBlog": "مدونتنا",
+    "noTechniciansFound": "لا يوجد فنيين",
+    "showAvailableTechnicians": "عرض الفنيين المتاحين"
+  },
+  "footer": {
+    "Phone": "الهاتف",
+    "Email": "البريد الإلكتروني",
+    "DownloadOurApps": "تحميل تطبيقاتنا",
+    "FollowUs": "تابعنا",
+    "subscribeToOurNewsletter": "اشترك في نشرتنا الإخبارية",
+    "enterYourEmail": "أدخل بريدك الإلكتروني",
+    "subscribe": "اشترك",
+    "mostsearched": "الأكثر بحثًا",
+    "Medicaldevices": "أجهزة طبية",
+    "technicianjobs": "وظائف فني",
+    "Cardiovasculartechnician": "فني القلب والأوعية الدموية",
+    "Installation technician": "فني التركيب",
+    "Quicklinks": "روابط سريعة",
+    "Categories": "التصنيفات",
+    "WhoWeAre": "من نحن",
+    "AddYourAd": "أضف إعلانك",
+    "ContactUs": "اتصل بنا",
+    "Additionallinks": "روابط إضافية",
+    "Here is an additional link": "هنا رابط إضافي"
+  },
+  "Navigation": {
+    "home": "الصفحة الرئيسية",
+    "ads": "الإعلانات",
+    "blog": "المدونة",
+    "pages": "الصفحات",
+    "join-us": "انضم إلينا",
+    "register": "أنشئ حساب",
+    "login": "تسجيل الدخول",
+    "profile": "الملف الشخصي",
+    "statistics": "الإحصائيات",
+    "change info": "تغيير المعلومات",
+    "myJobs": "وظائفي",
+    "myOffers": "عروضي",
+    "myFavorites": "المفضلة",
+    "messages": "الرسائل",
+    "logout": "تسجيل الخروج",
+    "helpCenter": "مركز المساعدة",
+    "contactUs": "اتصل بنا",
+    "aboutUs": "من نحن",
+    "faqs": "الأسئلة الشائعة",
+    "termsAndConditions": "الشروط والأحكام",
+    "addOrder":"اضف طلب",
+    "myOrders":"طلباتى"
+    
+    
+  },
+  "Login": {
+    "title": "تسجيل الدخول",
+    "subtitle": "الصفحة الرئيسية / تسجيل الدخول",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "remember": "تذكرني",
+    "submit": "تسجيل الدخول",
+    "forgot": "نسيت كلمة المرور؟",
+    "register": "أنشئ حساب جديد",
+    "dontHaveAccount": "ليس لديك حساب؟",
+    "phone": "الهاتف",
+    "forgetPassword": "نسيت كلمة المرور؟",
+    "resetPassword": "إعادة تعيين كلمة المرور"
+  },
+  "Register": {
+    "login": "تسجيل الدخول",
+    "title": "أنشئ حساب جديد",
+    "subtitle": "الصفحة الرئيسية / أنشئ حساب جديد",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirm": "تأكيد كلمة المرور",
+    "submit": "أنشئ حساب",
+    "Do you have an account?": "هل لديك حساب؟",
+    "RegisterAsTechnician": "أنشئ حساب كفني",
+    "RegisterAsHospital": "أنشئ حساب كمستشفى",
+    "FirstName": "الاسم الأول",
+    "LastName": "الاسم الأخير",
+    "PhoneNumber": "الهاتف",
+    "terms": "أوافق على الشروط والأحكام"
+  },
+  "resetPassword": {
+    "title": "إعادة تعيين كلمة المرور",
+    "subtitle": "الصفحة الرئيسية / إعادة تعيين كلمة المرور",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirm": "تأكيد كلمة المرور",
+    "submit": "إعادة تعيين كلمة المرور",
+    "reset": "إعادة تعيين كلمة المرور",
+    "code": "الكود"
+  },
+  "forgetPassword": {
+    "title": "نسيت كلمة المرور",
+    "subtitle": "الصفحة الرئيسية / نسيت كلمة المرور",
+    "email": "البريد الإلكتروني",
+    "submit": "إرسال رابط إعادة تعيين كلمة المرور",
+    "phone": "الهاتف",
+    "emailRequired": "البريد الإلكتروني مطلوب"
+  },
+  "checkCode": {
+    "codeRequired": "الكود مطلوب",
+    "codeValidSuccess": "تم التحقق من الكود بنجاح",
+    "title": "تحقق من الكود",
+    "code": "الكود",
+    "phone": "الهاتف",
+    "submit": "تحقق"
+  },
+  "searchBanner": {
+    "hospital": "المستشفى",
+    "technician": "الفني",
+    "technicianSearchPlaceholder": "ابحث عن فني",
+    "hospitalSearchPlaceholder": "ابحث عن مستشفى",
+    "search": "بحث",
+    "selectCategory": "اختر الفئة",
+    "selectCity": "اختر المدينة"
+  },
+  "BlogDetail": {
+    "LeaveComment": "اترك تعليق",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "message": "الرسالة",
+    "namePlaceHolder": "أدخل اسمك",
+    "emailPlaceHolder": "أدخل بريدك الإلكتروني",
+    "messagePlaceHolder": "أدخل رسالتك"
+  },
+  "ads": {
+    "hour": "ساعة"
+  },
+  "Technicians": {
+    "personalProfile": "الملف الشخصي"
+  },
+  "SingleAdDetailed": {
+    "city": "المدينة",
+    "Projects": "المشاريع",
+    "category": "الفئة",
+    "yearsOfExperience": "سنوات الخبرة",
+    "years": "سنوات",
+    "educationRequirements": "متطلبات التعليم",
+    "jobRequirements": "متطلبات الوظيفة",
+    "jobOffers": "عروض الوظائف"
+  },
+  "LocaleSwitcher": {
+    "locale": {
+      "en": "English",
+      "ar": "العربية"
+    }
+  }
+}

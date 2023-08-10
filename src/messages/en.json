@@ -1,0 +1,174 @@
+{
+  "Index": {
+    "title": "Hello world!"
+  },
+  "Home": {
+    "title": "Welcome to Medtich",
+    "subtitle": "Find the best medical technicians and hospitals in your area",
+    "browseCategories": "Browse Categories",
+    "allSectionsAndCategories": "All Sections and Categories",
+    "showAllCategories": "Show All Categories",
+    "browseAds": "Browse Ads",
+    "newAdsForMaintenance": "New Ads for Maintenance",
+    "showAllAds": "Show All Ads",
+    "whyChooseMedtich": "Why Choose Medtich?",
+    "medtichNumbers": "Medtich Numbers in egypt",
+    "completedProjects": "Completed Projects",
+    "jobOffers": "Job Offers",
+    "positiveReviews": "Positive Reviews",
+    "totalTechnicians": "Total Technicians",
+    "ourTechnicians": "Our Technicians",
+    "ourTechniciansSubtitle": "We have the best technicians in all fields",
+    "showAllTechnicians": "Show All Technicians",
+    "complaintsOrQuestions": "Do you have any complaints or questions?",
+    "contactUsByPhoneOrSocial": "Contact Us by Phone or By Social Media",
+    "contactUs": "Contact Us",
+    "latestBlogs": "latest Blogs",
+    "showAllBlogs": "Show All Blogs",
+    "ourBlog": "Our Blog",
+    "noTechniciansFound": "No Technicians Found",
+    "showAvailableTechnicians": "Show Available Technicians"
+  },
+  "footer": {
+    "Phone": "Phone",
+    "Email": "Email",
+    "DownloadOurApps": "Download Our Apps",
+    "FollowUs": "Follow Us",
+    "subscribeToOurNewsletter": "Subscribe to our newsletter",
+    "enterYourEmail": "Enter your email",
+    "subscribe": "Subscribe",
+    "mostsearched": "Most Searched",
+    "Medicaldevices": "Medical Devices",
+    "technicianjobs": "Technician Jobs",
+    "Cardiovasculartechnician": "Cardiovascular technician",
+    "Installation technician": "Installation technician",
+    "Quicklinks": "Quick Links",
+    "Categories": "Categories",
+    "WhoWeAre": "Who We Are",
+    "AddYourAd": "Add Your Ad",
+    "ContactUs": "Contact Us",
+    "Additionallinks": "Additional links",
+    "Here is an additional link": "Here is an additional link"
+  },
+  "Navigation": {
+    "home": "Main",
+    "ads": "Ads",
+    "blog": "Blog",
+    "pages": "Pages",
+    "join-us": "Join Us",
+    "register": "Register",
+    "login": "Login",
+    "profile": "Profile",
+    "logout": "Logout",
+    "statistics": "Statistics",
+    "change info": "Change Info",
+    "myJobs": "My Jobs",
+    "myOffers": "My Offers",
+    "myFavorites": "My Favorites",
+    "messages": "Messages",
+    "helpCenter": "Help Center",
+    "contactUs": "Contact Us",
+    "faqs": "FAQs",
+    "termsAndConditions": "Terms and Conditions",
+    "aboutUs": "About Us",
+    "addOrder":"Add Order",
+    "myOrders":"My Order"
+  },
+  "Login": {
+    "title": "Login",
+    "subtitle": " Home / Login",
+    "email": "Email",
+    "password": "Password",
+    "remember": "Remember me",
+    "submit": "Login",
+    "forgot": "Forgot password?",
+    "dontHaveAccount": "Don't have an account?",
+    "forgetPassword": "Forget Password",
+    "resetPassword": "Reset Password",
+    "phone": "Phone",
+    "register": "Register"
+  },
+  "Register": {
+    "login": "Login",
+    "title": "Register",
+    "subtitle": " Home / Register",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "confirm": "Confirm Password",
+    "submit": "Register",
+    "Do you have an account?": "Do you have an account?",
+    "RegisterAsTechnician": "Register as Technician",
+    "RegisterAsHospital": "Register as Hospital",
+    "FirstName": "First Name",
+    "LastName": "Last Name",
+    "PhoneNumber": "Phone",
+    "terms": "I agree to the terms and conditions"
+  },
+  "resetPassword": {
+    "title": "Reset Password",
+    "subtitle": " Home / Reset Password",
+    "email": "Email",
+    "submit": "Send Password Reset Link",
+    "password": "Password",
+    "confirm": "Confirm Password",
+    "reset": "Reset Password",
+    "code": "Code"
+  },
+  "forgetPassword": {
+    "title": "Forget Password",
+    "subtitle": " Home / Forget Password",
+    "email": "Email",
+    "submit": "Send Password Reset Link",
+    "emailRequired": "Email is required",
+    "phone": "Phone"
+  },
+  "checkCode": {
+    "codeRequired": "Code is required",
+    "codeValidSuccess": "Code is valid",
+    "title": "Check Code",
+    "code": "Code",
+    "phone": "Phone",
+    "submit": "Check Code"
+  },
+  "searchBanner": {
+    "hospital": "Hospital",
+    "technician": "Technician",
+    "technicianSearchPlaceholder": "Search for a technician",
+    "hospitalSearchPlaceholder": "Search for a hospital",
+    "search": "Search",
+    "selectCategory": "Select Category",
+    "selectCity": "select selectCity"
+  },
+  "BlogDetail": {
+    "LeaveComment": "Leave a Comment",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "namePlaceHolder": "Enter your name",
+    "emailPlaceHolder": "Enter your email",
+    "messagePlaceHolder": "Enter your message"
+  },
+  "ads": {
+    "hour": "Hour"
+  },
+  "Technicians": {
+    "personalProfile": "Personal Profile"
+  },
+  "SingleAdDetailed": {
+    "city": "City",
+    "Projects": "Projects",
+    "category": "Category",
+    "yearsOfExperience": "Years of Experience",
+    "years": "Years",
+    "educationRequirement": "Education Requirement",
+    "jobRequirements": "Job Requirements",
+    "jobOffers": "Job Offers"
+  },
+  "LocaleSwitcher": {
+    "locale": {
+      "en": "English",
+      "ar": "العربية"
+    }
+  }
+}
