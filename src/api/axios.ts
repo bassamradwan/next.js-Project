@@ -1,7 +1,6 @@
 import axios, { AxiosRequestHeaders } from "axios";
 import Cookies from "js-cookie";
 
-export const token = Cookies.get("medtich-token");
 
 const axiosInstance = axios.create({
   baseURL: process.env.BASE_URL,
@@ -16,6 +15,7 @@ axiosInstance.interceptors.request.use(
     const headers: AxiosRequestHeaders = {
       ...config.headers,
     };
+    const token = Cookies.get("medtich-token");
 
       headers.Authorization = `Bearer ${token}`;
 
