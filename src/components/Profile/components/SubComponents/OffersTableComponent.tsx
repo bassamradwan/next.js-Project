@@ -21,7 +21,7 @@ const OffersTableComponent = () => {
 
   const id = +location.pathname.split("/")[2];
   const { offers } = useOffers(id);
-console.log(offers);
+  console.log(offers);
 
   const handleTableChange = (pagination: any, filters: any, sorter: any) => {
     setSortOrder(sorter.order);
@@ -49,7 +49,6 @@ console.log(offers);
               <DateLine>
                 <DateIcon />
                 <DateText>{record.created_at}</DateText>
-                <h1>{record.created_at}</h1>
               </DateLine>
             </AdLine>
           </AdWrapper>
@@ -61,7 +60,7 @@ console.log(offers);
       dataIndex: "cost",
       key: "cost",
       sorter: (a: any, b: any) => a.cost - b.cost,
-      sortOrder: sortedColumn === "cost" && sortOrder,
+      sortOrder: sortedColumn === "cost" ? sortOrder : undefined,
       filters: [
         { text: "32", value: "32" },
         { text: "42", value: "42" },
@@ -89,7 +88,7 @@ console.log(offers);
         return <Tag color={color}>{status.toUpperCase()}</Tag>;
       },
       sorter: (a: any, b: any) => a.status.localeCompare(b.status),
-      sortOrder: sortedColumn === "status" && sortOrder,
+      sortOrder: sortedColumn === "status" ? sortOrder : undefined,
       filters: [
         { text: "Pending", value: "pending" },
         { text: "Completed", value: "completed" },
@@ -118,3 +117,4 @@ console.log(offers);
 };
 
 export default OffersTableComponent;
+
