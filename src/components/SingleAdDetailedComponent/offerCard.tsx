@@ -32,7 +32,6 @@ interface offerCardProps {
   price: number | undefined | null;
   id: Id;
   userId: Id;
-  typebutton: string | null | undefined;
 }
 
 const OfferCard = (props: offerCardProps) => {
