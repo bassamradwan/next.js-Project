@@ -40,7 +40,6 @@ const JobOffers = (props: jobOffersProp) => {
             key={index}
             userId={offer?.technical?.id}
             id={offer?.id}
-            typebutton={"Accept Offer"}
           />
         ))}
       </OfferList>
