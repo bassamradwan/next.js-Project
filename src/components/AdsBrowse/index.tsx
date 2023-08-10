@@ -36,20 +36,7 @@ const AdsBrowse = () => {
       />
       <>
       <AdsListComponent ads={ads}/>
-      {/* {Ads?.map(item => {
-        <AdsListComponent
-          key={item?.id}
-          id={item?.id}
-          title={item?.title}
-          category={item?.category}
-          location={item?.location}
-          time={item?.time}
-          price={item?.price}
-          applicant={item?.applicant}
-          image={item?.image}
-          currency_code={item?.currency_code}
-        />
-      })} */}
+     
       <SectionBtn>
         <BackSvg src="/back.svg" alt="" />
         {t("showAllAds")}

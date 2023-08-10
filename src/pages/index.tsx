@@ -25,14 +25,6 @@ export default function Home() {
     setKeyWord(value);
   };
 
-  // if (loading) {
-  //   return (
-  //     <Fallback>
-  //       <Spin />
-  //     </Fallback>
-  //   );
-  // }
-
   return (
     <>
       <Navbar />
