@@ -118,7 +118,6 @@ const ChangeInfoComponent = () => {
             <EditInputGroup>
               <EditInputTitle>Full Name</EditInputTitle>
               <EditInput type="text" placeholder="Enter your full name" {...register("name")} />
-              {/* <EditInput type="text" placeholder="Enter your full name" /> */}
             </EditInputGroup>
             <EditInputGroup>
               <EditInputTitle>Last Name</EditInputTitle>
@@ -143,12 +142,10 @@ const ChangeInfoComponent = () => {
                   </EditOption>
                 ))}
               </EditSelect>
-              {/* <EditInput type="text" placeholder="Enter Your address" /> */}
             </EditInputGroup>
             <EditInputGroup>
               <EditInputTitle>Phone</EditInputTitle>
               <EditInput type="text" placeholder="Enter your Phone" {...register("phone")} />
-              {/* <EditInput type="text" placeholder="Enter your Phone" /> */}
             </EditInputGroup>
           </EditInputLine>
 
@@ -175,7 +172,6 @@ const ChangeInfoComponent = () => {
             <EditInputGroup>
               <EditInputTitle>Email</EditInputTitle>
               <EditInput type="text" placeholder="Enter your email" {...register("email")} />
-              {/* <EditInput type="text" placeholder="Enter your email" /> */}
             </EditInputGroup>
             <EditInputGroup>
               <EditInputTitle>Hourly Price Rate</EditInputTitle>
@@ -184,7 +180,6 @@ const ChangeInfoComponent = () => {
                 placeholder="Enter your hourly price rate"
                 {...register("hour_rate")}
               />
-              {/* <EditInput type="text" placeholder="Enter your hourly price rate" /> */}
             </EditInputGroup>
           </EditInputLine>
           {/* Description */}
