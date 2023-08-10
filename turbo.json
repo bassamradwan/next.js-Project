@@ -5,13 +5,9 @@
   ],
   "pipeline": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        ".next/**",
-        "!.next/cache/**"
-      ]
+      "dependsOn": ["^install"],
+      "command": "npm run build",
+      "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": {},
     "dev": {
