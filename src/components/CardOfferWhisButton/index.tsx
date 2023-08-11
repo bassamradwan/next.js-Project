@@ -58,7 +58,6 @@ const CardOfferWithButton = (props: offerCardProps) => {
         name={props.name}
         title={props.title}
         city={props.city}
-        date={props.date}
         rate={props.rate}
         description={props.description}
         price={props.price}
