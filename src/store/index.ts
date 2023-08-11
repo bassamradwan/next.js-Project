@@ -4,6 +4,7 @@ import offers from "./features/offers/slice";
 import orders from "./features/orders/slice";
 import cities from "./features/cities/slice";
 import categories from "./features/categories/slice";
+import ad from "./features/order";
 
 const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
     offers,
     orders,
     cities,
+    ad,
     categories,
   },
 });

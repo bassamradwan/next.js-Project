@@ -34,17 +34,4 @@ export const StyledSelect = styled(Select)`
   @media (max-width: 768px) {
     width: 100px;
   }
-
-  // .ant-select-selector {
-  //   border-radius: 5px;
-  //   border-color: #d9d9d9;
-  // }
-
-  // .ant-select-selection-placeholder {
-  //   color: #bfbfbf;
-  // }
-
-  // .ant-select-arrow {
-  //   color: #bfbfbf;
-  // }
 `;

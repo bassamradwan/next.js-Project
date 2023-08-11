@@ -11,12 +11,14 @@ import {
   EditSelect,
   HeadingTitle,
 } from "../../Profile/styles/styled.ChangeInfo";
-import { Content } from "@/Styles/styled.general";
+import { Content, SpinLight } from "@/Styles/styled.general";
 import { AddOrderDataType, CurrencyCode, DefaultLocation } from "@/types";
 import useOrders from "@/hooks/useOrders";
 import { toast } from "react-toastify";
 import useCategories from "@/hooks/useCategories";
 import useCities from "@/hooks/useCities";
+import { useForm } from "react-hook-form";
+import { Spin } from "antd";
 
 const CATEGORIES_QUERY_KEY = ["categories", "browse"];
 
@@ -24,42 +26,27 @@ const OrdersComponent = () => {
   const { categories } = useCategories();
   const { cities } = useCities();
   const { add } = useOrders();
+  const { register, reset, handleSubmit } = useForm();
 
-  const [isLoadingData, setIsLoadingData] = useState(true);
-  const [formData, setFormData] = useState<AddOrderDataType>({
-    title: "",
-    expected_cost: "",
-    expected_hours: "",
-    experience_years: "",
-    currency_code: CurrencyCode.EGP,
-    qualification: "",
-    category_id: "",
-    city_id: "",
-    description: "",
-    latitude: DefaultLocation.LATITUDE,
-    longitude: DefaultLocation.LONGITUDE,
-  });
+  const [loading, setLoading] = useState(false);
 
   const locale = useLocale();
 
-  //Add Order
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prevData => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-  const handleSaveChanges = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSaveChanges = async (formData: any) => {
+    setLoading(true);
     try {
+      formData.currency_code = CurrencyCode.EGP;
+      formData.latitude = DefaultLocation.LATITUDE;
+      formData.longitude = DefaultLocation.LONGITUDE;
+
       await add(formData);
+      reset();
       toast.success("Order Added Successfully");
     } catch (error: any) {
       toast.error(error.message);
     }
+    setLoading(false);
   };
-console.log(formData);
 
   return (
     <form
@@ -68,7 +55,7 @@ console.log(formData);
         flexDirection: "column",
         gap: "20px",
       }}
-      onSubmit={handleSaveChanges}
+      onSubmit={handleSubmit(handleSaveChanges)}
     >
       <Content>
         <EditInfoWrapper>
@@ -80,22 +67,16 @@ console.log(formData);
               <EditInput
                 type="text"
                 placeholder="Enter your title"
-                name="title"
-                value={formData.title}
-                onChange={handleInputChange}
+                {...register("title", { required: true })}
               />
             </EditInputGroup>
             <EditInputGroup>
               <EditInputTitle>Expected Cost</EditInputTitle>
               <EditInput
                 type="number"
-                placeholder="Enter Your expected_cost EGP"
-                name="expected_cost"
-                value={formData.expected_cost}
-                onChange={handleInputChange}
+                placeholder="Enter Your EGP"
+                {...register("expected_cost", { required: true })}
               />
-              {/* currency-code */}
-              <span>EGP</span>
             </EditInputGroup>
           </EditInputLine>
           {/* Address,phone */}
@@ -105,9 +86,7 @@ console.log(formData);
               <EditInput
                 type="text"
                 placeholder="Enter your Expected Hours"
-                name="expected_hours"
-                value={formData.expected_hours}
-                onChange={handleInputChange}
+                {...register("expected_hours", { required: true })}
               />
             </EditInputGroup>
             <EditInputGroup>
@@ -116,9 +95,7 @@ console.log(formData);
               <EditInput
                 type="text"
                 placeholder="Enter your Experience Years"
-                name="experience_years"
-                value={formData.experience_years}
-                onChange={handleInputChange}
+                {...register("experience_years", { required: true })}
               />
             </EditInputGroup>
           </EditInputLine>
@@ -129,9 +106,7 @@ console.log(formData);
               <EditInput
                 type="text"
                 placeholder="Enter your Qualification"
-                name="qualification"
-                value={formData.qualification}
-                onChange={handleInputChange}
+                {...register("qualification", { required: true })}
               />
             </EditInputGroup>
           </EditInputLine>
@@ -139,11 +114,10 @@ console.log(formData);
           <EditInputLine>
             <EditInputGroup>
               <EditInputTitle>Category ID</EditInputTitle>
-              <EditSelect
-                name="category_id"
-                value={formData.category_id}
-                onChange={handleInputChange}
-              >
+              <EditSelect defaultValue="" {...register("category_id", { required: true })}>
+                <EditOption value="" disabled>
+                  Select Category
+                </EditOption>
                 {categories?.map(category => (
                   <EditOption key={category.id} value={category.id}>
                     {locale === "en" ? category.name.en : category.name.ar}
@@ -154,7 +128,10 @@ console.log(formData);
             {/* University */}
             <EditInputGroup>
               <EditInputTitle>City ID</EditInputTitle>
-              <EditSelect name="city_id" value={formData.city_id} onChange={handleInputChange}>
+              <EditSelect defaultValue="" {...register("city_id", { required: true })}>
+                <EditOption value="" disabled>
+                  Select City
+                </EditOption>
                 {cities?.map(city => (
                   <EditOption key={city.id} value={city.id}>
                     {locale === "en" ? city.name.en : city.name.ar}
@@ -176,16 +153,18 @@ console.log(formData);
               <EditInput
                 type="textarea"
                 placeholder="Enter your description"
-                name="description"
-                value={formData.description}
-                onChange={handleInputChange}
+                {...register("description", { required: true })}
               />
             </EditInputGroup>
           </EditInputLine>
         </EditInfoWrapper>
       </Content>
+      <SpinLight>
+        <Spin spinning={loading}>
+          <EditInfoButton>Send Order</EditInfoButton>
+        </Spin>
+      </SpinLight>
       {/* button for save changes */}
-      <EditInfoButton>Send Order</EditInfoButton>
     </form>
   );
 };

@@ -1,7 +1,7 @@
 import { SingleAdDetailesWrapper } from "./StyledSingleAdDetailed";
 import JobCards from "./JobCards";
 import JobRequirements from "./JobRequirements";
-import { Ad } from "@/hooks/useAd";
+import {Ad} from "@/types";
 interface singleAdDetailedComponentProps {
   ad: Ad | undefined;
 }

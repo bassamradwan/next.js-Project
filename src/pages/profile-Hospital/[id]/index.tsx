@@ -2,8 +2,10 @@ import Banner from "@/components/Banners/GeneralBanner";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ProfileHospitalComponent from "@/components/ProfileHospital";
+import useUser from "@/hooks/useUser";
 
 const ProfileHospital = () => {
+  useUser();
   return (
     <>
       <Navbar />
@@ -13,6 +15,5 @@ const ProfileHospital = () => {
     </>
   );
 };
-
 
 export default ProfileHospital;

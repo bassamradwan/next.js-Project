@@ -25,3 +25,13 @@ export const updateProfileInfo = createAsyncThunk<void, Profile>("user/update", 
     thunkAPI.rejectWithValue(error.response.message);
   }
 });
+
+export const loginUser = createAsyncThunk<void, Profile>("user/update", async (data, thunkAPI) => {
+  try {
+    const response = await api.post("auth/login", data);
+    return response.data;
+  } catch (error: any) {
+    console.log(error.response.data.message);
+    return thunkAPI.rejectWithValue(error.response.data.message);
+  }
+});

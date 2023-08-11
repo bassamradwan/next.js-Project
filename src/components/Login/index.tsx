@@ -29,24 +29,32 @@ import {
   SocialMediaWrapper,
   SubmitBtn,
 } from "./Styled.login";
-import { useDispatch } from "react-redux";
 import { useTranslations } from "next-intl";
+import { useAppDispatch } from "@/hooks";
+import { loginUser } from "@/store/features/user/services";
 
 function Login() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
   // translation
   const t = useTranslations("Login");
 
   const router = useRouter();
+
   const schema = yup.object().shape({
     phone: yup.string().required("Phone is required"),
     password: yup.string().required("Password is required"),
   });
+
   type FormData = yup.InferType<typeof schema>;
+
   type APIDATATYPE = {
     phone: string;
     password: string;
@@ -78,43 +86,38 @@ function Login() {
     },
     {
       onSuccess: response => {
-        setTimeout(() => {
-          toast.success("Login successful", {
-            toastId: new Date().getTime().toString() + Math.random(),
-          });
-          Cookies.set("medtich-token", response.access_token);
-          console.log(response, "Response");
+        toast.success("Login successful");
+        Cookies.set("medtich-token", response.access_token);
 
-          dispatch(setUser(response.data)); // Dispatch the setUser action with the user data
+        dispatch(setUser(response.data)); // Dispatch the setUser action with the user data
 
-          router.push("/");
-        }, 2000);
+        router.push("/");
       },
-      onError: error => {
-        console.log("error...", error);
-        // @ts-ignore
+      onError: (error: any) => {
         const errorResponse = JSON.parse(error.message);
-        const errorsArray = Object.entries(errorResponse.errors).map(([key, value]) => {
-          return `${key}: ${value}`;
-        });
-
-        errorsArray.forEach(error => {
-          setTimeout(() => {
-            toast.error(error, {
-              toastId: new Date().getTime().toString() + Math.random(),
-            });
-          }, 1000);
-        });
+        toast.error(errorResponse.message);
       },
     },
   );
 
-  const onSubmit = (data: FormData) => {
-    const mappedData = {
-      phone: data.phone,
-      password: data.password,
-    };
-    loginMutation.mutate(mappedData);
+  const onSubmit = async (data: FormData) => {
+    setLoading(true);
+    try {
+      const mappedData = {
+        phone: data.phone,
+        password: data.password,
+      };
+
+      const response: any = await dispatch(loginUser(mappedData)).unwrap();
+      Cookies.set("medtich-token", response.access_token);
+
+      dispatch(setUser(response.data)); // Dispatch the setUser action with the user data
+
+      router.push("/");
+    } catch (error: any) {
+      toast.error(error);
+    }
+    setLoading(false);
   };
 
   return (
@@ -158,8 +161,8 @@ function Login() {
               {errors.password && <ErrorWrapper>{errors.password?.message}</ErrorWrapper>}
             </InputWrapper>
             {/* button for submit */}
-            <SubmitBtn type="submit" disabled={loginMutation.isLoading}>
-              {loginMutation.isLoading ? `${t("title")}...` : `${t("title")}`}
+            <SubmitBtn type="submit" disabled={loading}>
+              {loading ? `${t("title")}...` : `${t("title")}`}
             </SubmitBtn>
             {/* forget password , reset password */}
             <ForgetWrapper>

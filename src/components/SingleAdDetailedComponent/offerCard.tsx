@@ -19,6 +19,7 @@ import { CurrencyCode, Id } from "@/types";
 import useOffers from "@/hooks/useOffer";
 import { useMemo } from "react";
 import { toast } from "react-toastify";
+import { Divider } from "antd";
 
 interface offerCardProps {
 
@@ -26,7 +27,6 @@ interface offerCardProps {
   name: string;
   title: string | undefined | null;
   city: string;
-  date: string;
   rate: number;
   description: string;
   price: number | undefined | null;
@@ -89,18 +89,14 @@ const OfferCard = (props: offerCardProps) => {
               <MetaIcon src="/location.svg" />
               {props.city}
             </MetaItem>
-            <MetaItem>
-              <MetaIcon src="/calendar.svg" />
-              {props.date}
-            </MetaItem>
           </MetaRow>
-          <MetaDescription>{props.description}</MetaDescription>
         </TechnicainMeta>
+        <Divider/>
+        <MetaDescription>{props.description}</MetaDescription>
       </TechnicianInfo>
       <TechnicainMeta>
         <OfferPrice>
-          {props.price}
-          {CurrencyCode.EGP}
+          {props.price}{CurrencyCode.EGP}
         </OfferPrice>
         {/* <EditInfoButton onClick={onAccept}>{props.typebutton}</EditInfoButton>
 

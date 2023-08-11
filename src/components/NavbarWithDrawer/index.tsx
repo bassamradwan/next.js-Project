@@ -5,6 +5,7 @@ import { useState } from "react";
 import TopNavbar from "@/components/Navbar/TopNavbar";
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import UserMenu from "@/components/UserMenu";
 
 const MobileNavWrapper = styled.div`
   display: flex;
@@ -22,7 +23,7 @@ const NavbarWithDrawer = () => {
   const [opeMenu, setOpeMenu] = useState(false);
   return (
     <>
-      {/* burger Icon  Wrapper and the [BurgerIcon]*/}
+      {/* burger Icon Wrapper and the [BurgerIcon]*/}
       <MobileNavWrapper>
         <div style={{ height: "50px" }} className="menuIcon">
           <MenuOutlined
@@ -123,6 +124,8 @@ const NavbarWithDrawer = () => {
         bodyStyle={{ background: "white" }}
       >
         <TopNavbar />
+        {/* eslint-disable-next-line react/jsx-no-undef */}
+        <UserMenu/>
         <AppMenu isInline />
       </Drawer>
     </>
