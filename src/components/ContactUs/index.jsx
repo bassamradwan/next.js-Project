@@ -1,4 +1,6 @@
+import { useSettings } from "@/hooks/useSettings";
 import { Button } from "antd";
+import { useForm } from "react-hook-form";
 import { EditInputGroup } from "../Profile/styles/styled.ChangeInfo";
 import {
   ContactUsWrapper,
@@ -20,6 +22,33 @@ import {
   FormInputTextArea,
 } from "./Styled.ContactUs";
 const ContactUs = () => {
+  const { settings } = useSettings();
+  const { register, setValue, handleSubmit, control } = useForm();
+
+const contactUs = settings.contacts || {}; 
+console.log(contactUs);
+// add Contact
+const addContact =(async(data)=> {
+try {
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: contactUs.name,
+      email: contactUs.email,
+      message: contactUs.message,
+    }),
+  });
+  const data = await response.json();
+  console.log(data);
+}
+  catch(err) {
+    console.log(err);
+  }
+});
+
   return (
     <ContactUsWrapper>
       <ContactUsSection>
@@ -33,22 +62,29 @@ const ContactUs = () => {
             <ContactItem>
               <ContactItemIcon src="https://picsum.photos/200/300" alt="phone-call" />
               <contactTitleAndSubtitle>
-                <ContactTitle>Call Us</ContactTitle>
-                <ContactSubtitle>1-800-123-4567</ContactSubtitle>
+                <ContactTitle>Phone</ContactTitle>
+                <ContactSubtitle>{contactUs.phone}</ContactSubtitle>
               </contactTitleAndSubtitle>
             </ContactItem>
             <ContactItem>
               <ContactItemIcon src="https://picsum.photos/200/300" alt="phone-call" />
               <contactTitleAndSubtitle>
-                <ContactTitle>Call Us</ContactTitle>
-                <ContactSubtitle>1-800-123-4567</ContactSubtitle>
+                <ContactTitle>Whats App </ContactTitle>
+                <ContactSubtitle>{contactUs.whats_app}</ContactSubtitle>
               </contactTitleAndSubtitle>
             </ContactItem>
             <ContactItem>
               <ContactItemIcon src="https://picsum.photos/200/300" alt="phone-call" />
               <contactTitleAndSubtitle>
-                <ContactTitle>Call Us</ContactTitle>
-                <ContactSubtitle>1-800-123-4567</ContactSubtitle>
+                <ContactTitle>Facebook</ContactTitle>
+                <ContactSubtitle>{contactUs.facebook}</ContactSubtitle>
+              </contactTitleAndSubtitle>
+            </ContactItem>
+            <ContactItem>
+              <ContactItemIcon src="https://picsum.photos/200/300" alt="phone-call" />
+              <contactTitleAndSubtitle>
+                <ContactTitle>Twitter</ContactTitle>
+                <ContactSubtitle>{contactUs.twitter}</ContactSubtitle>
               </contactTitleAndSubtitle>
             </ContactItem>
           </ContactList>
