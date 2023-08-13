@@ -127,6 +127,7 @@ function Register() {
         // error... Error: {"status":false,"message":"validation error","errors":{"phone":["The phone has already been taken."]}}
         // @ts-ignore
         const errorResponse = JSON.parse(error.message);
+        toast.error("Something went wrong")
         // convert errorResponse.errors is array of objects to array of strings i want to have array of the keys and values
         const errorsArray = Object.entries(errorResponse.errors).map(([key, value]) => {
           return `${key}: ${value}`;

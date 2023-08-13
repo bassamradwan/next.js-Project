@@ -1,4 +1,4 @@
-import { Ad } from "@/hooks/useAd";
+import {Ad} from "@/types";
 import {
   AdCardsWrapper,
   SummaryCard,

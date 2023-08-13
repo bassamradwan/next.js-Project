@@ -25,3 +25,10 @@ export const Fallback = styled.div`
   align-items: center;
   justify-content: center;
 `
+
+export const SpinLight = styled.div`
+ .ant-spin-dot-item {
+     background-color: #fff;
+ } 
+  width: fit-content;
+`;

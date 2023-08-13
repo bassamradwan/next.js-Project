@@ -14,7 +14,7 @@ export const getAllOffers = createAsyncThunk<void, OfferQuery>(
       // @ts-ignore
       const { id, limit } = data;
       const response = await api.get(
-        `technical/offers?limit=${limit}&pagination=true&technical=${id}`,
+        `technical/offers?limit=${limit}&pagination=true&byOrderId=${id}`,
       );
       return response.data.data;
     } catch (error: any) {

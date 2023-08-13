@@ -1,12 +1,12 @@
-import { useParams } from "next/navigation";
 import Banner from "@/components/Banners/GeneralBanner";
 import Footer from "@/components/Footer";
 import ProfileComponent from "@/components/Profile";
 import Navbar from "@/components/Navbar";
+import useUser from "@/hooks/useUser";
 
 const ProfilePage = () => {
   // get the location object from the router
-
+  useUser();
   return (
     <>
       <Navbar />

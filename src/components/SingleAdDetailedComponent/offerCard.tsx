@@ -1,5 +1,3 @@
-import { useRouter } from "next/router";
-import { EditInfoButton } from "../Profile/styles/styled.ChangeInfo";
 import {
   MetaDescription,
   MetaIcon,
@@ -16,17 +14,13 @@ import {
   TechnicianWrapper,
 } from "./StyledOfferCard";
 import { CurrencyCode, Id } from "@/types";
-import useOffers from "@/hooks/useOffer";
-import { useMemo } from "react";
-import { toast } from "react-toastify";
+import { Divider } from "antd";
 
 interface offerCardProps {
-
   image: string;
   name: string;
   title: string | undefined | null;
   city: string;
-  date: string;
   rate: number;
   description: string;
   price: number | undefined | null;
@@ -35,42 +29,8 @@ interface offerCardProps {
 }
 
 const OfferCard = (props: offerCardProps) => {
-  const router = useRouter();
-  const orderId = useMemo<Id>(() => router.query.id! as Id, []);
-
-  const { completeOffer, rejectOffer, acceptOffer } = useOffers(orderId);
-
-  const onComplete = async () => {
-    try {
-      await completeOffer(orderId, props.id);
-      toast.success("Offer completed successfully");
-    } catch (error: any) {
-      toast.error(error.message);
-    }
-  };
-  const onReject = async () => {
-    try {
-      await rejectOffer(orderId, props.id);
-      toast.success("Offer rejected successfully");
-    } catch (error: any) {
-      toast.error(error.message);
-    }
-  };
-  const onAccept = async () => {
-    try {
-      await acceptOffer(orderId, props.id);
-      toast.success("Offer accepted successfully");
-    } catch (error: any) {
-      toast.error(error.message);
-    }
-  };
-
   return (
-    <OfferCardWrapper
-    // onClick={() => {
-    //   router.push(`/user/${props.id}`);
-    // }}
-    >
+    <OfferCardWrapper>
       <TechnicianInfo>
         <TechnicianWrapper>
           <TechnicianImage src={props.image} />
@@ -89,13 +49,10 @@ const OfferCard = (props: offerCardProps) => {
               <MetaIcon src="/location.svg" />
               {props.city}
             </MetaItem>
-            <MetaItem>
-              <MetaIcon src="/calendar.svg" />
-              {props.date}
-            </MetaItem>
           </MetaRow>
-          <MetaDescription>{props.description}</MetaDescription>
         </TechnicainMeta>
+        <Divider />
+        <MetaDescription>{props.description}</MetaDescription>
       </TechnicianInfo>
       <TechnicainMeta>
         <OfferPrice>
