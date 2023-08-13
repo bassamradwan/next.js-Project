@@ -14,6 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import en from "@/messages/en.json";
 import useUser from "@/hooks/useUser";
+import "@/Styles/style.css";
 
 const theme: DefaultTheme = {
   colors: {
@@ -26,7 +27,7 @@ const theme: DefaultTheme = {
 const GetUserData = () => {
   useUser();
   return null;
-}
+};
 
 export default function App({ Component, pageProps }: AppProps) {
   const { locale } = useRouter();
@@ -39,7 +40,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Provider store={store}>
-        <GetUserData/>
+        <GetUserData />
         <ConfigProvider
           theme={{
             token: {

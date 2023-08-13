@@ -40,7 +40,7 @@ export const FilterLink = styled.a<{ active: boolean }>`
   color: ${props => (props.active ? "#07C2AA" : "rgba(0, 0, 0, 0.60)")};
   font-size: 16px;
   position: relative;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-style: normal;
   font-weight: 500;
   line-height: normal;

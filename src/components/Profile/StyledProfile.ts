@@ -37,7 +37,7 @@ export const PersonAvatar = styled.img`
 
 export const Title = styled.h4`
   color: #000;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-size: 19.305px;
   font-style: normal;
   font-weight: 500;
@@ -49,7 +49,7 @@ export const Title = styled.h4`
 export const SubTitle = styled.p`
   color: #808b8a;
   text-align: center;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 300;

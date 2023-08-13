@@ -16,7 +16,7 @@ export const StatisticsSection = styled.div`
 export const StatisticsTitle = styled.h4`
   margin: 0;
   padding: 20px;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-size: 19.305px;
   font-style: normal;
   font-weight: 500;

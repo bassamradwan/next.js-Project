@@ -23,7 +23,7 @@ export const TitleSubTitleHeading = styled.div`
 export const Title = styled.h1`
   color: #000;
   text-align: center;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -34,7 +34,7 @@ export const SubTitle = styled.p`
   color: #000;
   text-align: center;
   /* Text */
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 300;

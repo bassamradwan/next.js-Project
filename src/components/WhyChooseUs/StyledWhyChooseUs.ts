@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
 export const Heading = styled.h1`
   text-align: center;
   font-size: 24px;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -26,7 +26,7 @@ export const SubHeading = styled.p`
   color: #808b8a;
   text-align: center;
   font-size: 16px;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-style: normal;
   font-weight: 300;
   line-height: normal;
@@ -69,7 +69,7 @@ export const StatisticsItemIcon = styled.img`
 `;
 export const StatisticsNumber = styled.p`
   font-size: 24px;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -79,7 +79,7 @@ export const StatisticsNumber = styled.p`
 `;
 export const StatisticsText = styled.p`
   font-size: 16px;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-style: normal;
   font-weight: 300;
   line-height: normal;

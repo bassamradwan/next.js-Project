@@ -35,7 +35,7 @@ export const TitleSubTitleWrapper = styled.div`
 
 export const Title = styled.h1`
   color: var(--001614, #001614);
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -44,7 +44,7 @@ export const Title = styled.h1`
 
 export const SubTitle = styled.h2`
   color: var(--4-d-5-c-5-b, #4d5c5b);
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -54,7 +54,7 @@ export const SubTitle = styled.h2`
 
 export const Descriptions = styled.p`
   color: var(--4-d-5-c-5-b, #4d5c5b);
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 300;

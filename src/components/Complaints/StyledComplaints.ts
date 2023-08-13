@@ -37,7 +37,7 @@ export const QuestionAnsTxt = styled.p`
   margin-top: 0;
   color: #fff;
   font-size: 16px;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-style: normal;
   font-weight: 500;
   line-height: normal;

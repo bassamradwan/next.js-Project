@@ -41,7 +41,7 @@ export const BlogPostItemDate = styled.p`
 
 export const BlogPostItemTitle = styled.h2`
   color: #1a2d2c;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -50,7 +50,7 @@ export const BlogPostItemTitle = styled.h2`
 
 export const BlogPostItemDescription = styled.p`
   color: #808b8a;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;

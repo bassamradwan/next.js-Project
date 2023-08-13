@@ -67,7 +67,7 @@ const BannerWelcome = styled.h1`
   color: #ffffff;
   color: #fff;
   font-size: 25px;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -93,7 +93,7 @@ const BannerWelcome = styled.h1`
 const BannerWelcomSubMsg = styled.p`
   z-index: 1;
   color: #fff;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-style: normal;
   margin: 0 auto;
   margin-top: 20px;

@@ -35,7 +35,7 @@ export const JobRequirementsList = styled.ul`
 export const JobRequirementItem = styled.li`
   margin-bottom: 10px;
   color: #667372;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -46,7 +46,7 @@ export const JobRequirementItem = styled.li`
 export const YearofExperienceHeading = styled.h2`
   color: #1a2d2c;
   text-align: right;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
@@ -59,7 +59,7 @@ export const YearofExperienceValue = styled.span`
   font-size: 18px;
   color: #667372;
   text-align: right;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -69,7 +69,7 @@ export const YearofExperienceValue = styled.span`
 export const EducationalRequirementsHeading = styled.h2`
   color: #1a2d2c;
   text-align: right;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
@@ -79,7 +79,7 @@ export const EducationalRequirementsHeading = styled.h2`
 export const EducationalRequirementsValue = styled.span`
   color: #667372;
   text-align: right;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -242,7 +242,7 @@ export const AdvertiserHeader = styled.h3`
   margin: 0;
   margin-bottom: 10px;
   color: #1a2d2c;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -277,7 +277,7 @@ export const TitleSubtitleWrapper = styled.div`
 
 export const AdvertiserTitle = styled.h4`
   color: #000;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -286,7 +286,7 @@ export const AdvertiserTitle = styled.h4`
 
 export const AdvertiserSubtitle = styled.span`
   color: #667372;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 300;

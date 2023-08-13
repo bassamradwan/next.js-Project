@@ -50,7 +50,7 @@ export const SectionHeadingTxt = styled.h4`
   color: #1a2d2c;
   text-align: center;
   font-size: 24px;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -62,7 +62,7 @@ export const SectionHeadingSubTxt = styled.span`
   color: #808b8a;
   text-align: center;
   font-size: 16px;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Bahij", sans-serif;
   font-style: normal;
   font-weight: 300;
   line-height: normal;
