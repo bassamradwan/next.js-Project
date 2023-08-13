@@ -11,6 +11,7 @@ import Navbar from "@/components/Navbar";
 import { useLocale, useTranslations } from "next-intl";
 import { useSettings } from "@/hooks/useSettings";
 import useUser from "@/hooks/useUser";
+
 export default function Home() {
   const t = useTranslations("Home");
   const locale = useLocale();

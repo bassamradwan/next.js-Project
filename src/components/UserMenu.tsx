@@ -120,11 +120,6 @@ function UserMenu() {
         trigger={["click", "hover"]}
       >
         <UserInfo>
-        <DownOutlined />
-        <UserWrapper>
-            <UserName>{user.name}</UserName>
-            <UserType>{user.type}</UserType>
-          </UserWrapper>
           <Avatar
             size={32}
             icon={<UserOutlined />}
@@ -136,6 +131,11 @@ function UserMenu() {
               }
             }}
           />
+          <UserWrapper>
+            <UserName>{user.name}</UserName>
+            <UserType>{user.type}</UserType>
+          </UserWrapper>
+          <DownOutlined />
         </UserInfo>
       </Dropdown>
     </>
