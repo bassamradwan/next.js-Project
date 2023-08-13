@@ -58,7 +58,7 @@ const NavbarWithDrawer = () => {
           />
         </div>
       </MobileNavWrapper>
-
+      
       {/* ------------Menu in the Desktop--------------- */}
       <span className="headerMenu">
         <TopNavbar />

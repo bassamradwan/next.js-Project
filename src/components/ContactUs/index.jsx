@@ -1,4 +1,6 @@
+import { useSettings } from "@/hooks/useSettings";
 import { Button } from "antd";
+import { useForm } from "react-hook-form";
 import { EditInputGroup } from "../Profile/styles/styled.ChangeInfo";
 import {
   ContactUsWrapper,
@@ -20,6 +22,32 @@ import {
   FormInputTextArea,
 } from "./Styled.ContactUs";
 const ContactUs = () => {
+  const { settings } = useSettings();
+  const { register, setValue, handleSubmit, control } = useForm();
+
+const contactUs = settings?.contacts || {}; 
+
+// add Contact
+const addContact = async(data)=>{
+  console.log(data);
+
+try {
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  const res = await response.json();
+  console.log(res);
+  
+}
+  catch(err) {
+    console.log(err);
+  }
+};
+
   return (
     <ContactUsWrapper>
       <ContactUsSection>
@@ -33,22 +61,29 @@ const ContactUs = () => {
             <ContactItem>
               <ContactItemIcon src="https://picsum.photos/200/300" alt="phone-call" />
               <contactTitleAndSubtitle>
-                <ContactTitle>Call Us</ContactTitle>
-                <ContactSubtitle>1-800-123-4567</ContactSubtitle>
+                <ContactTitle>Phone</ContactTitle>
+                <ContactSubtitle>{contactUs.phone}</ContactSubtitle>
               </contactTitleAndSubtitle>
             </ContactItem>
             <ContactItem>
               <ContactItemIcon src="https://picsum.photos/200/300" alt="phone-call" />
               <contactTitleAndSubtitle>
-                <ContactTitle>Call Us</ContactTitle>
-                <ContactSubtitle>1-800-123-4567</ContactSubtitle>
+                <ContactTitle>Whats App </ContactTitle>
+                <ContactSubtitle>{contactUs.whats_app}</ContactSubtitle>
               </contactTitleAndSubtitle>
             </ContactItem>
             <ContactItem>
               <ContactItemIcon src="https://picsum.photos/200/300" alt="phone-call" />
               <contactTitleAndSubtitle>
-                <ContactTitle>Call Us</ContactTitle>
-                <ContactSubtitle>1-800-123-4567</ContactSubtitle>
+                <ContactTitle>Facebook</ContactTitle>
+                <ContactSubtitle>{contactUs.facebook}</ContactSubtitle>
+              </contactTitleAndSubtitle>
+            </ContactItem>
+            <ContactItem>
+              <ContactItemIcon src="https://picsum.photos/200/300" alt="phone-call" />
+              <contactTitleAndSubtitle>
+                <ContactTitle>Twitter</ContactTitle>
+                <ContactSubtitle>{contactUs.twitter}</ContactSubtitle>
               </contactTitleAndSubtitle>
             </ContactItem>
           </ContactList>
@@ -58,24 +93,33 @@ const ContactUs = () => {
             <ContactUsTitle>Send us a message</ContactUsTitle>
             <ContactUsSubtitle>We are here to help you.</ContactUsSubtitle>
           </ContactUsTitleAndSubtitle>
-          <form>
+          <form onSubmit={handleSubmit(addContact)}> 
             <FormLine>
               <InputGroup>
                 <InputLabel>Name</InputLabel>
-                <FormInput type="text" placeholder="Enter your name" />
+                <FormInput type="text" placeholder="Enter your name" 
+                {...register("name")}
+                />
               </InputGroup>
               <InputGroup>
                 <InputLabel>Email</InputLabel>
-                <FormInput type="email" placeholder="Enter your email" />
+                <FormInput 
+                type="email"
+                 placeholder="Enter your email" 
+                 {...register("email")}
+                 />
               </InputGroup>
             </FormLine>
             <FormLine>
               <InputGroup>
                 <InputLabel>Subject</InputLabel>
-                <FormInputTextArea rows="5" placeholder="Enter your subject" />
+                <FormInputTextArea rows="5" placeholder="Enter your subject" 
+                {...register("message")}
+                />
               </InputGroup>
             </FormLine>
-            <Button type="primary">Send Message</Button>
+            <button type="submit">Send Message</button>
+            {/* <Button type="submit">Send Message</Button> */}
           </form>
         </ContactForm>
       </ContactUsSection>

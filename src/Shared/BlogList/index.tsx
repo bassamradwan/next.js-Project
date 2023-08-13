@@ -27,12 +27,13 @@ interface BlogPost {
 
 interface BlogListComponentProps {
   category?: string;
+  limit?: number;
 }
-const BlogListComponent = ({ category = "" }: BlogListComponentProps) => {
+const BlogListComponent = ({ category = "" }: BlogListComponentProps,{limit=0}:BlogListComponentProps) => {
   const locale = useLocale();
   const BLOG_POSTS_QUERY_KEY = ["blogPosts", category];
   const queryFn = useCallback(() => {
-    return fetch(`${process.env.GET_BLOGS_URL}?pagination=true&limit=3&category=${category}`).then(
+    return fetch(`${process.env.GET_BLOGS_URL}?pagination=true&limit=${limit}&category=${category}`).then(
       response => response.json(),
     );
   }, [category]);

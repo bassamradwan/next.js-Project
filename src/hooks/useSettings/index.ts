@@ -55,8 +55,8 @@ export const useSettings = (): {
   isLoading: boolean;
   isError: boolean;
 } => {
-  const { data, isLoading, isError } = useQuery<{ data: Settings }>(SETTINGS_QUERY_KEY, () =>
-    fetch(`${process.env.GET_SETTINGS_URL}`).then(response => response.json()),
+  const { data, isLoading, isError } = useQuery<{ data: Settings }>(SETTINGS_QUERY_KEY, async() =>
+   await fetch(`${process.env.GET_SETTINGS_URL}`).then(response => response.json()),
   );
   const settings = data?.data;
 
