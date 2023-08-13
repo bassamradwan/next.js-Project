@@ -1,20 +1,22 @@
 import { Select } from "antd";
-import { PaginationWrapper, Result, MobileFilterButton, StyledSelect } from "./StyledPagination";
+import { MobileFilterButton, PaginationWrapper, Result, StyledSelect } from "./StyledPagination";
 import { Ad } from "@/hooks/useAds";
 
 const ShowBy = ["Ascending", "Descending"];
 const availablePages = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
 interface PaginationComponentProps {
   isMobileFilter?: boolean;
   handleShowFilter?: () => void;
   pagination?: any;
   ads?: Ad[];
 }
+
 const PaginationComponet = (props: PaginationComponentProps) => {
   return (
     <PaginationWrapper>
       <Result>Show 1 to 10 of 1000 results</Result>
-      {/* select for show by... with default and 
+      {/* select for show by... with default and
           desc,asc ..
        */}
       <StyledSelect
@@ -50,9 +52,9 @@ const PaginationComponet = (props: PaginationComponentProps) => {
       <MobileFilterButton
         src="filter.png"
         onClick={() => {
-          console.log("clicked");
-          console.log("moblile filter", props.isMobileFilter);
-          props.handleShowFilter && props.handleShowFilter();
+          if (props.handleShowFilter) {
+            props.handleShowFilter();
+          }
         }}
       />
     </PaginationWrapper>

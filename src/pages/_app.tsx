@@ -13,6 +13,7 @@ import store from "@/store";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import en from "@/messages/en.json";
+import useUser from "@/hooks/useUser";
 
 const theme: DefaultTheme = {
   colors: {
@@ -21,6 +22,11 @@ const theme: DefaultTheme = {
     ngprogressColor: "#00D9C8",
   },
 };
+
+const GetUserData = () => {
+  useUser();
+  return null;
+}
 
 export default function App({ Component, pageProps }: AppProps) {
   const { locale } = useRouter();
@@ -33,6 +39,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Provider store={store}>
+        <GetUserData/>
         <ConfigProvider
           theme={{
             token: {
@@ -49,7 +56,6 @@ export default function App({ Component, pageProps }: AppProps) {
                     <NextNprogress height={4} color={theme.colors.ngprogressColor} />
                     <ToastContainer autoClose={3000} closeOnClick theme="light" />
                     <Component {...pageProps} />
-                    <ToastContainer />
                   </Hydrate>
                 </QueryClientProvider>
               </StyleSheetManager>

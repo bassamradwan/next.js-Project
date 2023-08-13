@@ -11,7 +11,7 @@ import {
 } from "./StyledSingleAdDetailed";
 import JobOffers from "./JobOffers";
 import OfferForm from "./OfferForm";
-import { Ad } from "@/hooks/useAd";
+import {Ad} from "@/types";
 import { useTranslations } from "next-intl";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";

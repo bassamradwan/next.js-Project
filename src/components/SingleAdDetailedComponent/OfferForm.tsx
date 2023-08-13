@@ -1,19 +1,19 @@
 // @ts-nocheck
-import { useEffect, useState } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import {
   OfferFormContainer,
   OfferFormHeading,
-  OfferPriceAndHoursContainer,
-  OfferPriceInput,
+  OfferFormSubmitBtn,
   OfferHoursInput,
   OfferMessageInput,
-  OfferFormSubmitBtn,
+  OfferPriceAndHoursContainer,
+  OfferPriceInput,
 } from "./StyledOfferForm";
 import useAd, { Ad } from "@/hooks/useAd";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useForm } from "react-hook-form";
 
 interface OfferFormProps {
   ad: Ad | undefined;
@@ -27,20 +27,10 @@ interface OfferFormData {
 }
 
 const OfferForm = ({ ad }: OfferFormProps) => {
-  const queryClient = useQueryClient();
+  const { register, reset, handleSubmit } = useForm();
 
-  const [formData, setFormData] = useState<OfferFormData>({
-    price: "",
-    hours_number: "",
-    message: "",
-    order_id: ad?.id.toString() || "",
-  });
-  useEffect(() => {
-    setFormData(prevFormData => ({ ...prevFormData, order_id: ad?.id.toString() || "" }));
-  }, [ad]);
+  const { fetchAd } = useAd();
 
-  console.log("formData", formData);
-  console.log("ad", ad);
   const token = Cookies.get("medtich-token");
 
   const { mutate, isLoading, isError, error } = useMutation((formData: OfferFormData) =>
@@ -54,28 +44,19 @@ const OfferForm = ({ ad }: OfferFormProps) => {
     }).then(response => {
       if (!response.ok) {
         throw new Error("Failed to apply offer");
-        // toastify error
       }
 
       return response.json();
     }),
   );
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = event.target;
-    setFormData(prevFormData => ({ ...prevFormData, [name]: value }));
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleSubmitForm = formData => {
+    formData.order_id = ad?.id.toString() || "";
     mutate(formData, {
-      onSuccess: () => {
+      onSuccess: async () => {
+        await fetchAd(ad?.id!);
+        reset();
         toast.success("Offer applied successfully");
-        // invalidate the query ad and refetch it to get the new data
-        // [ad, queryparams]
-        // invalidate with any query params
-        // refresh the paga
-        window.location.reload();
       },
       onError: () => {
         toast.error("Failed to apply offer");
@@ -84,31 +65,16 @@ const OfferForm = ({ ad }: OfferFormProps) => {
   };
 
   return (
-    <OfferFormContainer id="offerForm" onSubmit={handleSubmit}>
+    <OfferFormContainer id="offerForm" onSubmit={handleSubmit(handleSubmitForm)}>
       <OfferFormHeading>Apply for this job</OfferFormHeading>
       {/* price,Number of hours,Message */}
       <OfferPriceAndHoursContainer>
-        <OfferPriceInput
-          placeholder="50 LE"
-          type="number"
-          name="price"
-          value={formData.price}
-          onChange={handleInputChange}
-        />
-        <OfferHoursInput
-          placeholder="5 Hours"
-          name="hours_number"
-          value={formData.hours_number}
-          onChange={handleInputChange}
-        />
+        <OfferPriceInput placeholder="50 LE" type="number" name="price" {...register("price")} />
+        <OfferHoursInput placeholder="5 Hours" name="hours_number" {...register("hours_number")} />
       </OfferPriceAndHoursContainer>
-      <OfferMessageInput
-        placeholder="Message"
-        name="message"
-        value={formData.message}
-        onChange={handleInputChange}
-      />
-      <input type="hidden" name="order_id" value={formData.order_id} />
+
+      <OfferMessageInput placeholder="Message" name="message" {...register("message")} />
+
       <OfferFormSubmitBtn type="submit" disabled={isLoading}>
         {isLoading ? "Loading..." : "Send"}
       </OfferFormSubmitBtn>

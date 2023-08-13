@@ -1,4 +1,4 @@
-import { Avatar, Divider, Dropdown, Menu } from "antd";
+import { Divider, Menu } from "antd";
 import {
   ContactEmailWrapper,
   ContactPhoneWrapper,
@@ -12,25 +12,20 @@ import {
   NavWrapper,
   PhoneSvg,
   RegisterSvg,
-  UserInfo,
-  UserName,
-  UserType,
-  UserWrapper,
 } from "./StyledTopNavbar";
 import LocaleSwitcher from "./LocaleSwitcher";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
 import { clearUser } from "@/store/features/user/userSlice";
-import { DownOutlined, UserOutlined } from "@ant-design/icons";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "@/hooks";
+import UserMenu from "@/components/UserMenu";
 
 const TopNavbar = () => {
   const t = useTranslations("Navigation");
   const router = useRouter();
-  const user = useAppSelector((state) => state.user.user);
+  const user = useAppSelector(state => state.user.user);
   const isAuthenticated = Boolean(user);
   const dispatch = useAppDispatch();
 
@@ -231,16 +226,7 @@ const TopNavbar = () => {
     <NavWrapper>
       <NavLeft>
         {isAuthenticated ? (
-          <Dropdown overlay={menu} trigger={["click"]}>
-            <UserInfo>
-              <Avatar size={32} icon={<UserOutlined />} />
-              <UserWrapper>
-                <UserName>{user?.name ?? "name"}</UserName>
-                <UserType>{user?.type}</UserType>
-              </UserWrapper>
-              <DownOutlined />
-            </UserInfo>
-          </Dropdown>
+          <UserMenu />
         ) : (
           <div
             onClick={() => {
@@ -253,12 +239,12 @@ const TopNavbar = () => {
               gap: "10px",
             }}
           >
-            {t("register")}
             <RegisterSvg alt="" src="/frame-87.svg" />
+            {t("register")}
           </div>
         )}
-        <img src={'/sms.svg'} alt="Chat"/>
-        <img src={'/notification.svg'} alt="Notifications"/>
+        <img src={"/sms.svg"} alt="Chat" />
+        <img src={"/notification.svg"} alt="Notifications" />
       </NavLeft>
       <NavRight>
         <LangWrapper>

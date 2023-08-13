@@ -25,29 +25,28 @@ const ContactUs = () => {
   const { settings } = useSettings();
   const { register, setValue, handleSubmit, control } = useForm();
 
-const contactUs = settings.contacts || {}; 
-console.log(contactUs);
+const contactUs = settings?.contacts || {}; 
+
 // add Contact
-const addContact =(async(data)=> {
+const addContact = async(data)=>{
+  console.log(data);
+
 try {
   const response = await fetch("/api/contact", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      name: contactUs.name,
-      email: contactUs.email,
-      message: contactUs.message,
-    }),
+    body: JSON.stringify(data),
   });
-  const data = await response.json();
-  console.log(data);
+  const res = await response.json();
+  console.log(res);
+  
 }
   catch(err) {
     console.log(err);
   }
-});
+};
 
   return (
     <ContactUsWrapper>
@@ -94,24 +93,33 @@ try {
             <ContactUsTitle>Send us a message</ContactUsTitle>
             <ContactUsSubtitle>We are here to help you.</ContactUsSubtitle>
           </ContactUsTitleAndSubtitle>
-          <form>
+          <form onSubmit={handleSubmit(addContact)}> 
             <FormLine>
               <InputGroup>
                 <InputLabel>Name</InputLabel>
-                <FormInput type="text" placeholder="Enter your name" />
+                <FormInput type="text" placeholder="Enter your name" 
+                {...register("name")}
+                />
               </InputGroup>
               <InputGroup>
                 <InputLabel>Email</InputLabel>
-                <FormInput type="email" placeholder="Enter your email" />
+                <FormInput 
+                type="email"
+                 placeholder="Enter your email" 
+                 {...register("email")}
+                 />
               </InputGroup>
             </FormLine>
             <FormLine>
               <InputGroup>
                 <InputLabel>Subject</InputLabel>
-                <FormInputTextArea rows="5" placeholder="Enter your subject" />
+                <FormInputTextArea rows="5" placeholder="Enter your subject" 
+                {...register("message")}
+                />
               </InputGroup>
             </FormLine>
-            <Button type="primary">Send Message</Button>
+            <button type="submit">Send Message</button>
+            {/* <Button type="submit">Send Message</Button> */}
           </form>
         </ContactForm>
       </ContactUsSection>

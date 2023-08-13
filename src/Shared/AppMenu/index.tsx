@@ -1,9 +1,13 @@
-import { Button, Divider, Menu } from "antd";
+import { Avatar, Button, Divider, Dropdown, Menu } from "antd";
 import styled from "styled-components";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import LocaleSwitcher from "@/components/Navbar/LocaleSwitcher";
 import { useRouter } from "next/router";
+import React from "react";
+import { DropDownIcon, UserInfo, UserName, UserType, UserWrapper } from "@/components/Navbar/StyledTopNavbar";
+import { DownOutlined, UserOutlined } from "@ant-design/icons";
+import UserMenu from "@/components/UserMenu";
 
 interface MenuItem {
   key: string;
@@ -83,6 +87,7 @@ const AppMenu = (props: AppMenuProps) => {
 
   return (
     <>
+
       <Menu
         style={{
           border: "none",

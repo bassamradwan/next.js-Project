@@ -134,10 +134,9 @@ export const UserInfo = styled.div`
 export const UserWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
   padding-right: 15px;
-  margin-inline-start: 5px;
+  margin-inline-start: 10px;
 `;
 export const UserName = styled.span`
   font-weight: 400;

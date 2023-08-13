@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   EditInfoButton,
   EditInfoWrapper,
@@ -11,18 +11,21 @@ import {
   HeadingTitle,
 } from "../styles/styled.ChangeInfo";
 
-import { Content } from "@/Styles/styled.general";
+import { Content, SpinLight } from "@/Styles/styled.general";
 import { getProfileInfo, updateProfileInfo } from "@/store/features/user/services";
 import { useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import useCities from "@/hooks/useCities";
 import { useLocale } from "next-intl";
 import { toast } from "react-toastify";
+import { Spin } from "antd";
 
 const ChangeInfoComponent = () => {
   const profile = useAppSelector(state => state.user.profile);
 
   const { register, setValue, handleSubmit, control } = useForm();
+  const [loading, setLoading] = useState(false);
+
   const { cities } = useCities();
   const locale = useLocale();
   const dispatch = useAppDispatch();
@@ -52,10 +55,11 @@ const ChangeInfoComponent = () => {
         setValue(key, profile[key]);
       }
     }
-  }, [profile, setValue]);
+  }, [cities, profile, setValue]);
 
   // دالة لمعالجة حدث النقر (onClick) للزر "Save Changes"
   const handleSaveChanges = async (data: any) => {
+
     const info: { [key: string]: any } = {};
     const infoKeys = [
       "address",
@@ -74,7 +78,7 @@ const ChangeInfoComponent = () => {
       "hour_rate",
       "specialization",
       "about",
-      "age"
+      "age",
     ];
     const formData: { [key: string]: any } = {};
 
@@ -92,12 +96,14 @@ const ChangeInfoComponent = () => {
     }
     delete formData?.id;
 
+    setLoading(true);
     try {
       await dispatch(updateProfileInfo({ ...formData, info })).unwrap();
       toast.success("Profile info updated successfully");
     } catch (error) {
       toast.error("Error updating profile info");
     }
+    setLoading(false);
   };
 
   return (
@@ -160,11 +166,7 @@ const ChangeInfoComponent = () => {
             </EditInputGroup>
             <EditInputGroup>
               <EditInputTitle>Your Age</EditInputTitle>
-              <EditInput
-                type="text"
-                placeholder="Enter your Age"
-                {...register("age")}
-              />
+              <EditInput type="text" placeholder="Enter your Age" {...register("age")} />
             </EditInputGroup>
           </EditInputLine>
           {/* Email, hourly price rate */}
@@ -285,8 +287,13 @@ const ChangeInfoComponent = () => {
         </EditInfoWrapper>
       </Content>
       {/* button for save changes */}
-
-      <EditInfoButton type={"submit"}>Save Changes</EditInfoButton>
+      <SpinLight>
+        <Spin spinning={loading}>
+          <EditInfoButton type={"submit"}>
+            Save Changes
+          </EditInfoButton>
+        </Spin>
+      </SpinLight>
     </form>
   );
 };
