@@ -1,27 +1,37 @@
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import {
-  Wrapper,
   ChatNavCard,
+  ChatOverflow,
   DetailedChatCard,
-  HospitalSearchInput,
   FilterButton,
-  HospitalList,
-  HospitalListItem,
   FilterButtonsWrapper,
-  HospitalLine,
   HospitalImage,
   HospitalInfo,
-  HospitalTitle,
+  HospitalLine,
+  HospitalList,
+  HospitalListItem,
+  HospitalSearchInput,
   HospitalSubtitle,
   HospitalTime,
+  HospitalTitle,
+  Wrapper,
 } from "../../Profile/styles/styled.Chat";
-import { Input } from "antd";
+import useChats from "@/hooks/useChats";
+import { useRouter } from "next/router";
+import { Chat, Id } from "@/types";
+import { Col, Input, Row } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
+import { Flex, FlexColumn, Message, SendButton } from "@/Styles/styled.general";
+import useUser from "@/hooks/useUser";
+import { Timestamp } from "firebase/firestore";
 
 const MyChatComponent = () => {
   const [hospitalName, setHospitalName] = useState("");
   const [filter, setFilter] = useState<"all" | "read" | "not read">("all");
   const [selectedHospital, setSelectedHospital] = useState<string | null>(null);
+  const { user } = useUser();
+  const router = useRouter();
+  const { chats, sendMessage } = useChats(router.query.id as Id);
 
   const handleHospitalSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHospitalName(e.target.value);
@@ -33,6 +43,16 @@ const MyChatComponent = () => {
 
   const handleHospitalSelect = (hospital: string) => {
     setSelectedHospital(hospital);
+  };
+  const handleSendMessage = async (message: string) => {
+    const chat: Chat = {
+      id: Timestamp.now(),
+      between: [user?.id as Id, router.query.id as Id],
+      content: message,
+      sender_id: user?.id as Id,
+      send_at: Timestamp.now(),
+    };
+    await sendMessage(chat);
   };
 
   return (
@@ -166,8 +186,44 @@ const MyChatComponent = () => {
           </HospitalListItem>
         </HospitalList>
       </ChatNavCard>
-      {/* <DetailedChatCard hospital={selectedHospital} /> */}
-      <DetailedChatCard />
+      <DetailedChatCard>
+        <ChatOverflow>
+          <div style={{ padding: 20 }}>
+            {chats.map((chat, i) => (
+              <FlexColumn
+                alignItems={chat.sender_id == user?.id ? "end" : "start"}
+                key={i}
+                dir="auto"
+              >
+                <Flex justifyContent="space-between">
+                  <small>Send Date: {chat.send_at.toDate().toDateString()}</small>&nbsp;
+                  <small>Sender Id: {chat.sender_id}</small>
+                </Flex>
+                <Message>
+                  <Flex justifyContent={chat.sender_id == user?.id ? "end" : "start"}>
+                    <p>{chat.content}</p>
+                  </Flex>
+                </Message>
+              </FlexColumn>
+            ))}
+          </div>
+        </ChatOverflow>
+        <Row gutter={4} justify={"space-between"} align={"middle"} style={{ padding: 20 }}>
+          <Col span={20} md={{ span: 22 }}>
+            <Input
+              onPressEnter={(e) => handleSendMessage(e.target.value)}
+              dir={"auto"}
+              placeholder="Write Your Message Here"
+            />
+          </Col>
+
+          <Col span={4} md={{ span: 2 }}>
+            <SendButton>
+              <img src={"/send.svg"} />
+            </SendButton>
+          </Col>
+        </Row>
+      </DetailedChatCard>
     </Wrapper>
   );
 };

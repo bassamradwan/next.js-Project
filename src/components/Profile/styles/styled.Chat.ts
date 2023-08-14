@@ -1,6 +1,5 @@
 import { Input } from "antd";
 import styled from "styled-components";
-import { keyframes } from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -15,7 +14,6 @@ export const ChatNavCard = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   padding: 20px;
-  min-height: 100px;
   width: 100%;
   border-radius: 8px;
   border: 1px solid #e1e1e1;
@@ -28,17 +26,24 @@ export const DetailedChatCard = styled.div`
   flex: 4;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  min-height: 100px;
+  justify-content: space-between;
   width: 100%;
-  padding-inline-start: 40px;
+  gap: 5px;
   border-radius: 8px;
   border: 1px solid #e1e1e1;
   background: #fff;
   box-shadow: 0px 4px 43px 22px rgba(227, 227, 227, 0.25);
   min-height: 350px;
   height: 100vh;
+`;
+
+export const Padding = styled.div`
+  padding: 20px;
+`;
+
+export const ChatOverflow = styled.div`
+  overflow-y: auto;
+  height: 100%;
 `;
 
 export const HospitalSearchInput = styled(Input)`

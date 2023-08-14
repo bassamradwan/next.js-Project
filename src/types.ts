@@ -1,3 +1,5 @@
+import { Timestamp } from "@firebase/firestore-types";
+
 export type Id = number | string;
 
 export enum CurrencyCode {
@@ -160,4 +162,12 @@ export interface Offer {
     address: string | null;
     city: string;
   };
+}
+
+export interface Chat {
+  id: Timestamp | Id,
+  between: Id[];
+  content: string;
+  send_at: Timestamp;
+  sender_id: Id;
 }

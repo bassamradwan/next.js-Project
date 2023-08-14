@@ -1,21 +1,20 @@
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import {
-  Wrapper,
   ChatNavCard,
   DetailedChatCard,
-  HospitalSearchInput,
   FilterButton,
-  HospitalList,
-  HospitalListItem,
   FilterButtonsWrapper,
-  HospitalLine,
   HospitalImage,
   HospitalInfo,
-  HospitalTitle,
+  HospitalLine,
+  HospitalList,
+  HospitalListItem,
+  HospitalSearchInput,
   HospitalSubtitle,
   HospitalTime,
+  HospitalTitle,
+  Wrapper,
 } from "../styles/styled.Chat";
-import { Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 
 const MyChatComponent = () => {
