@@ -139,3 +139,15 @@ export const HospitalTime = styled.div`
   color: #999;
   cursor: pointer;
 `;
+
+export const ChatHeader = styled.div`
+  position: sticky;
+  background: rgba(255, 255, 255, 0.7);
+  top: 0;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+  padding: 10px;
+  backdrop-filter: blur(12px);
+  z-index: 9;
+
+`;

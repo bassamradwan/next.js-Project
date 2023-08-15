@@ -73,8 +73,8 @@
     "termsAndConditions": "الشروط والأحكام",
     "addOrder":"اضف طلب",
     "myOrders":"طلباتى"
-    
-    
+
+
   },
   "Login": {
     "title": "تسجيل الدخول",
@@ -172,5 +172,8 @@
       "en": "English",
       "ar": "العربية"
     }
+  },
+  "Chat": {
+    "deleteChat": "حذف الدردشة"
   }
 }

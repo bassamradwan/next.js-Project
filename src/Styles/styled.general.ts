@@ -5,6 +5,8 @@ interface ContentProps {
   width?: string;
   alignItems?: string;
   justifyContent?: string;
+  myMessage?: boolean;
+  gap?: string;
 }
 
 export const Content = styled.div<ContentProps>`
@@ -42,6 +44,7 @@ export const Flex = styled.div<ContentProps>`
   display: flex;
   align-items: ${props => props.alignItems || "center"};
   justify-content: ${props => props.justifyContent || "center"};
+  gap: ${props => props.gap || 0};
 `;
 
 export const FlexColumn = styled.div<ContentProps>`
@@ -67,21 +70,21 @@ export const SendButton = styled.button<ContentProps>`
   font-size: 16px;
   font-weight: 600;
   transition: all 0.3s ease-in-out;
-  
+
   &:disabled {
     background: #e1e1e1;
   }
-  
+
   &:hover:not(:disabled) {
     background: #01c9ba;
   }
 `;
 
-export const Message = styled.div`
-  background: rgba(246, 245, 245, 0.85);
+export const Message = styled.div<ContentProps>`
   backdrop-filter: blur(12px);
   border-radius: 10px;
-  width: 100%;
-  margin: 5px auto;
+  width: fit-content;
+  word-wrap: break-word;
   padding: 0 10px;
+  background-color: ${props => props.myMessage ? "rgba(0,217,200,0.85)" : "rgba(246, 245, 245, 0.85)"};
 `;
