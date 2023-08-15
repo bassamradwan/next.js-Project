@@ -24,6 +24,14 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Flex, FlexColumn, Message, SendButton } from "@/Styles/styled.general";
 import useUser from "@/hooks/useUser";
 import { Timestamp } from "firebase/firestore";
+import { Controller, useForm } from "react-hook-form";
+import { DevTool } from "@hookform/devtools";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+const schema = yup.object().shape({
+  message: yup.string().required(),
+});
 
 const MyChatComponent = () => {
   const [hospitalName, setHospitalName] = useState("");
@@ -32,6 +40,15 @@ const MyChatComponent = () => {
   const { user } = useUser();
   const router = useRouter();
   const { chats, sendMessage } = useChats(router.query.id as Id);
+  const {
+    register,
+    control,
+    reset,
+    getValues,
+    formState: { isValid },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   const handleHospitalSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHospitalName(e.target.value);
@@ -44,16 +61,18 @@ const MyChatComponent = () => {
   const handleHospitalSelect = (hospital: string) => {
     setSelectedHospital(hospital);
   };
-  const handleSendMessage = async (message: string) => {
+  const handleSendMessage = async () => {
     const chat: Chat = {
       id: Timestamp.now(),
       between: [user?.id as Id, router.query.id as Id],
-      content: message,
+      content: getValues("message"),
       sender_id: user?.id as Id,
       send_at: Timestamp.now(),
     };
     await sendMessage(chat);
+    reset();
   };
+
   return (
     <Wrapper>
       <ChatNavCard>
@@ -81,7 +100,7 @@ const MyChatComponent = () => {
           </FilterButton>
         </FilterButtonsWrapper>
 
-        {/* list all the hospitals that has chat with me  */}
+        {/* list all the hospitals that have chat with me  */}
         <HospitalList>
           <HospitalListItem onClick={() => handleHospitalSelect("Hospital A")}>
             <HospitalLine active={selectedHospital === "Hospital A"}>
@@ -207,22 +226,33 @@ const MyChatComponent = () => {
             ))}
           </div>
         </ChatOverflow>
-        {/* <Row gutter={4} justify={"space-between"} align={"middle"} style={{ padding: 20 }}>
+        <Row gutter={4} justify={"space-between"} align={"middle"} style={{ padding: 20 }}>
           <Col span={20} md={{ span: 22 }}>
-            <Input
-              onPressEnter={(e) => handleSendMessage(e.target.value)}
-              dir={"auto"}
-              placeholder="Write Your Message Here"
+            <Controller
+              name={"message"}
+              control={control}
+              render={({ field }) => (
+                <Input
+                  value={field.value}
+                  onInput={field.onChange}
+                  onPressEnter={e => {
+                    isValid && handleSendMessage();
+                  }}
+                  dir={"auto"}
+                  placeholder="Write Your Message Here"
+                />
+              )}
             />
           </Col>
 
           <Col span={4} md={{ span: 2 }}>
-            <SendButton>
+            <SendButton onClick={handleSendMessage} disabled={!isValid}>
               <img src={"/send.svg"} />
             </SendButton>
           </Col>
-        </Row> */}
+        </Row>
       </DetailedChatCard>
+      <DevTool control={control} />
     </Wrapper>
   );
 };

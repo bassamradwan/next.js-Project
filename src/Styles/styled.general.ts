@@ -67,8 +67,12 @@ export const SendButton = styled.button<ContentProps>`
   font-size: 16px;
   font-weight: 600;
   transition: all 0.3s ease-in-out;
-
-  &:hover {
+  
+  &:disabled {
+    background: #e1e1e1;
+  }
+  
+  &:hover:not(:disabled) {
     background: #01c9ba;
   }
 `;

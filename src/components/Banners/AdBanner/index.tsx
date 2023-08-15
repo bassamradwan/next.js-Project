@@ -53,7 +53,7 @@ const AdBanner = ({
                 <AdIcon src="/clock.svg" />
                 {date}
               </AdMetaInfoItem>
-              <AdMetaInfoItem noBorder>
+              <AdMetaInfoItem noborder={+true}>
                 <AdIcon src="/wallet.svg" />
                 {budget} {currency}
               </AdMetaInfoItem>
