@@ -21,6 +21,7 @@ import Cookies from "js-cookie";
 import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import UserMenu from "@/components/UserMenu";
+import { useSettings } from '@/hooks/useSettings';
 
 const TopNavbar = () => {
   const t = useTranslations("Navigation");
@@ -28,6 +29,10 @@ const TopNavbar = () => {
   const user = useAppSelector(state => state.user.user);
   const isAuthenticated = Boolean(user);
   const dispatch = useAppDispatch();
+ const { settings } = useSettings();
+
+const contactUs = settings?.contacts;
+console.log(contactUs); 
 
   function CheckUser() {
     if (user?.type == "technical") {
@@ -223,7 +228,7 @@ const TopNavbar = () => {
   const menu = CheckUser();
 
   return (
-    <NavWrapper>
+    <NavWrapper dir="ltr">
       <NavLeft>
         {isAuthenticated ? (
           <UserMenu />
@@ -239,8 +244,8 @@ const TopNavbar = () => {
               gap: "10px",
             }}
           >
-            <RegisterSvg alt="" src="/frame-87.svg" />
-            {t("register")}
+              {t("register")}
+            {/* <RegisterSvg alt="" src="/frame-87.svg" /> */}
           </div>
         )}
         <img src={"/sms.svg"} alt="Chat" />
@@ -252,11 +257,11 @@ const TopNavbar = () => {
           <LangLogo src="/vuesaxboldglobal.svg" />
         </LangWrapper>
         <ContactEmailWrapper>
-          info@medikaid.com
+        {contactUs?.email}
           <EmailSvg src="/navemail.svg" />
         </ContactEmailWrapper>
         <ContactPhoneWrapper>
-          +966 53 247 9498
+        {contactUs?.phone}
           <PhoneSvg src="/navcall.svg" />
         </ContactPhoneWrapper>
       </NavRight>

@@ -14,6 +14,7 @@ const NavLeft = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-family: "Bahij", sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
@@ -51,8 +52,9 @@ const LangWrapper = styled.div`
 const LangSelect = styled.select`
   border: none;
   background: none;
+  font-family: "Bahij", sans-serif;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 300;
   line-height: 24px;
   letter-spacing: 0.02em;
   color: var(--color-black-100);
@@ -63,8 +65,9 @@ const LangSelect = styled.select`
   }
 `;
 const LangOption = styled.option`
-  font-size: 16px;
-  font-weight: 500;
+font-family: "Bahij", sans-serif;
+  font-size: 1em;
+  font-weight: 300;
   line-height: 24px;
   letter-spacing: 0.02em;
   color: var(--color-black-100);
@@ -114,6 +117,7 @@ const BurgerIcon = styled.div`
 `;
 
 const MenuLink = styled.a`
+font-family: "Bahij", sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
@@ -135,16 +139,16 @@ export const UserWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-right: 15px;
-  margin-inline-start: 10px;
+  padding-right: 10px;
+  margin-inline-start: 5px;
 `;
 export const UserName = styled.span`
-  font-weight: 400;
+  font-weight: 300;
   font-size: 16px;
 `;
 export const UserType = styled.span`
-  font-size: 13px;
-  font-weight: 300;
+  font-size: 12px;
+  font-weight: 200;
   color: #808b8a;
 `;
 export const IconLinkWrapper = styled.div`

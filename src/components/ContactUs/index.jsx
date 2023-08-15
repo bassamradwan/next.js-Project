@@ -29,7 +29,6 @@ const contactUs = settings?.contacts || {};
 
 // add Contact
 const addContact = async(data)=>{
-  console.log(data);
 
 try {
   const response = await fetch("/api/contact", {

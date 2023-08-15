@@ -114,12 +114,21 @@ function UserMenu() {
   if (!user) return null;
 
   return (
-    <>
+    < >
       <Dropdown
         menu={{ items: user.type === "technical" ? items : itemsHospital }}
         trigger={["click", "hover"]}
       >
         <UserInfo>
+          <DownOutlined />
+          <UserWrapper style={{
+              margin:"5px",
+          
+            }}>
+            <UserName>{user.name}</UserName>
+            <UserType>{user.type}</UserType>
+          </UserWrapper>
+
           <Avatar
             size={32}
             icon={<UserOutlined />}
@@ -131,11 +140,6 @@ function UserMenu() {
               }
             }}
           />
-          <UserWrapper>
-            <UserName>{user.name}</UserName>
-            <UserType>{user.type}</UserType>
-          </UserWrapper>
-          <DownOutlined />
         </UserInfo>
       </Dropdown>
     </>
