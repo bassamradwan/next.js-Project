@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   ChatNavCard,
-  ChatOverflow,
   DetailedChatCard,
   FilterButton,
   FilterButtonsWrapper,
@@ -19,15 +18,14 @@ import {
 import useChats from "@/hooks/useChats";
 import { useRouter } from "next/router";
 import { Chat, Id } from "@/types";
-import { Col, Input, Row } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
-import { Flex, FlexColumn, Message, SendButton } from "@/Styles/styled.general";
 import useUser from "@/hooks/useUser";
 import { Timestamp } from "firebase/firestore";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import ChatCard from "@/components/ChatCard";
 
 const schema = yup.object().shape({
   message: yup.string().required(),
@@ -205,52 +203,7 @@ const MyChatComponent = () => {
         </HospitalList>
       </ChatNavCard>
       <DetailedChatCard>
-        <ChatOverflow>
-          <div style={{ padding: 20 }}>
-            {chats.map((chat, i) => (
-              <FlexColumn
-                alignItems={chat.sender_id == user?.id ? "end" : "start"}
-                key={i}
-                dir="auto"
-              >
-                <Flex justifyContent="space-between">
-                  <small>Send Date: {chat.send_at.toDate().toDateString()}</small>&nbsp;
-                  <small>Sender Id: {chat.sender_id}</small>
-                </Flex>
-                <Message>
-                  <Flex justifyContent={chat.sender_id == user?.id ? "end" : "start"}>
-                    <p>{chat.content}</p>
-                  </Flex>
-                </Message>
-              </FlexColumn>
-            ))}
-          </div>
-        </ChatOverflow>
-        <Row gutter={4} justify={"space-between"} align={"middle"} style={{ padding: 20 }}>
-          <Col span={20} md={{ span: 22 }}>
-            <Controller
-              name={"message"}
-              control={control}
-              render={({ field }) => (
-                <Input
-                  value={field.value}
-                  onInput={field.onChange}
-                  onPressEnter={e => {
-                    isValid && handleSendMessage();
-                  }}
-                  dir={"auto"}
-                  placeholder="Write Your Message Here"
-                />
-              )}
-            />
-          </Col>
-
-          <Col span={4} md={{ span: 2 }}>
-            <SendButton onClick={handleSendMessage} disabled={!isValid}>
-              <img src={"/send.svg"} />
-            </SendButton>
-          </Col>
-        </Row>
+        <ChatCard id={router.query.id as Id} />
       </DetailedChatCard>
       <DevTool control={control} />
     </Wrapper>
