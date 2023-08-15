@@ -58,8 +58,8 @@ const OrderPage = () => {
         category={AdInfo.category}
         currency={AdInfo.currency}
       />
-      <OfferCardWrapper>
-    {adOffers && adOffers.map((offer, index) => (
+      <div>
+      {adOffers && adOffers.map((offer, index) => (
         <CardOfferWithButton
           key={index}
           image={offer.image}
@@ -74,7 +74,7 @@ const OrderPage = () => {
           userId={offer.id}
         />
       ))}
-      </OfferCardWrapper>
+      </div>
       {/* <MyButtonComponent title={"spaner"}/> */}
       <Footer />
     </>

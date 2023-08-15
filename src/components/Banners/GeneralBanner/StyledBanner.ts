@@ -66,7 +66,7 @@ const BannerWelcome = styled.h1`
   z-index: 1;
   color: #ffffff;
   color: #fff;
-  font-size: 25px;
+  font-size: 50px;
   font-family: "Bahij", sans-serif;
   font-style: normal;
   font-weight: 500;

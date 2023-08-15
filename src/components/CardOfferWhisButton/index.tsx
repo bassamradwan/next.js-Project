@@ -6,6 +6,7 @@ import useOffers from "@/hooks/useOffer";
 import { useMemo } from "react";
 import { toast } from "react-toastify";
 import { TechnicianColumn } from "../SingleAdDetailedComponent/StyledOfferCard";
+import { OfferCardWrapper } from '@/components/SingleAdDetailedComponent/StyledOfferCard';
 
 interface offerCardProps {
   image: string;
@@ -53,6 +54,8 @@ const CardOfferWithButton = (props: offerCardProps) => {
 
   return (
     <>
+     <OfferCardWrapper
+      style={{ border: "none" }}>
       <OfferCard
         image={props.image}
         name={props.name}
@@ -69,6 +72,7 @@ const CardOfferWithButton = (props: offerCardProps) => {
         <ButtonShared onClick={onReject}>Reject</ButtonShared>
         <ButtonShared onClick={onComplete}>Complete</ButtonShared>
       </TechnicianColumn>
+      </OfferCardWrapper>
     </>
   );
 };

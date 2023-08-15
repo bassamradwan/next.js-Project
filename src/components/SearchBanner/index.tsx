@@ -115,7 +115,7 @@ const App = ({
   return (
     <StyledTabs type="card" tabBarGutter={0}>
       {/* ---------------------------------------------Technician------------------------------------------------ */}
-      <TabPane tab={t("technician")} key="1">
+      <TabPane tab={t("technician")} key="1" >
         {/* 4 items in the same row [search-input,select(city),select category and button search] */}
         <form onSubmit={handleTechnicianSearchForm}>
           {/* search and button  */}

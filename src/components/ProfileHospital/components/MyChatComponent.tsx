@@ -54,7 +54,6 @@ const MyChatComponent = () => {
     };
     await sendMessage(chat);
   };
-
   return (
     <Wrapper>
       <ChatNavCard>

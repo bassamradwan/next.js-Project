@@ -231,11 +231,15 @@ console.log(contactUs);
     <NavWrapper dir="ltr">
       <NavLeft>
         {isAuthenticated ? (
-          <UserMenu />
+          <div>
+            
+             <UserMenu />
+             
+          </div>
         ) : (
           <div
             onClick={() => {
-              router.push("/register");
+              router.push("/login");
             }}
             style={{
               display: "flex",
@@ -244,12 +248,12 @@ console.log(contactUs);
               gap: "10px",
             }}
           >
-              {t("register")}
-            {/* <RegisterSvg alt="" src="/frame-87.svg" /> */}
+              {t("login")}
+            <RegisterSvg alt="" src="/frame-87.svg" />
           </div>
         )}
-        <img src={"/sms.svg"} alt="Chat" />
-        <img src={"/notification.svg"} alt="Notifications" />
+        {/* <img src={"/sms.svg"} alt="Chat" />
+        <img src={"/notification.svg"} alt="Notifications" /> */}
       </NavLeft>
       <NavRight>
         <LangWrapper>

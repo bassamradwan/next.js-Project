@@ -139,7 +139,14 @@ function UserMenu() {
                 router.push(`/profile-Hospital/${user.id}?tab=addOrder`);
               }
             }}
+            style={{
+              margin:"5px",
+          
+            }}
           />
+          
+             <img src={"/sms.svg"} alt="Chat" />
+             <img src={"/notification.svg"} alt="Notifications" />
         </UserInfo>
       </Dropdown>
     </>
