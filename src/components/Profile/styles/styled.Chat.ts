@@ -127,7 +127,7 @@ export const HospitalInfo = styled.div`
 
 export const HospitalTitle = styled.div`
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 300;
   margin-bottom: 4px;
   cursor: pointer;
 `;

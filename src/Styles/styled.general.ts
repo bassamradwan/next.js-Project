@@ -87,12 +87,13 @@ export const SendButton = styled.button<ContentProps>`
 
 export const Message = styled.div<ContentProps>`
   backdrop-filter: blur(12px);
-  border-radius: 10px;
   width: fit-content;
   word-wrap: break-word;
   padding: 0 10px;
+  border-radius:  5px 5px 5px 5px;
+  color: ${props => props.myMessage ? "#00D9C8" : "#000"};
   background-color: ${props =>
-    props.myMessage ? "rgba(0,217,200,0.85)" : "rgba(246, 245, 245, 0.85)"};
+    props.myMessage ? "rgba(0, 217, 200, 0.10)" : "rgba(246, 245, 245, 0.85)"};
 `;
 
 export const Sticky = styled.div<StickyProps>`

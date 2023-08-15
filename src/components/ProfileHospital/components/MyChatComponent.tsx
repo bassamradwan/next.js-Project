@@ -26,7 +26,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ChatCard from "@/components/ChatCard";
 import { Col, Row } from "antd";
-import { Sticky } from "@/Styles/styled.general";
+import { Flex, Sticky } from "@/Styles/styled.general";
 
 const schema = yup.object().shape({
   message: yup.string().required(),
@@ -85,7 +85,6 @@ const MyChatComponent = () => {
     reset();
   };
 
-
   return (
     <Row gutter={24}>
       <Col span={0} md={8}>
@@ -119,17 +118,22 @@ const MyChatComponent = () => {
           </Sticky>
           <HospitalList>
             {HOSPITAL_LIST.map((hospital, i) => (
-
-                <HospitalListItem onClick={() => setSelectedHospital(hospital.name)} className={`bg-hover ${selectedHospital === hospital.name ? "active" : ""}`} key={hospital.id}>
-                  <HospitalLine active={selectedHospital === hospital.name}>
-                    <HospitalImage src={hospital.image} />
-                    <HospitalInfo>
+              <HospitalListItem
+                onClick={() => setSelectedHospital(hospital.name)}
+                className={`bg-hover ${selectedHospital === hospital.name ? "active" : ""}`}
+                key={hospital.id}
+              >
+                <HospitalLine active={selectedHospital === hospital.name}>
+                  <HospitalImage src={hospital.image} />
+                  <HospitalInfo>
+                    <Flex justifyContent="space-between" alignItems="top">
                       <HospitalTitle>{hospital.name}</HospitalTitle>
-                      <HospitalSubtitle>{hospital.subtitle}</HospitalSubtitle>
-                    </HospitalInfo>
-                    <HospitalTime>{hospital.time}</HospitalTime>
-                  </HospitalLine>
-                </HospitalListItem>
+                      <HospitalTime>{hospital.time}</HospitalTime>
+                    </Flex>
+                    <HospitalSubtitle>{hospital.subtitle}</HospitalSubtitle>
+                  </HospitalInfo>
+                </HospitalLine>
+              </HospitalListItem>
             ))}
           </HospitalList>
         </ChatNavCard>

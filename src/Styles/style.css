@@ -12,6 +12,11 @@
     font-style: normal;
 }
 
+* {
+    font-family: "Bahij", serif;
+    font-weight: 300;
+}
+
 .my-message {
     background-color: #00d9c8;
 }
@@ -29,5 +34,9 @@
 
 .bg-hover:hover, .bg-hover.active {
     background-color: rgba(0, 174, 160, 0.05);
+}
+
+.bg-primary-gradient {
+    background: linear-gradient(90deg, rgba(0, 217, 200, 0) 0%, rgba(0, 217, 200, 0) 100%);
 }
 

@@ -3,7 +3,7 @@ import { Chat, Id } from "@/types";
 import { Controller, useForm } from "react-hook-form";
 import { Avatar, Button, Col, Input, Row } from "antd";
 import { ChatHeader, ChatOverflow } from "@/components/Profile/styles/styled.Chat";
-import { BackgroundBlur, Flex, FlexColumn, Message, SendButton } from "@/Styles/styled.general";
+import { Flex, FlexColumn, Message, SendButton } from "@/Styles/styled.general";
 import useChats from "@/hooks/useChats";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Timestamp } from "firebase/firestore";
@@ -49,21 +49,21 @@ const ChatCard = memo(function MemoChatCard({ id }: ChatProps) {
   return (
     <>
       <ChatOverflow>
-          <ChatHeader className={"backdrop-blur"}>
-            <Flex justifyContent="space-between">
-              <Button type="text" danger>
-                <strong>{t("deleteChat")}</strong>
-              </Button>
-              <Flex justifyContent="end" gap={"10px"}>
-                <FlexColumn>
-                  <strong>Islam Kamel</strong>
-                </FlexColumn>
-                <Avatar>
-                  <UserOutlined />
-                </Avatar>
-              </Flex>
+        <ChatHeader className={"backdrop-blur"}>
+          <Flex justifyContent="space-between">
+            <Button type="text" danger>
+              <strong>{t("deleteChat")}</strong>
+            </Button>
+            <Flex justifyContent="end" gap={"10px"}>
+              <FlexColumn>
+                <strong>Islam Kamel</strong>
+              </FlexColumn>
+              <Avatar>
+                <UserOutlined />
+              </Avatar>
             </Flex>
-          </ChatHeader>
+          </Flex>
+        </ChatHeader>
         <div style={{ padding: 20 }}>
           {chats.map((chat, i) => (
             <FlexColumn
@@ -84,6 +84,7 @@ const ChatCard = memo(function MemoChatCard({ id }: ChatProps) {
           ))}
         </div>
       </ChatOverflow>
+
       <Row gutter={4} justify={"space-between"} align={"middle"} style={{ padding: 20 }}>
         <Col span={20} md={{ span: 22 }}>
           <Controller
