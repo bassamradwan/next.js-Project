@@ -208,7 +208,7 @@ const MyChatComponent = () => {
             ))}
           </div>
         </ChatOverflow>
-        <Row gutter={4} justify={"space-between"} align={"middle"} style={{ padding: 20 }}>
+        {/* <Row gutter={4} justify={"space-between"} align={"middle"} style={{ padding: 20 }}>
           <Col span={20} md={{ span: 22 }}>
             <Input
               onPressEnter={(e) => handleSendMessage(e.target.value)}
@@ -222,7 +222,7 @@ const MyChatComponent = () => {
               <img src={"/send.svg"} />
             </SendButton>
           </Col>
-        </Row>
+        </Row> */}
       </DetailedChatCard>
     </Wrapper>
   );
