@@ -15,3 +15,19 @@
 .my-message {
     background-color: #00d9c8;
 }
+
+.backdrop-blur {
+    background: inherit;
+    backdrop-filter: blur(12px);
+}
+
+.bg-hover {
+    background: inherit;
+    transition: background-color 0.3s ease-in-out;
+
+}
+
+.bg-hover:hover, .bg-hover.active {
+    background-color: rgba(0, 174, 160, 0.05);
+}
+

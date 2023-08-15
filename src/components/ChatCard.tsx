@@ -3,7 +3,7 @@ import { Chat, Id } from "@/types";
 import { Controller, useForm } from "react-hook-form";
 import { Avatar, Button, Col, Input, Row } from "antd";
 import { ChatHeader, ChatOverflow } from "@/components/Profile/styles/styled.Chat";
-import { Flex, FlexColumn, Message, SendButton } from "@/Styles/styled.general";
+import { BackgroundBlur, Flex, FlexColumn, Message, SendButton } from "@/Styles/styled.general";
 import useChats from "@/hooks/useChats";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Timestamp } from "firebase/firestore";
@@ -21,7 +21,7 @@ const schema = yup.object().shape({
 });
 
 const ChatCard = memo(function MemoChatCard({ id }: ChatProps) {
-  const t = useTranslations("Chat")
+  const t = useTranslations("Chat");
   const { chats, sendMessage } = useChats(id);
   const { user } = useUser();
   const {
@@ -49,19 +49,21 @@ const ChatCard = memo(function MemoChatCard({ id }: ChatProps) {
   return (
     <>
       <ChatOverflow>
-        <ChatHeader>
-          <Flex justifyContent="space-between">
-            <Button type="text" danger><strong>{t("deleteChat")}</strong></Button>
-            <Flex justifyContent="end" gap={"10px"}>
-              <FlexColumn>
-                <strong>Islam Kamel</strong>
-              </FlexColumn>
-              <Avatar>
-                <UserOutlined />
-              </Avatar>
+          <ChatHeader className={"backdrop-blur"}>
+            <Flex justifyContent="space-between">
+              <Button type="text" danger>
+                <strong>{t("deleteChat")}</strong>
+              </Button>
+              <Flex justifyContent="end" gap={"10px"}>
+                <FlexColumn>
+                  <strong>Islam Kamel</strong>
+                </FlexColumn>
+                <Avatar>
+                  <UserOutlined />
+                </Avatar>
+              </Flex>
             </Flex>
-          </Flex>
-        </ChatHeader>
+          </ChatHeader>
         <div style={{ padding: 20 }}>
           {chats.map((chat, i) => (
             <FlexColumn
@@ -101,10 +103,14 @@ const ChatCard = memo(function MemoChatCard({ id }: ChatProps) {
           />
         </Col>
 
-        <Col span={2} md={{ span: 2 }} style={{
-          display: "flex",
-          justifyContent: "end",
-        }}>
+        <Col
+          span={2}
+          md={{ span: 2 }}
+          style={{
+            display: "flex",
+            justifyContent: "end",
+          }}
+        >
           <SendButton onClick={handleSendMessage} disabled={!isValid}>
             <img src={"/send.svg"} />
           </SendButton>

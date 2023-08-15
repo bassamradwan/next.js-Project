@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {
+  ChatActions,
   ChatNavCard,
   DetailedChatCard,
   FilterButton,
@@ -13,7 +14,6 @@ import {
   HospitalSubtitle,
   HospitalTime,
   HospitalTitle,
-  Wrapper,
 } from "../../Profile/styles/styled.Chat";
 import useChats from "@/hooks/useChats";
 import { useRouter } from "next/router";
@@ -22,14 +22,28 @@ import { SearchOutlined } from "@ant-design/icons";
 import useUser from "@/hooks/useUser";
 import { Timestamp } from "firebase/firestore";
 import { useForm } from "react-hook-form";
-import { DevTool } from "@hookform/devtools";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ChatCard from "@/components/ChatCard";
+import { Col, Row } from "antd";
+import { Sticky } from "@/Styles/styled.general";
 
 const schema = yup.object().shape({
   message: yup.string().required(),
 });
+
+const HOSPITAL_LIST: { id: string; name: string; image: string; subtitle: string; time: string }[] =
+  [];
+
+for (let i = 0; i < 100; i++) {
+  HOSPITAL_LIST.push({
+    id: i.toString(),
+    name: "Hospital " + String.fromCharCode(65 + i),
+    image: "https://picsum.photos/200",
+    subtitle: "Subtitle",
+    time: "12:00",
+  });
+}
 
 const MyChatComponent = () => {
   const [hospitalName, setHospitalName] = useState("");
@@ -71,143 +85,61 @@ const MyChatComponent = () => {
     reset();
   };
 
+
   return (
-    <Wrapper>
-      <ChatNavCard>
-        {/* search in the chats by name */}
-        <HospitalSearchInput
-          placeholder="Search for a hospital"
-          suffix={<SearchOutlined />}
-          onChange={handleHospitalSearch}
-          value={hospitalName}
-        />
+    <Row gutter={24}>
+      <Col span={0} md={8}>
+        <ChatNavCard>
+          <Sticky>
+            <ChatActions className="backdrop-blur">
+              <HospitalSearchInput
+                placeholder="Search for a hospital"
+                suffix={<SearchOutlined />}
+                onChange={handleHospitalSearch}
+                value={hospitalName}
+              />
+              <FilterButtonsWrapper>
+                <FilterButton active={filter === "all"} onClick={() => handleHospitalFilter("all")}>
+                  All
+                </FilterButton>
+                <FilterButton
+                  active={filter === "read"}
+                  onClick={() => handleHospitalFilter("read")}
+                >
+                  Read
+                </FilterButton>
+                <FilterButton
+                  active={filter === "not read"}
+                  onClick={() => handleHospitalFilter("not read")}
+                >
+                  Not Read
+                </FilterButton>
+              </FilterButtonsWrapper>
+            </ChatActions>
+          </Sticky>
+          <HospitalList>
+            {HOSPITAL_LIST.map((hospital, i) => (
 
-        {/* filter the hospitals by [all,read,not read] */}
-        <FilterButtonsWrapper>
-          <FilterButton active={filter === "all"} onClick={() => handleHospitalFilter("all")}>
-            All
-          </FilterButton>
-          <FilterButton active={filter === "read"} onClick={() => handleHospitalFilter("read")}>
-            Read
-          </FilterButton>
-          <FilterButton
-            active={filter === "not read"}
-            onClick={() => handleHospitalFilter("not read")}
-          >
-            Not Read
-          </FilterButton>
-        </FilterButtonsWrapper>
-
-        {/* list all the hospitals that have chat with me  */}
-        <HospitalList>
-          <HospitalListItem onClick={() => handleHospitalSelect("Hospital A")}>
-            <HospitalLine active={selectedHospital === "Hospital A"}>
-              <HospitalImage src="https://picsum.photos/200" />
-              <HospitalInfo>
-                <HospitalTitle>Hospital A</HospitalTitle>
-                <HospitalSubtitle>Subtitle</HospitalSubtitle>
-              </HospitalInfo>
-              <HospitalTime>12:00</HospitalTime>
-            </HospitalLine>
-          </HospitalListItem>
-          <HospitalListItem onClick={() => handleHospitalSelect("Hospital B")}>
-            <HospitalLine active={selectedHospital === "Hospital B"}>
-              <HospitalImage src="https://picsum.photos/200" />
-              <HospitalInfo>
-                <HospitalTitle>Hospital B</HospitalTitle>
-                <HospitalSubtitle>Subtitle</HospitalSubtitle>
-              </HospitalInfo>
-              <HospitalTime>12:00</HospitalTime>
-            </HospitalLine>
-          </HospitalListItem>
-          <HospitalListItem onClick={() => handleHospitalSelect("Hospital C")}>
-            <HospitalLine active={selectedHospital === "Hospital C"}>
-              <HospitalImage src="https://picsum.photos/200" />
-              <HospitalInfo>
-                <HospitalTitle>Hospital C</HospitalTitle>
-                <HospitalSubtitle>Subtitle</HospitalSubtitle>
-              </HospitalInfo>
-              <HospitalTime>12:00</HospitalTime>
-            </HospitalLine>
-          </HospitalListItem>
-          <HospitalListItem onClick={() => handleHospitalSelect("Hospital D")}>
-            <HospitalLine active={selectedHospital === "Hospital D"}>
-              <HospitalImage src="https://picsum.photos/200" />
-              <HospitalInfo>
-                <HospitalTitle>Hospital D</HospitalTitle>
-                <HospitalSubtitle>Subtitle</HospitalSubtitle>
-              </HospitalInfo>
-              <HospitalTime>12:00</HospitalTime>
-            </HospitalLine>
-          </HospitalListItem>
-          <HospitalListItem onClick={() => handleHospitalSelect("Hospital E")}>
-            <HospitalLine active={selectedHospital === "Hospital E"}>
-              <HospitalImage src="https://picsum.photos/200" />
-              <HospitalInfo>
-                <HospitalTitle>Hospital E</HospitalTitle>
-                <HospitalSubtitle>Subtitle</HospitalSubtitle>
-              </HospitalInfo>
-              <HospitalTime>12:00</HospitalTime>
-            </HospitalLine>
-          </HospitalListItem>
-          <HospitalListItem onClick={() => handleHospitalSelect("Hospital F")}>
-            <HospitalLine active={selectedHospital === "Hospital F"}>
-              <HospitalImage src="https://picsum.photos/200" />
-              <HospitalInfo>
-                <HospitalTitle>Hospital F</HospitalTitle>
-                <HospitalSubtitle>Subtitle</HospitalSubtitle>
-              </HospitalInfo>
-              <HospitalTime>12:00</HospitalTime>
-            </HospitalLine>
-          </HospitalListItem>
-          <HospitalListItem onClick={() => handleHospitalSelect("Hospital G")}>
-            <HospitalLine active={selectedHospital === "Hospital G"}>
-              <HospitalImage src="https://picsum.photos/200" />
-              <HospitalInfo>
-                <HospitalTitle>Hospital G</HospitalTitle>
-                <HospitalSubtitle>Subtitle</HospitalSubtitle>
-              </HospitalInfo>
-              <HospitalTime>12:00</HospitalTime>
-            </HospitalLine>
-          </HospitalListItem>
-          <HospitalListItem onClick={() => handleHospitalSelect("Hospital H")}>
-            <HospitalLine active={selectedHospital === "Hospital H"}>
-              <HospitalImage src="https://picsum.photos/200" />
-              <HospitalInfo>
-                <HospitalTitle>Hospital H</HospitalTitle>
-                <HospitalSubtitle>Subtitle</HospitalSubtitle>
-              </HospitalInfo>
-              <HospitalTime>12:00</HospitalTime>
-            </HospitalLine>
-          </HospitalListItem>
-          <HospitalListItem onClick={() => handleHospitalSelect("Hospital I")}>
-            <HospitalLine active={selectedHospital === "Hospital I"}>
-              <HospitalImage src="https://picsum.photos/200" />
-              <HospitalInfo>
-                <HospitalTitle>Hospital I</HospitalTitle>
-                <HospitalSubtitle>Subtitle</HospitalSubtitle>
-              </HospitalInfo>
-              <HospitalTime>12:00</HospitalTime>
-            </HospitalLine>
-          </HospitalListItem>
-          <HospitalListItem onClick={() => handleHospitalSelect("Hospital J")}>
-            <HospitalLine active={selectedHospital === "Hospital J"}>
-              <HospitalImage src="https://picsum.photos/200" />
-              <HospitalInfo>
-                <HospitalTitle>Hospital J</HospitalTitle>
-                <HospitalSubtitle>Subtitle</HospitalSubtitle>
-              </HospitalInfo>
-              <HospitalTime>12:00</HospitalTime>
-            </HospitalLine>
-          </HospitalListItem>
-        </HospitalList>
-      </ChatNavCard>
-      <DetailedChatCard>
-        <ChatCard id={router.query.id as Id} />
-      </DetailedChatCard>
-      <DevTool control={control} />
-    </Wrapper>
+                <HospitalListItem onClick={() => setSelectedHospital(hospital.name)} className={`bg-hover ${selectedHospital === hospital.name ? "active" : ""}`} key={hospital.id}>
+                  <HospitalLine active={selectedHospital === hospital.name}>
+                    <HospitalImage src={hospital.image} />
+                    <HospitalInfo>
+                      <HospitalTitle>{hospital.name}</HospitalTitle>
+                      <HospitalSubtitle>{hospital.subtitle}</HospitalSubtitle>
+                    </HospitalInfo>
+                    <HospitalTime>{hospital.time}</HospitalTime>
+                  </HospitalLine>
+                </HospitalListItem>
+            ))}
+          </HospitalList>
+        </ChatNavCard>
+      </Col>
+      <Col span={24} md={16}>
+        <DetailedChatCard>
+          <ChatCard id={router.query.id as Id} />
+        </DetailedChatCard>
+      </Col>
+    </Row>
   );
 };
-
 export default MyChatComponent;

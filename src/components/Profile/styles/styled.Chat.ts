@@ -7,14 +7,19 @@ export const Wrapper = styled.div`
   align-items: flex-start;
   gap: 20px;
 `;
+
+interface ChatItemProps {
+  active?: boolean,
+}
 export const ChatNavCard = styled.div`
   flex: 2;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: 20px;
   width: 100%;
+  max-height: 100svh;
+  overflow: auto;
   border-radius: 8px;
   border: 1px solid #e1e1e1;
   background: #fff;
@@ -57,8 +62,11 @@ export const HospitalSearchInput = styled(Input)`
   font-size: 14px;
   font-weight: 400;
   color: #000;
-  background: #fff;
-  box-shadow: 0px 4px 43px 22px rgba(227, 227, 227, 0.25);
+
+`;
+export const ChatActions = styled.div`
+  padding: 20px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 100%);
 `;
 export const FilterButton = styled.div<{ active: boolean }>`
   // based on active prop show underline or not
@@ -76,13 +84,9 @@ export const HospitalList = styled.ul`
 `;
 
 export const HospitalListItem = styled.li`
-  padding: 8px;
+  padding: 20px;
   cursor: pointer;
   transition: all 0.3s;
-
-  &:hover {
-    background-color: #f5f5f5;
-  }
 `;
 export const FilterButtonsWrapper = styled.div`
   display: flex;
@@ -99,13 +103,13 @@ export const HospitalLine = styled.div<{ active: boolean }>`
   align-items: center;
   cursor: pointer;
   transition: all 0.3s;
-  background-color: ${({ active }) => (active ? "#f5f5f5" : "#fff")};
+  // background-color: ${({ active }) => (active ? "#f5f5f5" : "#fff")};
 
   cursor: pointer;
 
-  &:hover {
-    background-color: #f5f5f5;
-  }
+  //&:hover {
+  //  background-color: #f5f5f5;
+  //}
 `;
 
 export const HospitalImage = styled.img`
@@ -142,12 +146,11 @@ export const HospitalTime = styled.div`
 
 export const ChatHeader = styled.div`
   position: sticky;
-  background: rgba(255, 255, 255, 0.7);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 100%);
   top: 0;
   width: 100%;
   border-radius: 5px 5px 0 0;
   padding: 10px;
-  backdrop-filter: blur(12px);
   z-index: 9;
-
+  border-bottom: 1px solid #F4F4F4;
 `;

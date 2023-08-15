@@ -9,6 +9,11 @@ interface ContentProps {
   gap?: string;
 }
 
+interface StickyProps {
+  top?: string;
+  zIndex?: string;
+}
+
 export const Content = styled.div<ContentProps>`
   width: 100%;
   flex: 2;
@@ -86,5 +91,19 @@ export const Message = styled.div<ContentProps>`
   width: fit-content;
   word-wrap: break-word;
   padding: 0 10px;
-  background-color: ${props => props.myMessage ? "rgba(0,217,200,0.85)" : "rgba(246, 245, 245, 0.85)"};
+  background-color: ${props =>
+    props.myMessage ? "rgba(0,217,200,0.85)" : "rgba(246, 245, 245, 0.85)"};
 `;
+
+export const Sticky = styled.div<StickyProps>`
+  position: sticky;
+  top: ${props => props.top || 0};
+  z-index: ${props => props.zIndex || 1};
+  width: inherit;
+`;
+
+export const BackgroundBlur = styled.div`
+  //background: linear-gradient(180deg, rgba(255,255,255, 1) 0, rgba(255,255,255,0) 100%);;
+  //backdrop-filter: blur(12px);
+`;
+
