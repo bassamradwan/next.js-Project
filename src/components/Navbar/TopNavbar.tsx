@@ -257,7 +257,8 @@ console.log(contactUs);
           <LangLogo src="/vuesaxboldglobal.svg" />
         </LangWrapper>
         <ContactEmailWrapper>
-        {contactUs?.email}
+        info@medtich.com
+        {/* {contactUs?.email} */}
           <EmailSvg src="/navemail.svg" />
         </ContactEmailWrapper>
         <ContactPhoneWrapper>
