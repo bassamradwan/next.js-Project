@@ -42,7 +42,7 @@ const ProfileHospitalComponent = () => {
       chat: "4",
       logout: "5",
     };
-    // if tab is not null, set the selected menu item
+    // if the tab is not null, set the selected menu item
     if (tab) {
       setSelectedMenuItem(tabs[tab]);
     }
