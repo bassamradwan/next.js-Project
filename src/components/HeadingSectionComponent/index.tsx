@@ -48,8 +48,9 @@ const HeadingSectionComponent = ({
               justifyContent: "center",
             }}
           >
-            {BtnTxt}
             <BackSvg src="/back.svg" alt="" />
+            {BtnTxt}
+            
             
           </div>
         ) : (
