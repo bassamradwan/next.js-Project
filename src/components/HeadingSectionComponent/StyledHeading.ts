@@ -18,6 +18,9 @@ export const SectionBtn = styled.button`
   color: #00c3b4;
   background-color: #fff;
   cursor: pointer;
+  &:hover {
+    background-color: var(--00-d-9-c-8, #00D9C8);
+  }
   @media (max-width: 768px) {
     display: flex;
   }
@@ -34,6 +37,13 @@ export const HeadingSectionBtn = styled.button`
   color: #00c3b4;
   background-color: #fff;
   cursor: pointer;
+  font-size: 1em;
+  font-family: "Bahij", sans-serif;
+  font-weight: 300;
+  &:hover {
+    color:#fff;
+    background-color: var(--00-d-9-c-8, #00D9C8);
+  }
   @media (max-width: 768px) {
     display: none;
   }
@@ -74,4 +84,7 @@ export const BackSvg = styled.img`
   width: 20px;
   height: 20px;
   cursor: pointer;
+  &:hover {
+    color:#fff;
+  }
 `;

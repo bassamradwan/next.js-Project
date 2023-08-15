@@ -105,9 +105,7 @@ const NavbarWithDrawer = () => {
           {/* Menu */}
           <div
             style={{
-              flex: 1,
               display: "flex",
-              justifyContent: "flex-end",
               alignItems: "center",
             }}
           >

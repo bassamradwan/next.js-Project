@@ -22,8 +22,11 @@ const   CategoriesBrowse = () => {
         onClick={() => {
           router.push(`/ads`);
         }}
+   
       >
-        <BackSvg src="/back.svg" alt="" />
+        <BackSvg src="/back.svg" alt=""
+       
+        />
         {t("showAllCategories")}
       </SectionBtn>
     </CategoriesWrapper>

@@ -23,8 +23,8 @@ export const Content = styled.div<ContentProps>`
 `;
 
 export const Fallback = styled.div`
-  width: 100dvw;
-  height: 100dvh;
+  width: 100%;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;

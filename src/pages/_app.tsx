@@ -12,7 +12,7 @@ import { Provider } from "react-redux";
 import store from "@/store";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import en from "@/messages/en.json";
+import ar from "@/messages/ar.json";
 import useUser from "@/hooks/useUser";
 import "@/Styles/style.css";
 
@@ -50,7 +50,7 @@ export default function App({ Component, pageProps }: AppProps) {
         >
           <ThemeProvider theme={theme}>
             <GlobalStyle />
-            <NextIntlClientProvider messages={pageProps.messages || en}>
+            <NextIntlClientProvider messages={pageProps.messages || ar}>
               <StyleSheetManager stylisPlugins={dir === "rtl" ? [rtlPlugin] : []}>
                 <QueryClientProvider client={queryClient}>
                   <Hydrate state={pageProps.dehydratedState}>

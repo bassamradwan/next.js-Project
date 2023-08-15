@@ -45,6 +45,7 @@ export const CategoryCardWrapper = styled.div<CategoryCardWrapperProps>`
   &:hover {
     transform: scale(1.05);
     border-color: var(--00-c-3-b-4, #00c3b4);
+    background-color: var(--00-d-9-c-8, #00D9C8);
   }
 `;
 export const CategoryCardImage = styled.img`

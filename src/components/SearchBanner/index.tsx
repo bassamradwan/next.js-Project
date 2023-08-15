@@ -134,6 +134,47 @@ const App = ({
                 name="keyword"
               />
             </SearchWrapper>
+            <SelectWrapper>
+              {/* icon antd */}
+              {/* outlined icone */}
+              <IconImage src="/location.svg" />
+
+              {/* Select City */}
+              <StyledSelect
+                options={options}
+                filterOption={(input, option) =>
+                  option?.value.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                }
+                style={{ width: 300 }}
+              >
+                <Input
+                  size="large"
+                  placeholder={t("selectCity")}
+                  suffix={<CaretDownOutlined />}
+                  name="citylabel"
+                />
+              </StyledSelect>
+              <input type="hidden" name="city" value={cityId} />
+            </SelectWrapper>
+            {/* Select Category */}
+            <SelectWrapper>
+              <IconImage src="/categoryicon.svg" />
+              <StyledSelect
+                options={categoriesOptions}
+                filterOption={(input, option) =>
+                  option?.label.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                }
+                style={{ width: 300 }}
+              >
+                <Input
+                  size="large"
+                  placeholder={t("selectCategory")}
+                  suffix={<CaretDownOutlined />}
+                  name="categorylabel"
+                />
+              </StyledSelect>
+              <input type="hidden" name="category" value={categoryId} />
+            </SelectWrapper>
             {/* Button Search */}
             <StyledButton type="primary" htmlType="submit">
               {t("search")}

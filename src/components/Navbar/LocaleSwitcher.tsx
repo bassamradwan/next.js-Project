@@ -7,14 +7,12 @@ import { ChangeEvent, useTransition, useCallback, useRef } from "react";
 
 import styled from "styled-components";
 const StyledSelect = styled.select`
+  font-size:1em;
+  font-weight:500;
   background-color: transparent;
   border: none;
-  padding: 10px;
   &:focus {
     outline: none;
-    border: 1px solid #e2e2e2;
-    border-radius: 5px;
-    padding: 5px;
   }
 `;
 
@@ -38,12 +36,12 @@ export default function LocaleSwitcher() {
     });
     
   }
-  
+   console.log(locale)
   return (
     <>
       <StyledSelect value={locale} disabled={isPending} onChange={onSelectChange}>
-        <option value="en">{t("LocaleSwitcher.locale.en")}</option>
         <option value="ar">{t("LocaleSwitcher.locale.ar")}</option>
+        <option value="en">{t("LocaleSwitcher.locale.en")}</option>
       </StyledSelect>
     </>
   );

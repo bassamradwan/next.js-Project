@@ -26,7 +26,7 @@ const MenuItemJoinUs = styled(Menu.Item)`
   border: none;
   background-color: #fff;
   color: #000;
-  font-size: 13px;
+  font-size: 1em;
   font-weight: 500;
 
   &:after {
@@ -113,7 +113,12 @@ const AppMenu = (props: AppMenuProps) => {
         {items.map(item => {
           if (item.subItems) {
             return (
-              <StaticPagesSubMenu key={item.key} title={item.title}>
+              <StaticPagesSubMenu key={item.key} title={item.title}
+              style={{
+                fontSize:" 1em",
+               fontWeight: "500",
+                }}
+              >
                 {item.subItems.map(subItem => (
                   <MenuItemStaticPages key={subItem.key}>
                     <Link href={subItem.href as string}>{subItem.title}</Link>
@@ -137,7 +142,10 @@ const AppMenu = (props: AppMenuProps) => {
           } else {
             return (
               <Menu.Item key={item.key}>
-                <Link href={item.href as string}>{item.title}</Link>
+                <Link href={item.href as string}style={{
+            fontSize:" 1em",
+           fontWeight: "500",
+            }} >{item.title}</Link>
               </Menu.Item>
             );
           }
