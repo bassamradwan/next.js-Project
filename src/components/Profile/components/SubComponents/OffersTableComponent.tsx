@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Table, Tag } from "antd";
 import {
   AdLine,
@@ -13,24 +13,22 @@ import {
   Type,
 } from "../../styles/styled.offersTable";
 import useUser from "@/hooks/useUser";
-import { Id, Offer } from "@/types";
+import { Id } from "@/types";
 import { useRouter } from "next/router";
-import { useLocale } from "next-intl";
 
 const OffersTableComponent = () => {
   const [sortOrder, setSortOrder] = useState<"ascend" | "descend" | undefined>(undefined);
   const [sortedColumn, setSortedColumn] = useState<string | undefined>(undefined);
   const [filters, setFilters] = useState<{ [key: string]: string[] }>({});
-  const locale = useLocale();
   const route = useRouter();
   const userId = useMemo(() => route.query.id, [route.query.id]);
   const { offers, getUserOffers } = useUser();
 
-  const handleTableChange = (pagination: any, filters: any, sorter: any) => {
+  const handleTableChange = useCallback((pagination: any, filters: any, sorter: any) => {
     setSortOrder(sorter.order);
     setSortedColumn(sorter.columnKey);
     setFilters(filters);
-  };
+  }, []);
 
   const columns = [
     {
@@ -100,15 +98,17 @@ const OffersTableComponent = () => {
     },
   ];
 
-  const data = offers?.map(item => ({
-    key: item.id.toString(),
-    adTitle: item.order?.name,
-    description: item.order?.description,
-    city: item.order?.city?.en,
-    created_at: item?.order.created_at,
-    cost: item.order?.expected_cost,
-    status: item?.status,
-  }));
+  const data = useMemo(() => {
+    return offers?.map(item => ({
+      key: item.id.toString(),
+      adTitle: item.order?.name,
+      description: item.order?.description,
+      city: item.order?.city?.en,
+      created_at: item?.order.created_at,
+      cost: item.order?.expected_cost,
+      status: item?.status,
+    }));
+  }, [offers]);
 
   useEffect(() => {
     try {
