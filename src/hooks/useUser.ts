@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "@/hooks/index";
 import { useCallback, useEffect } from "react";
-import { fetchUserOffers, getProfileInfo } from "@/store/features/user/services";
+import { fetchUserOffers, getProfileInfo, updateProfileInfo } from "@/store/features/user/services";
 import api from "@/api/axios";
 import { Id } from "@/types";
 
@@ -33,11 +33,23 @@ const useUser = () => {
     [dispatch],
   );
 
+  const update = useCallback(
+    async (data: any) => {
+      try {
+        await dispatch(updateProfileInfo(data)).unwrap();
+        await getInfo();
+      } catch (e) {
+        throw new Error(e);
+      }
+    },
+    [dispatch, getInfo],
+  );
+
   useEffect(() => {
     if (!user?.user?.id) getInfo();
   }, [getInfo, user.user]);
 
-  return { ...user, getInfo, getUserById, getUserOffers };
+  return { ...user, getInfo, getUserById, getUserOffers, update };
 };
 
 export default useUser;

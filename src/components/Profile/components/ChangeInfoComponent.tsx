@@ -12,27 +12,20 @@ import {
 } from "../styles/styled.ChangeInfo";
 
 import { Content, SpinLight } from "@/Styles/styled.general";
-import { getProfileInfo, updateProfileInfo } from "@/store/features/user/services";
 import { useForm } from "react-hook-form";
-import { useAppDispatch, useAppSelector } from "@/hooks";
 import useCities from "@/hooks/useCities";
-import { useLocale } from "next-intl";
 import { toast } from "react-toastify";
 import { Spin } from "antd";
+import useUser from "@/hooks/useUser";
+import { useLocale } from "next-intl";
 
 const ChangeInfoComponent = () => {
-  const profile = useAppSelector(state => state.user.profile);
+  const [loading, setLoading] = useState(false);
+  const locale = useLocale();
 
   const { register, setValue, handleSubmit, control } = useForm();
-  const [loading, setLoading] = useState(false);
-
   const { cities } = useCities();
-  const locale = useLocale();
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(getProfileInfo());
-  }, [dispatch]);
+  const { profile, update } = useUser();
 
   useEffect(() => {
     if (profile) {
@@ -59,7 +52,6 @@ const ChangeInfoComponent = () => {
 
   // دالة لمعالجة حدث النقر (onClick) للزر "Save Changes"
   const handleSaveChanges = async (data: any) => {
-
     const info: { [key: string]: any } = {};
     const infoKeys = [
       "address",
@@ -98,7 +90,7 @@ const ChangeInfoComponent = () => {
 
     setLoading(true);
     try {
-      await dispatch(updateProfileInfo({ ...formData, info })).unwrap();
+      await update({ ...formData, info });
       toast.success("Profile info updated successfully");
     } catch (error) {
       toast.error("Error updating profile info");
@@ -289,9 +281,7 @@ const ChangeInfoComponent = () => {
       {/* button for save changes */}
       <SpinLight>
         <Spin spinning={loading}>
-          <EditInfoButton type={"submit"}>
-            Save Changes
-          </EditInfoButton>
+          <EditInfoButton type={"submit"}>Save Changes</EditInfoButton>
         </Spin>
       </SpinLight>
     </form>
