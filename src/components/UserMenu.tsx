@@ -1,19 +1,14 @@
 import React from "react";
 import { Avatar, Dropdown, MenuProps } from "antd";
 import { DownOutlined, UserOutlined } from "@ant-design/icons";
-import {
-  DropDownIcon,
-  UserInfo,
-  UserName,
-  UserType,
-  UserWrapper,
-} from "@/components/Navbar/StyledTopNavbar";
+import { DropDownIcon, UserInfo, UserName, UserType } from "@/components/Navbar/StyledTopNavbar";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import Cookies from "js-cookie";
 import { clearUser } from "@/store/features/user/userSlice";
 import { useRouter } from "next/router";
+import { Flex, FlexColumn } from "@/Styles/styled.general";
 
 function UserMenu() {
   const t = useTranslations("Navigation");
@@ -114,20 +109,17 @@ function UserMenu() {
   if (!user) return null;
 
   return (
-    < >
+    <>
       <Dropdown
         menu={{ items: user.type === "technical" ? items : itemsHospital }}
         trigger={["click", "hover"]}
       >
-        <UserInfo>
+        <Flex gap={"4px"}>
           <DownOutlined />
-          <UserWrapper style={{
-              margin:"5px",
-          
-            }}>
+          <FlexColumn alignItems="start" justifyContent="top">
             <UserName>{user.name}</UserName>
             <UserType>{user.type}</UserType>
-          </UserWrapper>
+          </FlexColumn>
 
           <Avatar
             size={32}
@@ -140,12 +132,10 @@ function UserMenu() {
               }
             }}
             style={{
-              margin:"5px",
-          
+              margin: "5px",
             }}
           />
-          
-        </UserInfo>
+        </Flex>
       </Dropdown>
     </>
   );

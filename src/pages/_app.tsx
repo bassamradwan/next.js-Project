@@ -29,6 +29,7 @@ const GetUserData = () => {
 
   return null;
 };
+
 export default function App({ Component, pageProps }: AppProps) {
   const { locale } = useRouter();
 
@@ -43,7 +44,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Provider store={store}>
-        <GetUserData/>
+        <GetUserData />
         <ConfigProvider
           theme={{
             token: {
