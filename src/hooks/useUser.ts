@@ -38,7 +38,7 @@ const useUser = () => {
       try {
         await dispatch(updateProfileInfo(data)).unwrap();
         await getInfo();
-      } catch (e) {
+      } catch (e: any) {
         throw new Error(e);
       }
     },
