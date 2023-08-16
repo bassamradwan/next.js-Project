@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import ProfileHospitalComponent from "@/components/ProfileHospital";
 import useUser from "@/hooks/useUser";
 
+// @ts-ignore
 const ProfileHospital = () => {
   useUser();
   return (
@@ -15,5 +16,7 @@ const ProfileHospital = () => {
     </>
   );
 };
+
+
 
 export default ProfileHospital;

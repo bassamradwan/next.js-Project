@@ -15,22 +15,12 @@ import {
   HospitalTime,
   HospitalTitle,
 } from "../../Profile/styles/styled.Chat";
-import useChats from "@/hooks/useChats";
 import { useRouter } from "next/router";
-import { Chat, Id } from "@/types";
+import { Id } from "@/types";
 import { SearchOutlined } from "@ant-design/icons";
-import useUser from "@/hooks/useUser";
-import { Timestamp } from "firebase/firestore";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
 import ChatCard from "@/components/ChatCard";
 import { Col, Row } from "antd";
 import { Flex, Sticky } from "@/Styles/styled.general";
-
-const schema = yup.object().shape({
-  message: yup.string().required(),
-});
 
 const HOSPITAL_LIST: { id: string; name: string; image: string; subtitle: string; time: string }[] =
   [];
@@ -49,18 +39,7 @@ const MyChatComponent = () => {
   const [hospitalName, setHospitalName] = useState("");
   const [filter, setFilter] = useState<"all" | "read" | "not read">("all");
   const [selectedHospital, setSelectedHospital] = useState<string | null>(null);
-  const { user } = useUser();
   const router = useRouter();
-  const { chats, sendMessage } = useChats(router.query.id as Id);
-  const {
-    register,
-    control,
-    reset,
-    getValues,
-    formState: { isValid },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
 
   const handleHospitalSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHospitalName(e.target.value);
@@ -72,17 +51,6 @@ const MyChatComponent = () => {
 
   const handleHospitalSelect = (hospital: string) => {
     setSelectedHospital(hospital);
-  };
-  const handleSendMessage = async () => {
-    const chat: Chat = {
-      id: Timestamp.now(),
-      between: [user?.id as Id, router.query.id as Id],
-      content: getValues("message"),
-      sender_id: user?.id as Id,
-      send_at: Timestamp.now(),
-    };
-    await sendMessage(chat);
-    reset();
   };
 
   return (
