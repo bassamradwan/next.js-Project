@@ -14,9 +14,10 @@ const useUser = () => {
     } catch (e) {}
   }, [dispatch]);
 
-  const getUserById = useCallback(async (id: string) => {
+  const getUserById = useCallback(async (id: Id) => {
     try {
-      return await api.get("/user/show/" + id).then(res => res.data.data);
+      const response = await api.get("/user/show/" + id);
+      return response.data.data;
     } catch (error: any) {
       throw new Error(error);
     }

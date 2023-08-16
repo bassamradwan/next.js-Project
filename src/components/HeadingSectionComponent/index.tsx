@@ -22,6 +22,7 @@ const HeadingSectionComponent = ({
   SubHeadingTxt,
   route = "/ads",
 }: HeadingSeactionComponentProps) => {
+
   // get the locale from the context here
   const locale = useLocale();
   const router = useRouter();
@@ -29,7 +30,7 @@ const HeadingSectionComponent = ({
   return (
     <HeadingWrapper>
       <SectionHeading>
-        
+
         <SectionHeadingTxt>{HeadingTxt}</SectionHeadingTxt>
         <SectionHeadingSubTxt>{SubHeadingTxt}</SectionHeadingSubTxt>
       </SectionHeading>
@@ -50,8 +51,8 @@ const HeadingSectionComponent = ({
           >
             <BackSvg src="/back.svg" alt="" />
             {BtnTxt}
-            
-            
+
+
           </div>
         ) : (
           <div

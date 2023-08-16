@@ -1,7 +1,6 @@
 import React from "react";
 import AdsBrowse from "@/components/AdsBrowse";
 import CategoriesBrowse from "@/components/CategoriesBrowse";
-import Technicians from "@/components/Technicians";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Complaints from "@/components/Complaints";
 import Blog from "@/components/HomeBlog";
@@ -10,7 +9,7 @@ import Banner from "@/components/Banners/GeneralBanner";
 import Navbar from "@/components/Navbar";
 import { useLocale } from "next-intl";
 import { useSettings } from "@/hooks/useSettings";
-import useUser from "@/hooks/useUser";
+import Technicians from "@/components/Technicians";
 
 export default function Home() {
   const locale = useLocale();
