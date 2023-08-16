@@ -83,7 +83,7 @@ export const AdMetaInfo = styled.div`
 `;
 
 interface AddMetaInfoItemProps {
-  noBorder?: boolean;
+  noborder?: any;
 }
 export const AdMetaInfoItem = styled.span<AddMetaInfoItemProps>`
   font-size: 16px;
@@ -91,8 +91,8 @@ export const AdMetaInfoItem = styled.span<AddMetaInfoItemProps>`
   align-items: center;
   column-gap: 8px;
   justify-content: center;
-  border-right: ${({ noBorder }) => (noBorder ? "none" : "1px solid #fff")};
-  padding-right: ${({ noBorder }) => (noBorder ? "0" : "10px")};
+  border-right: ${({ noborder }) => (noborder ? "none" : "1px solid #fff")};
+  padding-right: ${({ noborder }) => (noborder ? "0" : "10px")};
   padding-left: 10px;
 
   @media (max-width: 768px) {

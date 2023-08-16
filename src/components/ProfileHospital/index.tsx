@@ -1,19 +1,19 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { UserOutlined } from "@ant-design/icons";
 import {
   BasicInfo,
-  PersonAvatar,
-  SubTitle,
-  Title,
-  ContentWrapper,
   ContainerWrapper,
-  NavCard,
   ContentMobileNavRef,
+  ContentWrapper,
   MobileNavIcon,
+  NavCard,
   NavCardMenu,
   NavCardMenuItem,
   NavCardMenuItemIcon,
   NavCardMenuItemLabel,
+  PersonAvatar,
+  SubTitle,
+  Title,
 } from "../Profile/StyledProfile";
 import { useLocation } from "react-use";
 import { useSelector } from "react-redux";
@@ -23,7 +23,6 @@ import OrdersComponent from "./components/AddOrdersComponent";
 import MyOrdesComponent from "./components/MyOrdersComponent";
 import MyChatComponent from "./components/MyChatComponent";
 import { User } from "@/types";
-
 
 const ProfileHospitalComponent = () => {
   const [selectedMenuItem, setSelectedMenuItem] = useState("1");
@@ -40,15 +39,14 @@ const ProfileHospitalComponent = () => {
       addOrder: "1",
       myOrders: "2",
       Favourat: "3",
-      chat: "6",
-      logout: "7",
+      chat: "4",
+      logout: "5",
     };
-    // if tab is not null, set the selected menu item
+    // if the tab is not null, set the selected menu item
     if (tab) {
       setSelectedMenuItem(tabs[tab]);
     }
   }, [location]);
-
 
   useEffect(() => {
     // scroll to the middle of the page when selectedMenuItem changes
@@ -68,12 +66,12 @@ const ProfileHospitalComponent = () => {
     switch (selectedMenuItem) {
       case "1":
         return <OrdersComponent />;
-        case "2":
-            return <MyOrdesComponent />
+      case "2":
+        return <MyOrdesComponent />;
       case "3":
         return <FavouratesComponent />;
-        case "4":
-            return <MyChatComponent/>
+      case "4":
+        return <MyChatComponent />;
       case "5":
         return <div>Logout Content</div>;
       default:

@@ -1,32 +1,29 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { UserOutlined } from "@ant-design/icons";
 import {
   BasicInfo,
-  PersonAvatar,
-  SubTitle,
-  Title,
-  ContentWrapper,
   ContainerWrapper,
-  NavCard,
   ContentMobileNavRef,
+  ContentWrapper,
   MobileNavIcon,
+  NavCard,
   NavCardMenu,
   NavCardMenuItem,
   NavCardMenuItemIcon,
   NavCardMenuItemLabel,
+  PersonAvatar,
+  SubTitle,
+  Title,
 } from "./StyledProfile";
 import {
-  StatisticsComponent,
   ChangeInfoComponent,
+  MyChatComponent,
+  MyFavouratesComponent,
   MyJobsComponent,
   MyOffersComponent,
-  MyFavouratesComponent,
-  MyChatComponent,
+  StatisticsComponent,
 } from "./components";
 import { useLocation } from "react-use";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store";
-import { User } from "@/types";
 import { useAppSelector } from "@/hooks";
 
 const ProfileComponent = () => {
@@ -54,7 +51,6 @@ const ProfileComponent = () => {
       setSelectedMenuItem(tabs[tab]);
     }
   }, [location]);
-
 
   useEffect(() => {
     // scroll to the middle of the page when selectedMenuItem changes
@@ -132,7 +128,7 @@ const ProfileComponent = () => {
   const [MobileShowStatus, setMobileShowStatus] = useState(false);
 
   //name User
-  const user = useAppSelector((state) => state.user.user) ;
+  const user = useAppSelector(state => state.user.user);
 
   return (
     <ContentWrapper>

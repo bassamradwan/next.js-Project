@@ -10,7 +10,7 @@ const getChats = (id: Id) => {
   return query(chatsCol, where("between", "array-contains-any", [id, 7]));
 };
 
-const useChats = (id: Id | undefined) => {
+const useChats = (id: Id | null) => {
   const [chats, setChats] = useState({});
   const [loading, setLoading] = useState(false);
 
@@ -22,16 +22,20 @@ const useChats = (id: Id | undefined) => {
   }, []);
 
   useEffect(() => {
-    onSnapshot(getChats(id as Id), snapshot => {
-      snapshot.docChanges().forEach(change => {
-        if (change.type === "added") {
-          setChats(prev => {
-            return {...prev, [change.doc.id]: change.doc.data()};
-          });
-        }
+    const fetchChat = () => {
+      if (!id) return;
+      onSnapshot(getChats(id), snapshot => {
+        snapshot.docChanges().forEach(change => {
+          if (change.type === "added") {
+            setChats(prev => {
+              return { ...prev, [change.doc.id]: change.doc.data() };
+            });
+          }
+        });
       });
-    });
+    };
 
+    fetchChat();
     return () => {
       setChats([]);
     };

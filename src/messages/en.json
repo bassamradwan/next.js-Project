@@ -71,8 +71,8 @@
     "faqs": "FAQs",
     "termsAndConditions": "Terms and Conditions",
     "aboutUs": "About Us",
-    "addOrder":"Add Order",
-    "myOrders":"My Order"
+    "addOrder": "Add Order",
+    "myOrders": "My Order"
   },
   "Login": {
     "title": "Login",
@@ -170,5 +170,8 @@
       "en": "English",
       "ar": "العربية"
     }
+  },
+  "Chat": {
+    "deleteChat": "Delete Chat"
   }
 }
