@@ -53,7 +53,7 @@ const MyChatComponent = () => {
       send_at: Timestamp.now(),
     };
     await sendMessage(chat);
-  };
+  };  
   return (
     <Wrapper>
       <ChatNavCard>

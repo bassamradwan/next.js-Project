@@ -28,7 +28,6 @@ const AdsListComponent = (props: AdsListComponentProps) => {
     image: ad.image,
     currency_code: ad.currency_code,
   }));
-  console.log(Ads)
   return (
     <AdsContainer $columnsCount={columnsCount}>
       {Ads?.map(item => {

@@ -28,7 +28,7 @@ const Banner = ({
   keyWord,
   setKeyWord,
 }: BannerProps) => {
-  console.log("image banner", $bannerImage);
+  // console.log("image banner", $bannerImage);
   return (
     <>
       <BannerWrapper $isHome={$isHome} $bannerImage={$isHome ? $bannerImage : "none"}>

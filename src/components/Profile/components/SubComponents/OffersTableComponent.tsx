@@ -21,7 +21,7 @@ const OffersTableComponent = () => {
 
   const id = +location.pathname.split("/")[2];
   const { offers } = useOffers(id);
-  console.log(offers);
+  console.log(id);
 
   const handleTableChange = (pagination: any, filters: any, sorter: any) => {
     setSortOrder(sorter.order);
@@ -99,12 +99,12 @@ const OffersTableComponent = () => {
 
   const data = offers?.map(item => ({
     key: item.id.toString(),
-    adTitle: item.order.name,
-    description: item.order.description,
-    city: item.order.city.en,
-    created_at: item.created_at,
-    cost: item.order.expected_cost,
-    status: item.status,
+    adTitle: item.order?.name,
+    description: item.order?.description,
+    city: item.order?.city?.en,
+    created_at: item?.created_at,
+    cost: item.order?.expected_cost,
+    status: item?.status,
   }));
 
   console.log(data);

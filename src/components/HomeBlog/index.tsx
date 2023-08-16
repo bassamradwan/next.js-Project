@@ -15,7 +15,7 @@ const Blog = () => {
         SubHeadingTxt={t("ourBlog")}
         route="/blog"
       />
-      <BlogListComponent limit={3} />
+      <BlogListComponent limit={6} />
       <SectionBtn
         onClick={() => {
           router.push("/blog");

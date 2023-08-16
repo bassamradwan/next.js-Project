@@ -12,19 +12,6 @@ const AdsBrowse = () => {
   const {ads}=  useAds({});
 
   const t = useTranslations("Home");
-  const locale = useLocale();
-  const Ads = ads?.map(ad => ({
-    id: ad.id,
-    title: ad.name,
-    category: ad?.category?.[locale] || "",
-    location: ad.city[locale],
-    time: ad.expected_hours,
-    price: ad.expected_cost,
-    applicant: ad.offer_count,
-    image: ad.image,
-    currency_code: ad.currency_code,
-  }));
-  console.log(Ads,"her home")
 
   return (
     

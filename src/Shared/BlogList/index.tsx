@@ -29,7 +29,7 @@ interface BlogListComponentProps {
   category?: string;
   limit?: number;
 }
-const BlogListComponent = ({ category = "" }: BlogListComponentProps,{limit=0}:BlogListComponentProps) => {
+const BlogListComponent = ({ category = "" ,limit=0}: BlogListComponentProps) => {
   const locale = useLocale();
   const BLOG_POSTS_QUERY_KEY = ["blogPosts", category];
   const queryFn = useCallback(() => {

@@ -10,10 +10,15 @@ import {
   CallIcon,
 } from "./StyledComplaints";
 import { useTranslations } from "next-intl";
+import { useSettings } from './../../hooks/useSettings/index';
 
 const Complaints = () => {
   const router = useRouter();
   const t = useTranslations("Home");
+  const { settings } = useSettings();
+
+const contactUs = settings?.contacts;
+
   return (
     <ComplaintsContainer>
       <ComplaintsColumn>
@@ -30,7 +35,7 @@ const Complaints = () => {
         </ContactUsBtn>
         <PhoneCallBtn>
           <CallIcon src="/call.svg" />
-          920 851 9087
+           {contactUs?.phone}
         </PhoneCallBtn>
       </ComplaintsBtns>
     </ComplaintsContainer>

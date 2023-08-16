@@ -145,8 +145,6 @@ function UserMenu() {
             }}
           />
           
-             <img src={"/sms.svg"} alt="Chat" />
-             <img src={"/notification.svg"} alt="Notifications" />
         </UserInfo>
       </Dropdown>
     </>

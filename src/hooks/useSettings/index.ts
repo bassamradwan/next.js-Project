@@ -28,6 +28,7 @@ interface Contacts {
   whats_app: string;
   facebook: string;
   twitter: string;
+  email: string;
 }
 
 interface Currency {

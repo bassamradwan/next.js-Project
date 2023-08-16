@@ -79,17 +79,18 @@ const Technicians = ({
     );
   const technicianCards = technicians.map((technician, index) => {
     if (!isMobile) {
-      if (index % 3 === 0) {
+      if (index % 4 === 0) {
         return (
           <TabWrapper key={index}>
             <TechnicianCardComponent {...technician} />
             {technicians[index + 1] && <TechnicianCardComponent {...technicians[index + 1]} />}
             {technicians[index + 2] && <TechnicianCardComponent {...technicians[index + 2]} />}
+            {technicians[index + 3] && <TechnicianCardComponent {...technicians[index + 3]} />}
           </TabWrapper>
         );
       }
       return null;
-    } else {
+    } else {  
       // show only one card
       if (index % 1 === 0) {
         return (

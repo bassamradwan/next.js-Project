@@ -32,7 +32,6 @@ const TopNavbar = () => {
  const { settings } = useSettings();
 
 const contactUs = settings?.contacts;
-console.log(contactUs); 
 
   function CheckUser() {
     if (user?.type == "technical") {
@@ -232,9 +231,9 @@ console.log(contactUs);
       <NavLeft>
         {isAuthenticated ? (
           <div>
-            
              <UserMenu />
-             
+             <img src={"/sms.svg"} alt="Chat" />
+        <img src={"/notification.svg"} alt="Notifications" />
           </div>
         ) : (
           <div
@@ -261,8 +260,7 @@ console.log(contactUs);
           <LangLogo src="/vuesaxboldglobal.svg" />
         </LangWrapper>
         <ContactEmailWrapper>
-        info@medtich.com
-        {/* {contactUs?.email} */}
+        {contactUs?.email}
           <EmailSvg src="/navemail.svg" />
         </ContactEmailWrapper>
         <ContactPhoneWrapper>

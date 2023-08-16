@@ -1,4 +1,7 @@
 import AdsListComponent from "@/components/AdsList/General";
+import useUser from "@/hooks/useUser";
+import {  useEffect } from "react";
+
 import {
   AdvertiserWrapper,
   AdvertiserDetails,
@@ -17,6 +20,9 @@ import {
   AdsListComponentWrapper,
 } from "./StyledAdvertiser";
 const Advertiser: React.FC = () => {
+
+ 
+ 
   return (
     <AdvertiserContainer>
       <AdvertiserWrapper>

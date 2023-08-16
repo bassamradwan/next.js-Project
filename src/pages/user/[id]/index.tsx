@@ -12,6 +12,7 @@ const UserInfo = {
   image: "/hospital1.png",
 };
 const User = () => {
+  
   return (
     <div>
 
