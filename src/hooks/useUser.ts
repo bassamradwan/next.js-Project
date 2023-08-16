@@ -1,7 +1,8 @@
 import { useAppDispatch, useAppSelector } from "@/hooks/index";
 import { useCallback, useEffect } from "react";
-import { getProfileInfo } from "@/store/features/user/services";
+import { fetchUserOffers, getProfileInfo } from "@/store/features/user/services";
 import api from "@/api/axios";
+import { Id } from "@/types";
 
 const useUser = () => {
   const user = useAppSelector(state => state.user);
@@ -9,7 +10,7 @@ const useUser = () => {
 
   const getInfo = useCallback(async () => {
     try {
-      await dispatch(getProfileInfo());
+      await dispatch(getProfileInfo()).unwrap();
     } catch (e) {}
   }, [dispatch]);
 
@@ -21,11 +22,22 @@ const useUser = () => {
     }
   }, []);
 
+  const getUserOffers = useCallback(
+    async (id: Id) => {
+      try {
+        await dispatch(fetchUserOffers({ id })).unwrap();
+      } catch (error: any) {
+        throw new Error(error);
+      }
+    },
+    [dispatch],
+  );
+
   useEffect(() => {
     if (!user?.user?.id) getInfo();
   }, [getInfo, user.user]);
 
-  return { ...user, getInfo, getUserById };
+  return { ...user, getInfo, getUserById, getUserOffers };
 };
 
 export default useUser;

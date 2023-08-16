@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../../api/axios";
-import { Profile } from "@/types";
+import { Id, Offer, Profile, UserOffer } from "@/types";
 
 export const getProfileInfo = createAsyncThunk("user/profile", async (_, thunkAPI) => {
   try {
@@ -17,14 +17,17 @@ export const getProfileInfo = createAsyncThunk("user/profile", async (_, thunkAP
   }
 });
 
-export const updateProfileInfo = createAsyncThunk<void, Profile>("user/update", async (data, thunkAPI) => {
-  try {
-    const response = await api.post("auth/profile", data);
-    return response.data;
-  } catch (error: any) {
-    thunkAPI.rejectWithValue(error.response.message);
-  }
-});
+export const updateProfileInfo = createAsyncThunk<void, Profile>(
+  "user/update",
+  async (data, thunkAPI) => {
+    try {
+      const response = await api.post("auth/profile", data);
+      return response.data;
+    } catch (error: any) {
+      thunkAPI.rejectWithValue(error.response.message);
+    }
+  },
+);
 
 export const loginUser = createAsyncThunk<void, Profile>("user/update", async (data, thunkAPI) => {
   try {
@@ -34,3 +37,17 @@ export const loginUser = createAsyncThunk<void, Profile>("user/update", async (d
     return thunkAPI.rejectWithValue(error.response.data.message);
   }
 });
+
+export const fetchUserOffers = createAsyncThunk<UserOffer[], {id: Id}>(
+  "user/offers",
+  async (data, thunkAPI) => {
+    try {
+      const query = `?technical=${data.id}`;
+      const url = `/technical/offers${query}`;
+      const response = await api.get(url);
+      return response.data.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  },
+);

@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { ButtonShared } from "../ButtonComponent/Style.button";
 import OfferCard from "../SingleAdDetailedComponent/offerCard";
 import { Id } from "@/types";
-import useOffers from "@/hooks/useOffer";
+import useOffers from "../../hooks/useOffers";
 import { useMemo } from "react";
 import { toast } from "react-toastify";
 import { TechnicianColumn } from "../SingleAdDetailedComponent/StyledOfferCard";

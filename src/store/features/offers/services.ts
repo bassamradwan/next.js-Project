@@ -5,6 +5,7 @@ import { Id } from "@/types";
 export interface OfferQuery {
   id: Id;
   limit: number;
+  technicalId?: Id;
 }
 
 export const getAllOffers = createAsyncThunk<void, OfferQuery>(
@@ -12,9 +13,10 @@ export const getAllOffers = createAsyncThunk<void, OfferQuery>(
   async (data, thunkAPI) => {
     try {
       // @ts-ignore
-      const { id, limit } = data;
+      const { id, limit, technicalId } = data;
+      const query = `${technicalId ? `&technical=${technicalId}` : `byOrderId=${id}`}`;
       const response = await api.get(
-        `technical/offers?limit=${limit}&pagination=true&byOrderId=${id}`,
+        `technical/offers?${query}`,
       );
       return response.data.data;
     } catch (error: any) {

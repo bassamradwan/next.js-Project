@@ -3,19 +3,22 @@ import { getAllOffers, OfferQuery, updateOffer } from "@/store/features/offers/s
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { Id, OfferStatusCode } from "@/types";
 
-function useOffers(id: Id) {
+function useOffers(id: Id | null = null) {
   const dispatch = useAppDispatch();
   const offers = useAppSelector(state => state.offers);
 
-  const getAll = useCallback(async () => {
-    try {
-      const query: OfferQuery = {
-        id: id,
-        limit: 10,
-      };
-      await dispatch(getAllOffers(query));
-    } catch (error) {}
-  }, [dispatch, id]);
+  const getAll = useCallback(
+    async () => {
+      try {
+        const query: OfferQuery = {
+          id: Number(id),
+          limit: 100,
+        };
+        await dispatch(getAllOffers(query));
+      } catch (error) {}
+    },
+    [dispatch, id],
+  );
 
   const acceptOffer = useCallback(
     async (orderId?: Id, offerId?: Id) => {
@@ -81,7 +84,7 @@ function useOffers(id: Id) {
     if (offers.offers.length === 0) {
       getAll();
     }
-  }, [getAll, offers.offers.length]);
+  }, [getAll, id, offers.offers.length]);
 
   return { ...offers, getAll, acceptOffer, rejectOffer, completeOffer };
 }
