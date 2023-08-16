@@ -6,6 +6,7 @@ import TopNavbar from "@/components/Navbar/TopNavbar";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import UserMenu from "@/components/UserMenu";
+import useUser from "@/hooks/useUser";
 
 const MobileNavWrapper = styled.div`
   display: flex;
@@ -21,6 +22,7 @@ const NavbarWithDrawer = () => {
   // get locale
   const { locale } = router;
   const [opeMenu, setOpeMenu] = useState(false);
+
   return (
     <>
       {/* burger Icon Wrapper and the [BurgerIcon]*/}
@@ -58,7 +60,7 @@ const NavbarWithDrawer = () => {
           />
         </div>
       </MobileNavWrapper>
-      
+
       {/* ------------Menu in the Desktop--------------- */}
       <span className="headerMenu">
         <TopNavbar />

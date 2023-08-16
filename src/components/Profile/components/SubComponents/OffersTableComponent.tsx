@@ -21,7 +21,6 @@ const OffersTableComponent = () => {
 
   const id = +location.pathname.split("/")[2];
   const { offers } = useOffers(id);
-  console.log(id);
 
   const handleTableChange = (pagination: any, filters: any, sorter: any) => {
     setSortOrder(sorter.order);
@@ -107,8 +106,7 @@ const OffersTableComponent = () => {
     status: item?.status,
   }));
 
-  console.log(data);
-  
+
   return (
     <div>
       <Table columns={columns} dataSource={data} onChange={handleTableChange} pagination={false} />

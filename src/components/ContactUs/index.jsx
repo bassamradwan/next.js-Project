@@ -25,7 +25,7 @@ const ContactUs = () => {
   const { settings } = useSettings();
   const { register, setValue, handleSubmit, control } = useForm();
 
-const contactUs = settings?.contacts || {}; 
+const contactUs = settings?.contacts || {};
 
 // add Contact
 const addContact = async(data)=>{
@@ -39,11 +39,8 @@ try {
     body: JSON.stringify(data),
   });
   const res = await response.json();
-  console.log(res);
-  
 }
   catch(err) {
-    console.log(err);
   }
 };
 
@@ -92,19 +89,19 @@ try {
             <ContactUsTitle>Send us a message</ContactUsTitle>
             <ContactUsSubtitle>We are here to help you.</ContactUsSubtitle>
           </ContactUsTitleAndSubtitle>
-          <form onSubmit={handleSubmit(addContact)}> 
+          <form onSubmit={handleSubmit(addContact)}>
             <FormLine>
               <InputGroup>
                 <InputLabel>Name</InputLabel>
-                <FormInput type="text" placeholder="Enter your name" 
+                <FormInput type="text" placeholder="Enter your name"
                 {...register("name")}
                 />
               </InputGroup>
               <InputGroup>
                 <InputLabel>Email</InputLabel>
-                <FormInput 
+                <FormInput
                 type="email"
-                 placeholder="Enter your email" 
+                 placeholder="Enter your email"
                  {...register("email")}
                  />
               </InputGroup>
@@ -112,7 +109,7 @@ try {
             <FormLine>
               <InputGroup>
                 <InputLabel>Subject</InputLabel>
-                <FormInputTextArea rows="5" placeholder="Enter your subject" 
+                <FormInputTextArea rows="5" placeholder="Enter your subject"
                 {...register("message")}
                 />
               </InputGroup>

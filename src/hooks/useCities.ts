@@ -13,8 +13,10 @@ const useCities = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    getAll();
-  }, [getAll]);
+    if (cities.cities.length === 0) {
+      getAll();
+    }
+  }, [cities.cities.length, getAll]);
 
   return { ...cities, getAll };
 };

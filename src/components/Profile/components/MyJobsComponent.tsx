@@ -9,7 +9,6 @@ const jobStatus = ["Completed", "In Progress", "cancelled"];
 const MyJobsComponent = () => {
   const [selectedStatus, setSelectedStatus] = useState("Completed");
   const onChange = (value: string | unknown) => {
-    console.log(`selected ${value}`);
     setSelectedStatus(value as string);
   };
   return (

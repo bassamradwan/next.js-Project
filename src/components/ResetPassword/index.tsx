@@ -100,7 +100,6 @@ function ResetPassword() {
         }, 2000);
       },
       onError: error => {
-        console.log("error...", error);
         // @ts-ignore
         const errorResponse = JSON.parse(error.message);
         const errorsArray = Object.entries(errorResponse.errors).map(([key, value]) => {

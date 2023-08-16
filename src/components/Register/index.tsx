@@ -122,7 +122,6 @@ function Register() {
         }, 2000);
       },
       onError: error => {
-        console.log("error...", error);
         // convert error... Error:{} this to object
         // error... Error: {"status":false,"message":"validation error","errors":{"phone":["The phone has already been taken."]}}
         // @ts-ignore

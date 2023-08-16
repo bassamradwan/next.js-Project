@@ -8,15 +8,13 @@ import Blog from "@/components/HomeBlog";
 import Footer from "@/components/Footer";
 import Banner from "@/components/Banners/GeneralBanner";
 import Navbar from "@/components/Navbar";
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import { useSettings } from "@/hooks/useSettings";
 import useUser from "@/hooks/useUser";
 
 export default function Home() {
-  const t = useTranslations("Home");
   const locale = useLocale();
   const { settings } = useSettings();
-  const { loading } = useUser();
   const bannerSettings = settings?.banner;
   const [keyWord, setKeyWord] = React.useState("");
   const handleSetKeyWord = (value: string) => {

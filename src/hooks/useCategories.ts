@@ -13,8 +13,10 @@ const useCategories = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    getAll();
-  }, [getAll]);
+    if (categories.categories.length === 0) {
+      getAll();
+    }
+  }, [categories.categories.length, getAll]);
 
   return { ...categories, getAll };
 };

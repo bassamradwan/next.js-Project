@@ -162,7 +162,6 @@ const FilterComponent = (props: FilterComponentProps) => {
     setPriceRange(value);
   };
   const onChangeDate = (e: any) => {
-    console.log("radio checked", e.target.value);
     setDateValue(e.target.value);
   };
   const AdsSearchForm = (e: any) => {
@@ -174,7 +173,6 @@ const FilterComponent = (props: FilterComponentProps) => {
       const name = locale === "en" ? city.name.en : city.name.ar;
       return name === data.citylabel;
     })?.id;
-    console.log("data.......", data);
     setCityId(city);
     // map the selected city to the city id
     const category = categories?.find(category => {
@@ -186,7 +184,6 @@ const FilterComponent = (props: FilterComponentProps) => {
     const selectedYears = Object.entries(data)
       .filter(([key, value]) => key.includes("year") && value === "true")
       .map(([key, value]) => parseInt(key.split("-")[1]));
-    console.log("selectedYears", selectedYears);
 
     const search = {
       searchText: data.searchText,
@@ -195,7 +192,6 @@ const FilterComponent = (props: FilterComponentProps) => {
       category: category,
       selectedYears: selectedYears,
     };
-    console.log("search", search);
     // push the search params to the url
     router.push({
       pathname: "/ads",
@@ -205,7 +201,6 @@ const FilterComponent = (props: FilterComponentProps) => {
 
   const [hospitalSearchText, setHospitalSearchText] = useState("");
   const handleHospitalSearch = () => {
-    console.log(`Searching for ${hospitalSearchText}`);
   };
 
   const [cityId, setCityId] = useState<string | number | readonly string[] | undefined>(undefined);

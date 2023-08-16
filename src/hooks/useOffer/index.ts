@@ -25,7 +25,7 @@ function useOffers(id: Id) {
           formData: {
             status: OfferStatusCode.ACCEPTED,
             order_id: Number(orderId),
-          }
+          },
         };
 
         await dispatch(updateOffer(data)).unwrap();
@@ -34,7 +34,7 @@ function useOffers(id: Id) {
         throw new Error(error.response.message || "Something went wrong");
       }
     },
-    [dispatch, getAll]
+    [dispatch, getAll],
   );
 
   const rejectOffer = useCallback(
@@ -45,7 +45,7 @@ function useOffers(id: Id) {
           formData: {
             status: OfferStatusCode.REJECTED,
             order_id: Number(orderId),
-          }
+          },
         };
 
         await dispatch(updateOffer(data)).unwrap();
@@ -54,7 +54,7 @@ function useOffers(id: Id) {
         throw new Error(error.response.message || "Something went wrong");
       }
     },
-    [dispatch, getAll]
+    [dispatch, getAll],
   );
 
   const completeOffer = useCallback(
@@ -74,12 +74,14 @@ function useOffers(id: Id) {
         throw new Error(error.response.message || "Something went wrong");
       }
     },
-    [dispatch, getAll]
+    [dispatch, getAll],
   );
 
   useEffect(() => {
-    getAll();
-  }, [getAll]);
+    if (offers.offers.length === 0) {
+      getAll();
+    }
+  }, [getAll, offers.offers.length]);
 
   return { ...offers, getAll, acceptOffer, rejectOffer, completeOffer };
 }
