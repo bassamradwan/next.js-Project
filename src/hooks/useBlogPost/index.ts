@@ -21,6 +21,8 @@ interface BlogPost {
     image: string;
   };
   image: string;
+  created_at: string;
+  created_by:string;
 }
 
 const BLOG_POST_QUERY_KEY = "blogPost";

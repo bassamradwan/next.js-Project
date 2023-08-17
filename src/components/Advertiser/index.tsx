@@ -22,7 +22,7 @@ import {
 import { useRouter } from "next/router";
 import { Id, User } from "@/types";
 
-const Advertiser: React.FC = () => {
+const Advertiser: React.FC = (props) => {
   const [user, setUser] = useState<User>({
     about: "",
     accomplish_tasks: 0,
@@ -57,6 +57,9 @@ const Advertiser: React.FC = () => {
       });
     }
   }, [getUserById, userId]);
+  
+  console.log(userId);
+
   return (
     <>
       <pre>{JSON.stringify(user, null, 2)}</pre>
@@ -81,50 +84,50 @@ const Advertiser: React.FC = () => {
             <PrefList>
               <PrefItem>
                 <PrefLabelWrapper>
-                  <PrefIcon src="/person" />
+                  <PrefIcon src="/Nurse.svg" />
                   <PrefText>Speciality</PrefText>
                 </PrefLabelWrapper>
-                <PrefValue>diaseases</PrefValue>
+                <PrefValue>{user?.type}</PrefValue>
               </PrefItem>
               <Divider />
               <PrefItem>
                 <PrefLabelWrapper>
-                  <PrefIcon src="/person" />
+                  <PrefIcon src="/Medical Kit.svg" />
                   <PrefText>Projects</PrefText>
                 </PrefLabelWrapper>
-                <PrefValue>250</PrefValue>
+                <PrefValue>{user?.accomplish_tasks}</PrefValue>
               </PrefItem>
               <Divider />
               <PrefItem>
                 <PrefLabelWrapper>
-                  <PrefIcon src="/person" />
+                  <PrefIcon src="/Pill.svg" />
                   <PrefText>Speciality</PrefText>
                 </PrefLabelWrapper>
-                <PrefValue>diaseases</PrefValue>
+                <PrefValue>تاريخ التسجيل</PrefValue>
               </PrefItem>
               <Divider />
               <PrefItem>
                 <PrefLabelWrapper>
-                  <PrefIcon src="/person" />
-                  <PrefText>Speciality</PrefText>
+                  <PrefIcon src="/briefcase.svg" />
+                  <PrefText>Email</PrefText>
                 </PrefLabelWrapper>
-                <PrefValue>diaseases</PrefValue>
+                <PrefValue>{user?.email}</PrefValue>
               </PrefItem>
               <Divider />
               <PrefItem>
                 <PrefLabelWrapper>
-                  <PrefIcon src="/person" />
-                  <PrefText>Speciality</PrefText>
+                  <PrefIcon src="/Healthcare Call.svg" />
+                  <PrefText>Phone</PrefText>
                 </PrefLabelWrapper>
-                <PrefValue>diaseases</PrefValue>
+                <PrefValue>{user?.phone}</PrefValue>
               </PrefItem>
               <Divider />
               <PrefItem>
                 <PrefLabelWrapper>
-                  <PrefIcon src="/person" />
-                  <PrefText>Speciality</PrefText>
+                  <PrefIcon src="/location.svg" />
+                  <PrefText>Address</PrefText>
                 </PrefLabelWrapper>
-                <PrefValue>diaseases</PrefValue>
+                <PrefValue>{user?.address}</PrefValue>
               </PrefItem>
               <ContactButton>contact us</ContactButton>
             </PrefList>

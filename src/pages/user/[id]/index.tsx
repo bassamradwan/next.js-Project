@@ -1,6 +1,14 @@
 import Footer from "@/components/Footer";
 import AdvertiserContactComponent from "@/components/Advertiser";
-import Navbar from "@/Shared/AppMenu";
+import Banner from "@/components/Banners/GeneralBanner";
+import { useRouter } from "next/router";
+import useUser from "@/hooks/useUser";
+import Navbar from "@/components/Navbar";
+import { useEffect, useMemo, useState } from "react";
+import { Id, User } from "@/types";
+import { useLocale } from "next-intl";
+import AdBanner from "@/components/Banners/AdBanner";
+import UserInfoBanner from "@/components/Banners/UserInfoBanner";
 
 const UserInfo = {
   title: "Ad Titlexxxxxx",
@@ -10,15 +18,74 @@ const UserInfo = {
   category: "Ad Category",
   image: "/hospital1.png",
 };
-const User = () => {
+const UserID = () => {
+  const router = useRouter();
+  const { getUserById } = useUser();
+  const userId = useMemo(() => router.query.id as Id, [router.query.id]);
+  const locale = useLocale();
+  const [user, setUser] = useState<User>({
+    about: "",
+    accomplish_tasks: 0,
+    address: "",
+    average_cost: 0,
+    birth_date: "",
+    certificates: [],
+    city_id: "",
+    email: "",
+    experiences: [],
+    graduation_year: "",
+    id: 0,
+    image: "",
+    last_name: "",
+    name: "",
+    phone: "",
+    rate: 0,
+    skills: [],
+    specialization: "",
+    type: "",
+    university: "",
+  });
+
+  const AdInfo = {
+    name: user?.name,
+    type:user?.type,
+    address: user?.address,
+    date: "user Date",
+    UserInfoBannerImage: user?.image,
+    rate: user?.rate,
+  };
+
+
+
+
+  useEffect(() => {
+    if (userId) {
+      getUserById(userId).then(res => {
+        setUser(res);
+      });
+    }
+  }, [getUserById, userId]);
+  
+  console.log(userId);
+
   return (
     <div>
+      <Navbar/>
+      {/* <Banner/> */}
+      <UserInfoBanner
+        name={AdInfo.name}
+        type={AdInfo.type}
+        address={AdInfo.address}
+        date={AdInfo.date}
+        UserInfoBannerImage={AdInfo.UserInfoBannerImage}
+        rate={AdInfo?.rate}
+      />
       <AdvertiserContactComponent />
       <Footer />
     </div>
   );
 };
-export default User;
+export default UserID;
 
 export async function getServerSideProps(context: { params: { id: any }; locale: any }) {
   const id = context.params?.id;

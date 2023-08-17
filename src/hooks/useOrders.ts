@@ -11,7 +11,7 @@ const useOrders = () => {
 
   const getAll = useCallback(async () => {
     try {
-      await dispatch(getAllOrders(id as Id));
+      await dispatch(getAllOrders(id as Id)).unwrap();
     } catch (error) {}
   }, [dispatch, id]);
 
