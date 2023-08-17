@@ -13,8 +13,8 @@ import store from "@/store";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import ar from "@/messages/ar.json";
-import useUser from "@/hooks/useUser";
 import "@/Styles/style.css";
+import useUser from "@/hooks/useUser";
 
 const theme: DefaultTheme = {
   colors: {
@@ -26,15 +26,19 @@ const theme: DefaultTheme = {
 
 const GetUserData = () => {
   useUser();
+
   return null;
 };
 
 export default function App({ Component, pageProps }: AppProps) {
   const { locale } = useRouter();
+
   const dir = locale === "ar" ? "rtl" : "ltr";
+
   useEffect(() => {
     document.documentElement.dir = dir;
   }, [dir]);
+
   const [queryClient] = useState(() => new QueryClient());
 
   return (

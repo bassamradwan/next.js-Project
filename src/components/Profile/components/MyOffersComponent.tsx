@@ -9,7 +9,6 @@ const MyOffersComponent = () => {
   const [selectedFilter, setSelectedFilter] = useState("latest");
 
   const onChange = (value: string | unknown) => {
-    console.log(`selected ${value}`);
     setSelectedFilter(value as string);
   };
   return (

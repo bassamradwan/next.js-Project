@@ -29,7 +29,6 @@ const AdvertiserContactPage = () => {
 export default AdvertiserContactPage;
 export async function getServerSideProps(context: { params: { id: any }; locale: any }) {
   const id = context.params?.id;
-  console.log("id", id);
   return {
     props: {
       // You can get the messages from anywhere you like. The recommended

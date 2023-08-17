@@ -27,7 +27,8 @@ const useOrders = () => {
     [dispatch, getAll],
   );
 
-  const add = useCallback( async (formData: AddOrderDataType) => {
+  const add = useCallback(
+    async (formData: AddOrderDataType) => {
       try {
         await dispatch(addOrder(formData)).unwrap();
         await getAll();
@@ -39,8 +40,10 @@ const useOrders = () => {
   );
 
   useEffect(() => {
-    getAll();
-  }, [getAll]);
+    if (orders.orders.length === 0) {
+      getAll();
+    }
+  }, [getAll, orders.orders.length]);
 
   return { ...orders, getAll, remove, add };
 };

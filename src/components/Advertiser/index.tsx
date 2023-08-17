@@ -1,111 +1,137 @@
 import AdsListComponent from "@/components/AdsList/General";
 import useUser from "@/hooks/useUser";
-import { useRouter } from "next/router";
-import {  useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import {
-  AdvertiserWrapper,
+  AdsListComponentWrapper,
+  AdvertiserCard,
+  AdvertiserContainer,
   AdvertiserDetails,
+  AdvertiserWrapper,
+  ContactButton,
+  Divider,
   HeadingTitle,
   Paragraph,
-  Divider,
-  AdvertiserCard,
-  PrefList,
-  PrefItem,
   PrefIcon,
+  PrefItem,
+  PrefLabelWrapper,
+  PrefList,
   PrefText,
   PrefValue,
-  PrefLabelWrapper,
-  AdvertiserContainer,
-  ContactButton,
-  AdsListComponentWrapper,
 } from "./StyledAdvertiser";
+import { useRouter } from "next/router";
+import { Id, User } from "@/types";
+
 const Advertiser: React.FC = () => {
-const router = useRouter()
- const {getUserById}=useUser()
+  const [user, setUser] = useState<User>({
+    about: "",
+    accomplish_tasks: 0,
+    address: "",
+    average_cost: 0,
+    birth_date: "",
+    certificates: [],
+    city_id: "",
+    email: "",
+    experiences: [],
+    graduation_year: "",
+    id: 0,
+    image: "",
+    last_name: "",
+    name: "",
+    phone: "",
+    rate: 0,
+    skills: [],
+    specialization: "",
+    type: "",
+    university: "",
+  });
 
- const user=useMemo(async()=>{
-    return await getUserById(router.query.id as string).then(res=>res);
+  const router = useRouter();
+  const { getUserById } = useUser();
+  const userId = useMemo(() => router.query.id as Id, [router.query.id]);
 
-   },[router.query.id])
-  useEffect(()=> {
-    if(user){
-      console.log(user)
+  useEffect(() => {
+    if (userId) {
+      getUserById(userId).then(res => {
+        setUser(res);
+      });
     }
-
-  },[user]);
- 
- 
+  }, [getUserById, userId]);
   return (
-    <AdvertiserContainer>
-      <AdvertiserWrapper>
-        <AdvertiserDetails>
-          <HeadingTitle>Who we are:</HeadingTitle>
-          <Paragraph>
-          {/* {user?.about} */}
-          </Paragraph>
-          <Divider />
-          <HeadingTitle>Latest Projects:</HeadingTitle>
-          {/* Ads Cards i can reuse the Ads in the HomePage */}
-          <AdsListComponentWrapper>
-            <AdsListComponent $columnsCount={1} />
-          </AdsListComponentWrapper>
-        </AdvertiserDetails>
-        <AdvertiserCard>
-          <HeadingTitle>Pref about us</HeadingTitle>
-          <PrefList>
-            <PrefItem>
-              <PrefLabelWrapper>
-                <PrefIcon src="/person" />
-                <PrefText>Speciality</PrefText>
-              </PrefLabelWrapper>
-              <PrefValue>diaseases</PrefValue>
-            </PrefItem>
-            <Divider />
-            <PrefItem>
-              <PrefLabelWrapper>
-                <PrefIcon src="/person" />
-                <PrefText>Projects</PrefText>
-              </PrefLabelWrapper>
-              <PrefValue>250</PrefValue>
-            </PrefItem>
-            <Divider />
-            <PrefItem>
-              <PrefLabelWrapper>
-                <PrefIcon src="/person" />
-                <PrefText>Speciality</PrefText>
-              </PrefLabelWrapper>
-              <PrefValue>diaseases</PrefValue>
-            </PrefItem>
-            <Divider />
-            <PrefItem>
-              <PrefLabelWrapper>
-                <PrefIcon src="/person" />
-                <PrefText>Speciality</PrefText>
-              </PrefLabelWrapper>
-              <PrefValue>diaseases</PrefValue>
-            </PrefItem>
-            <Divider />
-            <PrefItem>
-              <PrefLabelWrapper>
-                <PrefIcon src="/person" />
-                <PrefText>Speciality</PrefText>
-              </PrefLabelWrapper>
-              <PrefValue>diaseases</PrefValue>
-            </PrefItem>
-            <Divider />
-            <PrefItem>
-              <PrefLabelWrapper>
-                <PrefIcon src="/person" />
-                <PrefText>Speciality</PrefText>
-              </PrefLabelWrapper>
-              <PrefValue>diaseases</PrefValue>
-            </PrefItem>
-            <ContactButton>contact us</ContactButton>
-          </PrefList>
-        </AdvertiserCard>
-      </AdvertiserWrapper>
-    </AdvertiserContainer>
+    <>
+      <pre>{JSON.stringify(user, null, 2)}</pre>
+      <AdvertiserContainer>
+        <AdvertiserWrapper>
+          <AdvertiserDetails>
+            {user.about && (
+              <>
+                <HeadingTitle>Who we are:</HeadingTitle>
+                <Paragraph>{user?.about}</Paragraph>
+                <Divider />
+              </>
+            )}
+            <HeadingTitle>Latest Projects:</HeadingTitle>
+            {/* Ads Cards i can reuse the Ads in the HomePage */}
+            <AdsListComponentWrapper>
+              <AdsListComponent $columnsCount={1} />
+            </AdsListComponentWrapper>
+          </AdvertiserDetails>
+          <AdvertiserCard>
+            <HeadingTitle>Pref about us</HeadingTitle>
+            <PrefList>
+              <PrefItem>
+                <PrefLabelWrapper>
+                  <PrefIcon src="/person" />
+                  <PrefText>Speciality</PrefText>
+                </PrefLabelWrapper>
+                <PrefValue>diaseases</PrefValue>
+              </PrefItem>
+              <Divider />
+              <PrefItem>
+                <PrefLabelWrapper>
+                  <PrefIcon src="/person" />
+                  <PrefText>Projects</PrefText>
+                </PrefLabelWrapper>
+                <PrefValue>250</PrefValue>
+              </PrefItem>
+              <Divider />
+              <PrefItem>
+                <PrefLabelWrapper>
+                  <PrefIcon src="/person" />
+                  <PrefText>Speciality</PrefText>
+                </PrefLabelWrapper>
+                <PrefValue>diaseases</PrefValue>
+              </PrefItem>
+              <Divider />
+              <PrefItem>
+                <PrefLabelWrapper>
+                  <PrefIcon src="/person" />
+                  <PrefText>Speciality</PrefText>
+                </PrefLabelWrapper>
+                <PrefValue>diaseases</PrefValue>
+              </PrefItem>
+              <Divider />
+              <PrefItem>
+                <PrefLabelWrapper>
+                  <PrefIcon src="/person" />
+                  <PrefText>Speciality</PrefText>
+                </PrefLabelWrapper>
+                <PrefValue>diaseases</PrefValue>
+              </PrefItem>
+              <Divider />
+              <PrefItem>
+                <PrefLabelWrapper>
+                  <PrefIcon src="/person" />
+                  <PrefText>Speciality</PrefText>
+                </PrefLabelWrapper>
+                <PrefValue>diaseases</PrefValue>
+              </PrefItem>
+              <ContactButton>contact us</ContactButton>
+            </PrefList>
+          </AdvertiserCard>
+        </AdvertiserWrapper>
+      </AdvertiserContainer>
+    </>
   );
 };
 export default Advertiser;

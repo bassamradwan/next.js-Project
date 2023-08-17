@@ -1,28 +1,92 @@
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/store";
 import { useCallback, useEffect } from "react";
-import { getAllOffers, OfferQuery } from "@/store/features/offers/services";
+import { getAllOffers, OfferQuery, updateOffer } from "@/store/features/offers/services";
 import { useAppDispatch, useAppSelector } from "@/hooks";
+import { Id, OfferStatusCode } from "@/types";
 
-function useOffers(id: number) {
+function useOffers(id: Id | null = null) {
   const dispatch = useAppDispatch();
-  const offers = useAppSelector((state) => state.offers);
+  const offers = useAppSelector(state => state.offers);
 
-  const getAll = useCallback(async () => {
-    try {
-      const query: OfferQuery = {
-        id: id,
-        limit: 10,
-      };
-      await dispatch(getAllOffers(query));
-    } catch (error) {}
-  }, [dispatch, id]);
+  const getAll = useCallback(
+    async () => {
+      try {
+        const query: OfferQuery = {
+          id: Number(id),
+          limit: 100,
+        };
+        await dispatch(getAllOffers(query));
+      } catch (error) {}
+    },
+    [dispatch, id],
+  );
+
+  const acceptOffer = useCallback(
+    async (orderId?: Id, offerId?: Id) => {
+      try {
+        const data = {
+          id: offerId,
+          formData: {
+            status: OfferStatusCode.ACCEPTED,
+            order_id: Number(orderId),
+          },
+        };
+
+        await dispatch(updateOffer(data)).unwrap();
+        await getAll();
+      } catch (error: any) {
+        throw new Error(error.response.message || "Something went wrong");
+      }
+    },
+    [dispatch, getAll],
+  );
+
+  const rejectOffer = useCallback(
+    async (orderId?: Id, offerId?: Id) => {
+      try {
+        const data = {
+          id: offerId,
+          formData: {
+            status: OfferStatusCode.REJECTED,
+            order_id: Number(orderId),
+          },
+        };
+
+        await dispatch(updateOffer(data)).unwrap();
+        await getAll();
+      } catch (error: any) {
+        throw new Error(error.response.message || "Something went wrong");
+      }
+    },
+    [dispatch, getAll],
+  );
+
+  const completeOffer = useCallback(
+    async (orderId?: Id, offerId?: Id) => {
+      try {
+        const data = {
+          id: offerId,
+          formData: {
+            status: OfferStatusCode.COMPLETED,
+            order_id: Number(orderId),
+          },
+        };
+
+        await dispatch(updateOffer(data)).unwrap();
+        await getAll();
+      } catch (error: any) {
+        throw new Error(error.response.message || "Something went wrong");
+      }
+    },
+    [dispatch, getAll],
+  );
 
   useEffect(() => {
-    getAll();
-  }, [getAll]);
+    if (offers.offers.length === 0) {
+      getAll();
+    }
+  }, [getAll, id, offers.offers.length]);
 
-  return { ...offers, getAll };
+  return { ...offers, getAll, acceptOffer, rejectOffer, completeOffer };
 }
 
 export default useOffers;

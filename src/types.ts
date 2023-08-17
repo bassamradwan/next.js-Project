@@ -103,6 +103,7 @@ export interface Ad {
   currency_code: string;
   qualification: string;
   experience_years: number;
+  created_at: string;
   category: {
     [key: string]: string;
   };
@@ -165,9 +166,13 @@ export interface Offer {
 }
 
 export interface Chat {
-  id: Timestamp | Id,
+  id: Timestamp | Id;
   between: Id[];
   content: string;
   send_at: Timestamp;
   sender_id: Id;
+}
+
+export interface UserOffer extends Offer {
+  order: Ad;
 }

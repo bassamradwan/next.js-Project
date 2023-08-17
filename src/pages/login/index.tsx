@@ -4,7 +4,6 @@ import LoginComponent from "@/components/Login";
 import { useTranslations } from "next-intl";
 
 const Login: React.FC = () => {
-  // translation
   const t = useTranslations("Login");
   return (
     <div>
@@ -15,6 +14,7 @@ const Login: React.FC = () => {
   );
 };
 export default Login;
+
 export async function getStaticProps(context: { locale: any }) {
   return {
     props: {

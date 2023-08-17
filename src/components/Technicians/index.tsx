@@ -23,7 +23,6 @@ const Technicians = ({
   const isMobile = useMedia("(max-width: 768px)", true);
   const [technicians, setTechnicians] = useState<any[]>([]);
   const { data } = useTechnicians(keyWord);
-  console.log("keyword in technicians page", keyWord);
   const t = useTranslations("Home");
 
   useEffect(() => {
@@ -48,7 +47,6 @@ const Technicians = ({
   }, [data, keyWord]);
 
   const onChange = (currentSlide: number) => {
-    console.log(currentSlide);
   };
   // antd no data component with button
   if (!technicians.length)
@@ -90,7 +88,7 @@ const Technicians = ({
         );
       }
       return null;
-    } else {  
+    } else {
       // show only one card
       if (index % 1 === 0) {
         return (

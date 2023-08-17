@@ -21,7 +21,8 @@ import Cookies from "js-cookie";
 import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import UserMenu from "@/components/UserMenu";
-import { useSettings } from '@/hooks/useSettings';
+import { useSettings } from "@/hooks/useSettings";
+import { Flex } from "@/Styles/styled.general";
 
 const TopNavbar = () => {
   const t = useTranslations("Navigation");
@@ -29,9 +30,9 @@ const TopNavbar = () => {
   const user = useAppSelector(state => state.user.user);
   const isAuthenticated = Boolean(user);
   const dispatch = useAppDispatch();
- const { settings } = useSettings();
+  const { settings } = useSettings();
 
-const contactUs = settings?.contacts;
+  const contactUs = settings?.contacts;
 
   function CheckUser() {
     if (user?.type == "technical") {
@@ -230,11 +231,11 @@ const contactUs = settings?.contacts;
     <NavWrapper dir="ltr">
       <NavLeft>
         {isAuthenticated ? (
-          <div>
-             <UserMenu />
-             <img src={"/sms.svg"} alt="Chat" />
-        <img src={"/notification.svg"} alt="Notifications" />
-          </div>
+          <Flex gap={"4px"}>
+            <UserMenu />
+            <img src={"/sms.svg"} alt="Chat" />
+            <img src={"/notification.svg"} alt="Notifications" />
+          </Flex>
         ) : (
           <div
             onClick={() => {
@@ -247,7 +248,7 @@ const contactUs = settings?.contacts;
               gap: "10px",
             }}
           >
-              {t("login")}
+            {t("login")}
             <RegisterSvg alt="" src="/frame-87.svg" />
           </div>
         )}
@@ -260,11 +261,11 @@ const contactUs = settings?.contacts;
           <LangLogo src="/vuesaxboldglobal.svg" />
         </LangWrapper>
         <ContactEmailWrapper>
-        {contactUs?.email}
+          {contactUs?.email}
           <EmailSvg src="/navemail.svg" />
         </ContactEmailWrapper>
         <ContactPhoneWrapper>
-        {contactUs?.phone}
+          {contactUs?.phone}
           <PhoneSvg src="/navcall.svg" />
         </ContactPhoneWrapper>
       </NavRight>

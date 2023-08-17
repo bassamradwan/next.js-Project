@@ -57,6 +57,7 @@ export const FlexColumn = styled.div<ContentProps>`
   flex-direction: column;
   align-items: ${props => props.alignItems || "center"};
   justify-content: ${props => props.justifyContent || "center"};
+  gap: ${props => props.gap || 0}
 `;
 
 export const SendButton = styled.button<ContentProps>`

@@ -8,7 +8,6 @@ const filterBy = ["latest", "oldest"];
 const MyFavouratesComponent = () => {
   const [filter, setFilter] = useState("latest");
   const onChange = (value?: string | unknown) => {
-    console.log(`selected ${value}`);
     setFilter(value as string);
   };
   return (

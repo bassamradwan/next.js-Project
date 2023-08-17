@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Table, Tag } from "antd";
-import useOffers from "../../../../hooks/useOffer";
 import {
   AdLine,
   AdTitle,
@@ -13,21 +12,23 @@ import {
   LocationText,
   Type,
 } from "../../styles/styled.offersTable";
+import useUser from "@/hooks/useUser";
+import { Id } from "@/types";
+import { useRouter } from "next/router";
 
 const OffersTableComponent = () => {
   const [sortOrder, setSortOrder] = useState<"ascend" | "descend" | undefined>(undefined);
   const [sortedColumn, setSortedColumn] = useState<string | undefined>(undefined);
   const [filters, setFilters] = useState<{ [key: string]: string[] }>({});
+  const route = useRouter();
+  const userId = useMemo(() => route.query.id, [route.query.id]);
+  const { offers, getUserOffers } = useUser();
 
-  const id = +location.pathname.split("/")[2];
-  const { offers } = useOffers(id);
-  console.log(id);
-
-  const handleTableChange = (pagination: any, filters: any, sorter: any) => {
+  const handleTableChange = useCallback((pagination: any, filters: any, sorter: any) => {
     setSortOrder(sorter.order);
     setSortedColumn(sorter.columnKey);
     setFilters(filters);
-  };
+  }, []);
 
   const columns = [
     {
@@ -66,7 +67,7 @@ const OffersTableComponent = () => {
         { text: "42", value: "42" },
       ],
       filteredValue: filters.cost || null,
-      render: (cost: number) => `${cost}`
+      render: (cost: number) => `${cost}`,
     },
     {
       title: "Status",
@@ -97,18 +98,26 @@ const OffersTableComponent = () => {
     },
   ];
 
-  const data = offers?.map(item => ({
-    key: item.id.toString(),
-    adTitle: item.order?.name,
-    description: item.order?.description,
-    city: item.order?.city?.en,
-    created_at: item?.created_at,
-    cost: item.order?.expected_cost,
-    status: item?.status,
-  }));
+  const data = useMemo(() => {
+    return offers?.map(item => ({
+      key: item.id.toString(),
+      adTitle: item.order?.name,
+      description: item.order?.description,
+      city: item.order?.city?.en,
+      created_at: item?.order.created_at,
+      cost: item.order?.expected_cost,
+      status: item?.status,
+    }));
+  }, [offers]);
 
-  console.log(data);
-  
+  useEffect(() => {
+    try {
+      if (userId) {
+        getUserOffers(userId as Id);
+      }
+    } catch (error) {}
+  }, [getUserOffers, userId]);
+
   return (
     <div>
       <Table columns={columns} dataSource={data} onChange={handleTableChange} pagination={false} />
@@ -117,4 +126,3 @@ const OffersTableComponent = () => {
 };
 
 export default OffersTableComponent;
-

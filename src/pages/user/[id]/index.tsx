@@ -1,7 +1,6 @@
-import AdBanner from "@/components/Banners/AdBanner";
 import Footer from "@/components/Footer";
 import AdvertiserContactComponent from "@/components/Advertiser";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/Shared/AppMenu";
 
 const UserInfo = {
   title: "Ad Titlexxxxxx",
@@ -12,10 +11,8 @@ const UserInfo = {
   image: "/hospital1.png",
 };
 const User = () => {
-  
   return (
     <div>
-
       <AdvertiserContactComponent />
       <Footer />
     </div>

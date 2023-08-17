@@ -90,7 +90,6 @@ const App = ({
       city: city,
       searchText: data.searchText,
     };
-    console.log("%c search.....", "color: #ff0000;", search);
 
     // route to the ads page with the search query
     router.push({

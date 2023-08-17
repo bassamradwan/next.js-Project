@@ -30,7 +30,6 @@ type UserData = {
 };
 
 const useTechnicians = (keyword?: string) => {
-  console.log("kye in the hook", keyword);
   const queryKey = ["technicians", keyword];
   const { data, isLoading, error } = useQuery<ApiResponse>(queryKey, async () => {
     const url = keyword
