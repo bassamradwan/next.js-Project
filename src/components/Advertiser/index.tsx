@@ -1,6 +1,7 @@
 import AdsListComponent from "@/components/AdsList/General";
 import useUser from "@/hooks/useUser";
-import {  useEffect } from "react";
+import { useRouter } from "next/router";
+import {  useEffect, useMemo } from "react";
 
 import {
   AdvertiserWrapper,
@@ -20,7 +21,19 @@ import {
   AdsListComponentWrapper,
 } from "./StyledAdvertiser";
 const Advertiser: React.FC = () => {
+const router = useRouter()
+ const {getUserById}=useUser()
 
+ const user=useMemo(async()=>{
+    return await getUserById(router.query.id as string).then(res=>res);
+
+   },[router.query.id])
+  useEffect(()=> {
+    if(user){
+      console.log(user)
+    }
+
+  },[user]);
  
  
   return (
@@ -29,10 +42,7 @@ const Advertiser: React.FC = () => {
         <AdvertiserDetails>
           <HeadingTitle>Who we are:</HeadingTitle>
           <Paragraph>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum, quibusdam,
-            quia, voluptate quod quos voluptas consequuntur quae voluptatibus doloribus quas.
-            Quisquam voluptatum, quibusdam, quia, voluptate quod quos voluptas consequuntur quae
-            voluptatibus doloribus quas.
+          {/* {user?.about} */}
           </Paragraph>
           <Divider />
           <HeadingTitle>Latest Projects:</HeadingTitle>
