@@ -27,7 +27,7 @@ import { Flex } from "@/Styles/styled.general";
 const TopNavbar = () => {
   const t = useTranslations("Navigation");
   const router = useRouter();
-  const user = useAppSelector(state => state.user.user);
+  const user = useAppSelector(state => state.user?.user);
   const isAuthenticated = Boolean(user);
   const dispatch = useAppDispatch();
   const { settings } = useSettings();
@@ -125,21 +125,11 @@ const TopNavbar = () => {
               router.push("/");
             }}
           >
-            <div
-              onClick={() => {
-                // js-cookies remove token [medtich-token] from cookies
-                Cookies.remove("medtich-token");
-                // remove user from redux store
-                dispatch(clearUser());
-                // redirect to home page
-                router.push("/");
-              }}
-            >
+          
               <IconLinkWrapper>
                 <DropDownIcon src="/dropdown/logout.svg" alt="logout" />
                 {t("logout")}
               </IconLinkWrapper>
-            </div>
           </Menu.Item>
         </Menu>
       );
@@ -204,21 +194,11 @@ const TopNavbar = () => {
               router.push("/");
             }}
           >
-            <div
-              onClick={() => {
-                // js-cookies remove token [medtich-token] from cookies
-                Cookies.remove("medtich-token");
-                // remove user from redux store
-                dispatch(clearUser());
-                // redirect to home page
-                router.push("/");
-              }}
-            >
+          
               <IconLinkWrapper>
                 <DropDownIcon src="/dropdown/logout.svg" alt="logout" />
                 {t("logout")}
               </IconLinkWrapper>
-            </div>
           </Menu.Item>
         </Menu>
       );
