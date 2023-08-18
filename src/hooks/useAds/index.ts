@@ -113,7 +113,7 @@ const useAds = (searchParams: SearchParams) => {
     }
     const queryString = new URLSearchParams(queryParams).toString();
     const response = await fetch(
-      `${process.env.GET_ADS_URL}?pagination=true&limit=6&${queryString}`,
+      `${process.env.GET_ADS_URL}?pagination=true&limit=6&${queryString}&status=1`,
     );
     if (!response.ok) {
       throw new Error("Network response was not ok");
