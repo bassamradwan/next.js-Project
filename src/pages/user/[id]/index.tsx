@@ -71,7 +71,6 @@ const UserID = () => {
   return (
     <div>
       <Navbar/>
-      {/* <Banner/> */}
       <UserInfoBanner
         name={AdInfo.name}
         type={AdInfo.type}

@@ -1,12 +1,8 @@
-import { Type } from "@/components/Profile/styles/styled.offersTable";
-import { Share } from "next/font/google";
 import { 
   BannerWrapper ,
   AdInfoContainer,
   AdInfoHeader,
-  AdInfoImage,
   AdInfoSubHeader,
-  AdTitle,
   AdMetaInfo,
   AdMetaInfoItem,
   AdIcon,
@@ -16,6 +12,15 @@ import {
   ReportBtn,
   ActionBtnIcon,
 } from "../AdBanner/StyledAdBanner";
+import {
+   MainSection,
+   AdTitleAndImg,
+   ImageWrapper,
+   AdsCardImage,
+   TitleWrapper,
+   AdsCardTitle,
+   AdsSubTitle,
+  } from "./styledBanner";
 
 interface UserInfoBannerProps {
   name: string | undefined;
@@ -31,32 +36,36 @@ const UserInfoBanner = ({
   address,
   date,
   UserInfoBannerImage,
+  rate
 }: UserInfoBannerProps) => {
   return (
     <BannerWrapper>
       <AdInfoContainer>
         <AdInfoHeader>
-          <AdInfoImage src={UserInfoBannerImage} />
           <AdInfoSubHeader>
-            <AdTitle>{name}</AdTitle>
-            <Type>{type}</Type>
+             <MainSection>
+            <AdTitleAndImg>
+              <ImageWrapper>
+                <AdsCardImage src={UserInfoBannerImage} />
+              </ImageWrapper>
+              <TitleWrapper>
+                <AdsCardTitle>{name}</AdsCardTitle>
+                <AdsSubTitle>{type}</AdsSubTitle>
+              </TitleWrapper>
+            </AdTitleAndImg>
+           </MainSection>
             <AdMetaInfo>
               <AdMetaInfoItem>
-                <AdIcon src="/briefcase.svg" />
-                {type}
+                <AdIcon src="/icon-16star-filled1.svg" />
+                التقيمات {rate}
               </AdMetaInfoItem>
               <AdMetaInfoItem>
                 <AdIcon src="/locationWhite.svg" />
                 {address}
               </AdMetaInfoItem>
-              <AdMetaInfoItem>
+              <AdMetaInfoItem/>
                 <AdIcon src="/clock.svg" />
                 {date}
-              </AdMetaInfoItem>
-              {/* <AdMetaInfoItem noborder={+true}>
-                <AdIcon src="/wallet.svg" />
-                {budget} {currency}
-              </AdMetaInfoItem> */}
             </AdMetaInfo>
           </AdInfoSubHeader>
         </AdInfoHeader>

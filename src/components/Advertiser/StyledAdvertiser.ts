@@ -44,7 +44,26 @@ export const Divider = styled.hr`
   border-top: 1px solid #ccc;
   margin-bottom: 20px;
 `;
+export const ItimeSkillsCard = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+export const ItimeCard = styled.div`
+padding:5px;
 
+`;
+export const Itime = styled.span`
+  margin:5px;
+  border-radius: 38px;
+  background-color: #CCF7F4;
+  padding:10px;
+  color:var(--006-d-64, #006D64);
+  font-family: Bahij TheSansArabic;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+`;
 export const AdvertiserCard = styled.div`
   display: flex;
   flex: 1;
@@ -57,6 +76,20 @@ export const AdvertiserCard = styled.div`
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   margin-top: -80px;
+  @media (max-width: 768px) {
+    margin-top: -40px;
+  }
+`;
+export const SkillsCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top:20px;
+  padding: 20px 10px;
+  width: 100%;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
   @media (max-width: 768px) {
     margin-top: -40px;
   }

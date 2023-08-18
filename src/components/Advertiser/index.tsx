@@ -18,6 +18,10 @@ import {
   PrefList,
   PrefText,
   PrefValue,
+  SkillsCard,
+  ItimeSkillsCard,
+  ItimeCard,
+  Itime,
 } from "./StyledAdvertiser";
 import { useRouter } from "next/router";
 import { Id, User } from "@/types";
@@ -73,12 +77,41 @@ const Advertiser: React.FC = (props) => {
                 <Divider />
               </>
             )}
-            <HeadingTitle>Latest Projects:</HeadingTitle>
-            {/* Ads Cards i can reuse the Ads in the HomePage */}
-            <AdsListComponentWrapper>
-              <AdsListComponent $columnsCount={1} />
-            </AdsListComponentWrapper>
+          {/* Ads Cards i can reuse the Ads in the HomePage */}
+            {user.type == 'hospital'&&(
+              <>
+               <HeadingTitle>Latest Projects:</HeadingTitle>
+             <AdsListComponentWrapper>
+               <AdsListComponent $columnsCount={1} />
+             </AdsListComponentWrapper>
+             <Divider />
+              </>
+            )}
+           <HeadingTitle>certificates</HeadingTitle>
+                <div>
+                  {user.certificates.map((skill, index) => (
+                    <div style={{display:"flex",flexDirection:"column",padding:"5px"}} key={index}>
+                       <Itime >{skill?.year}</Itime> 
+                        <span style={{color:"#006D64"}} >{skill?.title}</span>
+                    </div>
+                  ))}
+                  </div>
+                  <Divider />
+                  <HeadingTitle>experiences</HeadingTitle>
+                <div>
+                  {user.experiences.map((skill, index) => (
+                    <div style={{display:"flex",flexDirection:"column",padding:"5px"}} key={index}>
+                       <Itime >{skill?.year}</Itime> 
+                       <span>{skill?.title}</span>
+                        <span style={{color:"#006D64"}} >{skill?.desc}</span>
+                    </div>
+                  ))}
+                  </div>
+                  <Divider />
+
+            
           </AdvertiserDetails>
+          <div>
           <AdvertiserCard>
             <HeadingTitle>Pref about us</HeadingTitle>
             <PrefList>
@@ -132,6 +165,19 @@ const Advertiser: React.FC = (props) => {
               <ContactButton>contact us</ContactButton>
             </PrefList>
           </AdvertiserCard>
+          <SkillsCard>
+          <HeadingTitle style={{margin:"5px"}}> My Skills</HeadingTitle>
+                <ItimeSkillsCard>
+                  {user.skills.map((skill, index) => (
+                    <ItimeCard key={index}>
+                        <Itime >{skill}</Itime>
+                    </ItimeCard>
+                    
+                  ))}
+                  </ItimeSkillsCard>
+          </SkillsCard>
+          </div> 
+
         </AdvertiserWrapper>
       </AdvertiserContainer>
     </>
