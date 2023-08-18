@@ -51,12 +51,12 @@ const Advertiser: React.FC = props => {
     type: "",
     university: "",
   });
-  const [showContactModal, setShowContactModal]  = useState(false);
+  const [showContactModal, setShowContactModal] = useState(false);
 
   const router = useRouter();
   const { getUserById } = useUser();
   const userId = useMemo(() => router.query.id as Id, [router.query.id]);
-  const {user: currentUser} = useUser();
+  const { user: currentUser } = useUser();
 
   useEffect(() => {
     if (userId) {
@@ -68,10 +68,8 @@ const Advertiser: React.FC = props => {
 
   console.log(userId);
 
-  // @ts-ignore
   return (
     <>
-      <pre>{JSON.stringify(user, null, 2)}</pre>
       <AdvertiserContainer>
         <AdvertiserWrapper>
           <AdvertiserDetails>
@@ -187,13 +185,13 @@ const Advertiser: React.FC = props => {
           </div>
         </AdvertiserWrapper>
       </AdvertiserContainer>
-      <Modal
-        open={showContactModal}
-        footer={null}
-        onCancel={() => setShowContactModal(false)}
-      >
+      <Modal open={showContactModal} footer={null} onCancel={() => setShowContactModal(false)}>
         {/* ts-ignore*/}
-        <ChatCard id={currentUser?.id as Id} receiver={user} onDelete={(id: Id) => {}}/>
+        <ChatCard
+          id={currentUser?.id as Id}
+          receiver={user}
+          onDelete={(id: Id[]) => new Promise((resolve, reject) => {})}
+        />
       </Modal>
     </>
   );
