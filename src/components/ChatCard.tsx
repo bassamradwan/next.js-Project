@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import { Chat, Id, User } from "@/types";
 import { Controller, useForm } from "react-hook-form";
 import { Avatar, Button, Col, Input, Row, Spin } from "antd";
@@ -26,7 +26,7 @@ const ChatCard = memo(function MemoChatCard({ id, receiver, onDelete }: ChatProp
   const t = useTranslations("Chat");
   const { user } = useUser();
   const [chatBetween, setChatBetween] = useState<Id[] | null>(null);
-  const { chats, sendMessage, updateSeen } = useChats(chatBetween);
+  const { chats, sendMessage, updateSeen, getChatByIds } = useChats(chatBetween);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -35,11 +35,19 @@ const ChatCard = memo(function MemoChatCard({ id, receiver, onDelete }: ChatProp
     }
   }, [id, receiver?.id, user?.id]);
 
+  const getLatestMessage = useCallback(
+    (sender_id: Id, receiver_id: Id) => {
+      return getChatByIds([sender_id, receiver_id]).reverse()[0];
+    },
+    [getChatByIds],
+  );
+
   useEffect(() => {
     if (chatBetween) {
-      updateSeen(chatBetween);
+      const latestMessage = getLatestMessage(user?.id as Id, receiver?.id as Id);
+      latestMessage?.sender_id === receiver?.id && updateSeen(chatBetween);
     }
-  }, [chatBetween, updateSeen]);
+  }, [chatBetween, getLatestMessage, receiver?.id, updateSeen, user?.id]);
 
   const {
     control,

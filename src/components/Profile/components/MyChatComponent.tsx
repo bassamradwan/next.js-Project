@@ -133,7 +133,7 @@ const MyChatComponent = () => {
     if (!filter || filter === "all" || !userId) return setProfilesRender(userProfiles);
     const result = userProfiles.filter((profile: User) => {
       if (filter === "read") {
-        return !!isRead(userId as Id, profile.id);
+        return isRead(userId as Id, profile.id);
       } else {
         return !isRead(userId as Id, profile.id);
       }
