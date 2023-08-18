@@ -171,6 +171,7 @@ export interface Chat {
   content: string;
   send_at: Timestamp;
   sender_id: Id;
+  seen: boolean;
 }
 
 export interface UserOffer extends Offer {

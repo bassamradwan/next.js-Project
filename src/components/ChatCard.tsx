@@ -1,29 +1,46 @@
-import React, { memo } from "react";
-import { Chat, Id } from "@/types";
+import React, { memo, useEffect, useState } from "react";
+import { Chat, Id, User } from "@/types";
 import { Controller, useForm } from "react-hook-form";
-import { Avatar, Button, Col, Input, Row } from "antd";
+import { Avatar, Button, Col, Input, Row, Spin } from "antd";
 import { ChatHeader, ChatOverflow } from "@/components/Profile/styles/styled.Chat";
-import { Flex, FlexColumn, Message, SendButton } from "@/Styles/styled.general";
+import { Flex, FlexColumn, Message, SendButton, SpinLight } from "@/Styles/styled.general";
 import useChats from "@/hooks/useChats";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Timestamp } from "firebase/firestore";
 import * as yup from "yup";
 import useUser from "@/hooks/useUser";
-import { UserOutlined } from "@ant-design/icons";
 import { useTranslations } from "next-intl";
+import moment from "moment";
 
 type ChatProps = {
   id: Id | null;
+  receiver: User | null;
+  onDelete: (ids: Id[]) => Promise<void>;
 };
 
 const schema = yup.object().shape({
   message: yup.string().required(),
 });
 
-const ChatCard = memo(function MemoChatCard({ id }: ChatProps) {
+const ChatCard = memo(function MemoChatCard({ id, receiver, onDelete }: ChatProps) {
   const t = useTranslations("Chat");
-  const { chats, sendMessage } = useChats(id);
   const { user } = useUser();
+  const [chatBetween, setChatBetween] = useState<Id[] | null>(null);
+  const { chats, sendMessage, updateSeen } = useChats(chatBetween);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (id) {
+      setChatBetween([receiver?.id, user?.id] as Id[]);
+    }
+  }, [id, receiver?.id, user?.id]);
+
+  useEffect(() => {
+    if (chatBetween) {
+      updateSeen(chatBetween);
+    }
+  }, [chatBetween, updateSeen]);
+
   const {
     control,
     reset,
@@ -34,16 +51,25 @@ const ChatCard = memo(function MemoChatCard({ id }: ChatProps) {
   });
 
   const handleSendMessage = async () => {
-    if (!id) return;
+    if (!receiver) return;
     const chat: Chat = {
       id: Timestamp.now(),
-      between: [user?.id as Id, id],
+      between: [user?.id as Id, receiver.id],
       content: getValues("message"),
       sender_id: user?.id as Id,
       send_at: Timestamp.now(),
+      seen: false,
     };
     await sendMessage(chat);
     reset();
+  };
+  const handleDelete = async () => {
+    if (!chatBetween) return;
+    setLoading(true);
+    try {
+      await onDelete(chatBetween);
+    } catch (error) {}
+    setLoading(false);
   };
 
   return (
@@ -51,16 +77,18 @@ const ChatCard = memo(function MemoChatCard({ id }: ChatProps) {
       <ChatOverflow>
         <ChatHeader className={"backdrop-blur"}>
           <Flex justifyContent="space-between">
-            <Button type="text" danger>
-              <strong>{t("deleteChat")}</strong>
-            </Button>
+            <SpinLight>
+              <Spin spinning={loading}>
+                <Button type="text" danger onClick={handleDelete}>
+                  <strong>{t("deleteChat")}</strong>
+                </Button>
+              </Spin>
+            </SpinLight>
             <Flex justifyContent="end" gap={"10px"}>
               <FlexColumn>
-                <strong>Islam Kamel</strong>
+                <strong>{receiver?.name}</strong>
               </FlexColumn>
-              <Avatar>
-                <UserOutlined />
-              </Avatar>
+              <Avatar src={receiver?.image} alt={receiver?.name[0].toUpperCase()} />
             </Flex>
           </Flex>
         </ChatHeader>
@@ -72,8 +100,7 @@ const ChatCard = memo(function MemoChatCard({ id }: ChatProps) {
               dir="auto"
             >
               <Flex justifyContent="space-between">
-                <small>Send Date: {chat.send_at.toDate().toDateString()}</small>&nbsp;
-                <small>Sender Id: {chat.sender_id}</small>
+                <small>{moment(chat.send_at.toDate()).calendar()}</small>&nbsp;
               </Flex>
               <Message myMessage={chat.sender_id === user?.id} dir={"auto"}>
                 <Flex justifyContent={chat.sender_id == user?.id ? "end" : "start"}>

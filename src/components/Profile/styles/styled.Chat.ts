@@ -81,6 +81,7 @@ export const HospitalList = styled.ul`
   margin: 0;
   padding: 0;
   width: 100%;
+  height: 100svh;
 `;
 
 export const HospitalListItem = styled.li`
