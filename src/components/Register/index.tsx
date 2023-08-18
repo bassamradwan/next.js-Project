@@ -1,37 +1,30 @@
 import Link from "next/link";
 import {
-  CardContainer,
-  CardWrapper,
-  CardTitle,
-  CardSubtitle,
-  CardTitleAndSubtitle,
-  AccountTypeWrapper,
   AccountTypeButton,
-  FormWrapper,
-  Form,
-  InputWrapper,
-  Label,
-  Input,
-  Button,
-  DividerWrapper,
-  Divider,
-  DividerText,
-  SocialMediaWrapper,
-  SocialMediaButton,
-  SocialMediaIcon,
-  SocialMediaText,
-  LineWrapper,
-  RadioInput,
-  TermsLable,
+  AccountTypeWrapper,
+  CardContainer,
+  CardSubtitle,
+  CardTitle,
+  CardTitleAndSubtitle,
+  CardWrapper,
   ErrorWrapper,
-  SubmitBtn,
-  PasswordIcon,
+  Form,
+  FormWrapper,
+  Input,
+  InputWrapper,
   InputWrapperPass,
+  Label,
+  LineWrapper,
+  PasswordIcon,
+  RadioInput,
+  SocialMediaWrapper,
+  SubmitBtn,
+  TermsLable,
 } from "./Styled.register";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -61,6 +54,7 @@ function Register() {
   };
   const router = useRouter();
   const schema = yup.object().shape({
+    name: yup.string().required("Name is required"),
     firstName: yup.string().required("First name is required"),
     lastName: yup.string().required("Last name is required"),
     email: yup.string().email("Email is invalid").required("Email is required"),
@@ -126,7 +120,7 @@ function Register() {
         // error... Error: {"status":false,"message":"validation error","errors":{"phone":["The phone has already been taken."]}}
         // @ts-ignore
         const errorResponse = JSON.parse(error.message);
-        toast.error("Something went wrong")
+        toast.error("Something went wrong");
         // convert errorResponse.errors is array of objects to array of strings i want to have array of the keys and values
         const errorsArray = Object.entries(errorResponse.errors).map(([key, value]) => {
           return `${key}: ${value}`;
@@ -146,6 +140,7 @@ function Register() {
 
   const onSubmit = (data: FormData) => {
     const mappedData = {
+      name: data.name,
       first_name: data.firstName,
       last_name: data.lastName,
       email: data.email,
@@ -196,6 +191,11 @@ function Register() {
         </AccountTypeWrapper>
         <FormWrapper>
           <Form onSubmit={handleSubmit(onSubmit)}>
+            <InputWrapper>
+              <Label>{t("name")}</Label>
+              <Input type="text" placeholder={t("name")} {...register("name")} />
+              {errors.name && <ErrorWrapper>{errors.name?.message}</ErrorWrapper>}
+            </InputWrapper>
             {/* input and label for each input */}
             <InputWrapper>
               <Label>{t("FirstName")}</Label>

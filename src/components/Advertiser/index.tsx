@@ -61,7 +61,7 @@ const Advertiser: React.FC = (props) => {
       });
     }
   }, [getUserById, userId]);
-  
+
   console.log(userId);
 
   return (
@@ -89,9 +89,9 @@ const Advertiser: React.FC = (props) => {
             )}
            <HeadingTitle>certificates</HeadingTitle>
                 <div>
-                  {user.certificates.map((skill, index) => (
+                  {user.certificates?.map((skill, index) => (
                     <div style={{display:"flex",flexDirection:"column",padding:"5px"}} key={index}>
-                       <Itime >{skill?.year}</Itime> 
+                       <Itime >{skill?.year}</Itime>
                         <span style={{color:"#006D64"}} >{skill?.title}</span>
                     </div>
                   ))}
@@ -99,9 +99,9 @@ const Advertiser: React.FC = (props) => {
                   <Divider />
                   <HeadingTitle>experiences</HeadingTitle>
                 <div>
-                  {user.experiences.map((skill, index) => (
+                  {user.experiences?.map((skill, index) => (
                     <div style={{display:"flex",flexDirection:"column",padding:"5px"}} key={index}>
-                       <Itime >{skill?.year}</Itime> 
+                       <Itime >{skill?.year}</Itime>
                        <span>{skill?.title}</span>
                         <span style={{color:"#006D64"}} >{skill?.desc}</span>
                     </div>
@@ -109,7 +109,7 @@ const Advertiser: React.FC = (props) => {
                   </div>
                   <Divider />
 
-            
+
           </AdvertiserDetails>
           <div>
           <AdvertiserCard>
@@ -168,15 +168,15 @@ const Advertiser: React.FC = (props) => {
           <SkillsCard>
           <HeadingTitle style={{margin:"5px"}}> My Skills</HeadingTitle>
                 <ItimeSkillsCard>
-                  {user.skills.map((skill, index) => (
+                  {user.skills?.map((skill, index) => (
                     <ItimeCard key={index}>
                         <Itime >{skill}</Itime>
                     </ItimeCard>
-                    
+
                   ))}
                   </ItimeSkillsCard>
           </SkillsCard>
-          </div> 
+          </div>
 
         </AdvertiserWrapper>
       </AdvertiserContainer>
