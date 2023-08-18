@@ -3,15 +3,15 @@ import HeadingSectionComponent from "../HeadingSectionComponent";
 import { BackSvg, SectionBtn } from "../HeadingSectionComponent/StyledHeading";
 import {
   CarousalContainer,
+  StyledCarousel,
   TabWrapper,
   TechniciansContainer,
-  StyledCarousel,
 } from "./StyledTechnicians";
 import TechnicianCardComponent from "./TechnicianCardComponent";
 import { useMedia } from "react-use";
-import { useTechnicians } from "@/hooks/useTechnicians";
 import { useEffect, useState } from "react";
 import { Button, Empty } from "antd";
+import { useTechnicians } from "@/hooks/useTechnicians";
 
 const Technicians = ({
   keyWord,
@@ -44,10 +44,9 @@ const Technicians = ({
         };
       }) || [],
     );
-  }, [data, keyWord]);
+  }, [data]);
 
-  const onChange = (currentSlide: number) => {
-  };
+  const onChange = (currentSlide: number) => {};
   // antd no data component with button
   if (!technicians.length)
     return (
@@ -123,5 +122,3 @@ const Technicians = ({
   );
 };
 export default Technicians;
-
-

@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 
 type ApiResponse = {
   status: boolean;
@@ -31,6 +32,8 @@ type UserData = {
 
 const useTechnicians = (keyword?: string) => {
   const queryKey = ["technicians", keyword];
+  const [technicals, setTechnicals] = useState<UserData[]>([]);
+
   const { data, isLoading, error } = useQuery<ApiResponse>(queryKey, async () => {
     const url = keyword
       ? `${process.env.TECHNICIAN_SEARCH_URL}?keyword=${keyword}`
@@ -43,7 +46,13 @@ const useTechnicians = (keyword?: string) => {
     return responseData;
   });
 
-  return { data: data?.data || [], isLoading, error };
+  useEffect(() => {
+    if (data && data?.data?.length > 0) {
+      setTechnicals(data.data);
+    }
+  }, [data]);
+
+  return { data: technicals, isLoading, error };
 };
 
 export { useTechnicians };
