@@ -124,7 +124,7 @@ const MyChatComponent = () => {
     (userId: Id, profileId: Id) => {
       const lastMessage = getLatestMessage(userId as Id, profileId);
 
-      return lastMessage?.seen && lastMessage?.sender_id !== +userId;
+      return !lastMessage?.seen && lastMessage?.sender_id !== +userId;
     },
     [getLatestMessage],
   );
@@ -135,7 +135,7 @@ const MyChatComponent = () => {
       if (filter === "read") {
         return isRead(userId as Id, profile.id);
       } else {
-        return !isRead(userId as Id, profile.id);
+        return isRead(userId as Id, profile.id);
       }
     });
 

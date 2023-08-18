@@ -45,7 +45,7 @@ const ChatCard = memo(function MemoChatCard({ id, receiver, onDelete }: ChatProp
   useEffect(() => {
     if (chatBetween) {
       const latestMessage = getLatestMessage(user?.id as Id, receiver?.id as Id);
-      latestMessage?.sender_id === receiver?.id && updateSeen(chatBetween);
+      latestMessage?.sender_id !== user?.id && updateSeen(chatBetween);
     }
   }, [chatBetween, getLatestMessage, receiver?.id, updateSeen, user?.id]);
 
