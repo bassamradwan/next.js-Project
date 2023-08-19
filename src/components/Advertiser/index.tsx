@@ -27,6 +27,7 @@ import { useRouter } from "next/router";
 import { Id, User } from "@/types";
 import { Modal } from "antd";
 import ChatCard from "@/components/ChatCard";
+import { toast } from "react-toastify";
 
 const Advertiser: React.FC = props => {
   const [user, setUser] = useState<User>({
@@ -60,13 +61,15 @@ const Advertiser: React.FC = props => {
 
   useEffect(() => {
     if (userId) {
-      getUserById(userId).then(res => {
-        setUser(res);
-      });
+      try {
+        getUserById(userId).then(res => {
+          setUser(res);
+        });
+      } catch (e: any) {
+        toast.error("Something Error")
+      }
     }
   }, [getUserById, userId]);
-
-  console.log(userId);
 
   return (
     <>
