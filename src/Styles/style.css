@@ -40,3 +40,15 @@
     background: linear-gradient(90deg, rgba(0, 217, 200, 0) 0%, rgba(0, 217, 200, 0) 100%);
 }
 
+.fullback {
+    height: 100vh !important;
+    width: 100vw !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #00d9c8;
+    font-family: "Bahij", serif;
+    font-weight: 500;
+    background-color: #ffffff;
+}

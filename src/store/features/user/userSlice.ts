@@ -16,9 +16,9 @@ const initialState: UserState = {
   user: null,
   profile: null,
   offers: [],
-  loading: false,
+  loading: true,
   error: null,
-  offerLoading: false,
+  offerLoading: true,
   offerError: null,
 };
 

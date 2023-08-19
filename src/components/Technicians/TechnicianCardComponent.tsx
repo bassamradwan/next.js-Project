@@ -81,7 +81,7 @@ const TechnicianCardComponent = ({
 
         <PersonalProfileBtn
           onClick={() => {
-            router.push(`/user/${id}`);
+            router.push(`/user/${id}?locale=en`);
           }}
         >
           {t("personalProfile")}

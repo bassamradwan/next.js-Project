@@ -2,9 +2,9 @@ import type { AppProps } from "next/app";
 import { DefaultTheme, StyleSheetManager, ThemeProvider } from "styled-components";
 import GlobalStyle from "../components/globalStyles";
 import { NextIntlClientProvider, useLocale } from "next-intl";
-import { useEffect, useState } from "react";
+import { ReactComponentElement, ReactNode, useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { ConfigProvider } from "antd";
+import { Alert, ConfigProvider, Spin } from "antd";
 import rtlPlugin from "stylis-plugin-rtl";
 import { Hydrate, QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import NextNprogress from "nextjs-progressbar";
@@ -18,6 +18,8 @@ import useUser from "@/hooks/useUser";
 import "moment/locale/ar";
 import "moment/locale/en-au";
 import moment from "moment/moment";
+import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
+import { SpinLight } from "@/Styles/styled.general";
 
 const theme: DefaultTheme = {
   colors: {
@@ -38,8 +40,52 @@ const GetUserData = () => {
   return null;
 };
 
-export default function App({ Component, pageProps }: AppProps) {
-  const { locale } = useRouter();
+const AUTH_PATHS = ["/login", "/register"];
+const NOT_PROTECTED_PATHS = ["/", "/blog", "/help", "/contact", "/about", "/terms"];
+
+const ProtectedRoute = ({ Component, pageProps, router }: AppProps) => {
+  const { user, loading } = useUser();
+  const [routeLoading, setRouteLoading] = useState(false);
+
+  const goToLogin = useCallback(async () => {
+    setRouteLoading(true);
+    try {
+      await router.push("/login");
+    } catch (error) {}
+    setRouteLoading(false);
+  }, [router]);
+
+  const goToHome = useCallback(async () => {
+    setRouteLoading(true);
+    try {
+      await router.push("/");
+    } catch (error) {}
+    setRouteLoading(false);
+  }, [router]);
+
+  useEffect(() => {
+    if (!NOT_PROTECTED_PATHS.includes(router.pathname)) {
+      if (!user) goToLogin();
+    }
+    if (AUTH_PATHS.includes(router.pathname)) {
+      if (user) goToHome();
+    }
+  }, [goToHome, goToLogin, router.pathname, user]);
+
+  return (
+    <>
+      {(loading || routeLoading) && (
+        <div className="fullback">
+          <Spin spinning={loading} size="large" />
+        </div>
+      )}
+      {(!loading || !routeLoading) && <Component {...pageProps} />}
+    </>
+  );
+};
+
+export default function App({ Component, pageProps, router }: AppProps) {
+  const { locale, pathname } = useRouter();
 
   const dir = locale === "ar" ? "rtl" : "ltr";
 
@@ -69,7 +115,7 @@ export default function App({ Component, pageProps }: AppProps) {
                     <ToastContainer autoClose={3000} closeOnClick theme="light" />
                     <GetUserData />
                     <TranslateDate />
-                    <Component {...pageProps} />
+                    <ProtectedRoute Component={Component} pageProps={pageProps} router={router} />
                   </Hydrate>
                 </QueryClientProvider>
               </StyleSheetManager>

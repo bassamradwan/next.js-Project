@@ -11,7 +11,6 @@ import { useLocale } from "next-intl";
 import { useSettings } from "@/hooks/useSettings";
 import Technicians from "@/components/Technicians";
 
-let render_count = 0;
 export default function Home() {
   const locale = useLocale();
   const { settings } = useSettings();
@@ -35,7 +34,6 @@ export default function Home() {
       <CategoriesBrowse />
       <AdsBrowse />
       <WhyChooseUs />
-      {render_count++ }
       <Technicians keyWord={keyWord} setKeyWord={handleSetKeyWord} />
       <Complaints />
       <Blog />
