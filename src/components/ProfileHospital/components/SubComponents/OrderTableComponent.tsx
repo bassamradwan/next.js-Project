@@ -108,7 +108,7 @@ const OrderTableComponent = () => {
             color = "orange";
             break;
           case "Accepted":
-            color = "red";
+            color = "green";
             break;
           case "completed":
             color = "green";

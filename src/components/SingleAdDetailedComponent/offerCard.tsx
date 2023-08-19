@@ -59,11 +59,6 @@ const OfferCard = (props: offerCardProps) => {
           {props.price}
           {CurrencyCode.EGP}
         </OfferPrice>
-        {/* <EditInfoButton onClick={onAccept}>{props.typebutton}</EditInfoButton>
-
-        <EditInfoButton onClick={onReject}>Reject</EditInfoButton>
-
-        <EditInfoButton onClick={onComplete}>Complete</EditInfoButton> */}
       </TechnicainMeta>
     </OfferCardWrapper>
   );
