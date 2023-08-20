@@ -6,7 +6,7 @@ import useUser from "@/hooks/useUser";
 import Navbar from "@/components/Navbar";
 import { useEffect, useMemo, useState } from "react";
 import { Id, User } from "@/types";
-import { useLocale } from "next-intl";
+import { DateTimeFormatOptions, useLocale } from "next-intl";
 import AdBanner from "@/components/Banners/AdBanner";
 import UserInfoBanner from "@/components/Banners/UserInfoBanner";
 
@@ -44,19 +44,26 @@ const UserID = () => {
     specialization: "",
     type: "",
     university: "",
+    created_at:"",
   });
 
   const AdInfo = {
     name: user?.name,
     type:user?.type,
     address: user?.address,
-    date: "user Date",
+    date:formatDate( user?.created_at),
     UserInfoBannerImage: user?.image,
     rate: user?.rate,
   };
 
 
-
+  function formatDate(dateString: string) {
+    const options: DateTimeFormatOptions = {
+      year: "numeric",
+      month: "long",
+    };
+    return new Date(dateString).toLocaleString("en-US", options);
+  }
 
   useEffect(() => {
     if (userId) {
@@ -66,7 +73,7 @@ const UserID = () => {
     }
   }, [getUserById, userId]);
   
-  console.log(userId);
+  console.log(user);
 
   return (
     <div>
@@ -79,7 +86,8 @@ const UserID = () => {
         UserInfoBannerImage={AdInfo.UserInfoBannerImage}
         rate={AdInfo?.rate}
       />
-      <AdvertiserContactComponent />
+      <AdvertiserContactComponent
+      user={user} />
       <Footer />
     </div>
   );

@@ -94,36 +94,6 @@ const [loading, setLoading] = useState(false);
       {/* TODO: it's static now */}
       <BlogContent>
         {blogPost?.description[locale]}
-        {/* <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus. Quisquam
-          voluptatibus, quos, quas quibusdam, voluptatum quia nemo autem quidem asperiores
-          voluptates tempora? Quisquam voluptatibus, quos, quas quibusdam, voluptatum quia nemo
-          autem quidem asperiores voluptates tempora?
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus. Quisquam
-          voluptatibus, quos, quas quibusdam, voluptatum quia nemo autem quidem asperiores
-          voluptates tempora? Quisquam voluptatibus, quos, quas quibusdam, voluptatum quia nemo
-          autem quidem asperiores voluptates tempora?
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus. Quisquam
-          voluptatibus, quos, quas quibusdam, voluptatum quia nemo autem quidem asperiores
-          voluptates tempora? Quisquam voluptatibus, quos, quas quibusdam, voluptatum quia nemo
-          autem quidem asperiores voluptates tempora?
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus. Quisquam
-          voluptatibus, quos, quas quibusdam, voluptatum quia nemo autem quidem asperiores
-          voluptates tempora? Quisquam voluptatibus, quos, quas quibusdam, voluptatum quia nemo
-          autem quidem asperiores voluptates tempora?
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus. Quisquam
-          voluptatibus, quos, quas quibusdam, voluptatum quia nemo autem quidem asperiores
-          voluptates tempora? Quisquam voluptatibus, quos, quas quibusdam, voluptatum quia nemo
-          autem quidem as
-        </p> */}
       </BlogContent>
       <Divider />
       <CommentsSection>
@@ -164,12 +134,11 @@ const [loading, setLoading] = useState(false);
                  />
               </InputGroup>
             </FormLine>
-            <SpinLight>
-        <Spin spinning={loading}>
-          <Button  type="primary" onClick={handleSubmit} >Send Message</Button>
-        </Spin>
-      </SpinLight>
-            {/* <Button  type="primary" onClick={handleSubmit}>Send Message</Button> */}
+              <SpinLight>
+               <Spin spinning={loading}>
+                 <Button  type="primary" onClick={handleSubmit} >Send Message</Button>
+               </Spin>
+              </SpinLight>
           </CommentForm>
         </CommentWrapper>
         <CommentList>

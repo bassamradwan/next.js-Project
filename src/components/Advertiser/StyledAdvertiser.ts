@@ -38,6 +38,11 @@ export const Paragraph = styled.p`
   margin-bottom: 20px;
 `;
 
+export const SpanTitle = styled.span`
+margin-left:10px;
+margin-right: 10px;
+
+`;
 export const Divider = styled.hr`
   width: 100%;
   border: none;

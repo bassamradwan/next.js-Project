@@ -38,6 +38,7 @@ const UserInfoBanner = ({
   UserInfoBannerImage,
   rate
 }: UserInfoBannerProps) => {
+
   return (
     <BannerWrapper>
       <AdInfoContainer>

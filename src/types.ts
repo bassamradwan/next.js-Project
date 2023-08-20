@@ -37,6 +37,11 @@ export interface Translate {
   en: string;
 }
 
+export interface Ratestatic {
+value:number;
+count:number;
+}
+
 export interface CityState {
   id: Id;
   image: string;
@@ -74,6 +79,7 @@ export interface User {
   city_id: string;
   about: string;
   rate: number;
+  created_at: string;
   average_cost: number;
   accomplish_tasks: number;
   skills: string[];

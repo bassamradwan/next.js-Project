@@ -6,6 +6,7 @@ import cities from "./features/cities/slice";
 import categories from "./features/categories/slice";
 import ad from "./features/order";
 import comments from "./features/comments/slice";
+import rates from "./features/rete/silice"
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     ad,
     categories,
     comments,
+    rates,
   },
 });
 
