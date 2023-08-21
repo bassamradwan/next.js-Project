@@ -31,13 +31,17 @@ const Banner = ({
   return (
     <>
       <BannerWrapper $isHome={$isHome} $bannerImage={$isHome ? $bannerImage : "none"}>
+      <img  src="/frame1.svg" style={{zIndex:"2",position:"absolute",left:"0px",height:"80vh",width:"50%"}}/>
         <BannerWelcome>{title}</BannerWelcome>
         <BannerWelcomSubMsg>{subtitle}</BannerWelcomSubMsg>
-        {$isHome && (
+        {$isHome && (<>
           <SearchBannerWrapper>
             <SearchBannerComponent keyWord={keyWord} setKeyWord={setKeyWord} />
           </SearchBannerWrapper>
-        )}
+          <img  src="/frame1.svg" style={{zIndex:"2",position:"absolute",left:"0px",height:"80vh",width:"50%"}}/>
+
+          </>
+ )}
       </BannerWrapper>
     </>
   );

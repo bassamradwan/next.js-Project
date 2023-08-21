@@ -15,6 +15,7 @@ import {
   TechnicianCardSkills,
   TechnicianColumn,
   TechnicianRow,
+  TechnicianTitle,
 } from "./StyledTechnicianCard";
 import { useTranslations } from "next-intl";
 
@@ -47,35 +48,42 @@ const TechnicianCardComponent = ({
   return (
     <>
       <TechnicianCardContainer>
-        <SaveTechnicianBtn src="/lovebtn.svg" alt="save" />
+      <SaveTechnicianBtn src="/lovebtn.svg" alt="save" />
+        <div style={{display:"flex",
+      flexDirection:"column",
+      justifyContent:"center",
+      alignItems: "center",
+      
+      }}>
         <TechnicianCardImage src={image} alt="technician" />
         <TechnicianCardName>{name}</TechnicianCardName>
         <TechnicianCardJob>
           {/* @ts-ignore */}
           {job}
         </TechnicianCardJob>
-
         <TechnicianCardRate>
           <Image src="/star.svg" alt="star" width={20} height={20} />
-          Reviews ({rate})
+          Reviews <span style={{color:"#1A2D2C",fontFamily: "Bahij TheSansArabic"}}>({rate})</span>
         </TechnicianCardRate>
         <TechnicianCardSkills>
           {truncatedSkills.map((skill, index) => (
             <TechnicianCardSkill key={index}>{skill}</TechnicianCardSkill>
           ))}
           {remainingSkillsCount > 0 && (
-            <TechnicianCardSkill>+{remainingSkillsCount}</TechnicianCardSkill>
+            <span style={{color:"#006D64"}}>+{remainingSkillsCount}</span>
           )}
         </TechnicianCardSkills>
+        </div>
+       
         <HorizontalDivider />
         <TechnicianRow>
           <TechnicianColumn>
-            <div>City</div>
+            <TechnicianTitle>المدينه</TechnicianTitle>
             <TechnicianCardCity>{city?.name?.en}</TechnicianCardCity>
           </TechnicianColumn>
           <TechnicianColumn>
-            <div>Budget</div>
-            <TechnicianCardBudget>{budget}</TechnicianCardBudget>
+            <TechnicianTitle>Budget</TechnicianTitle>
+            <TechnicianCardBudget>{budget}ج.م/الفحص</TechnicianCardBudget>
           </TechnicianColumn>
         </TechnicianRow>
 

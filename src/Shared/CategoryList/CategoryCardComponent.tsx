@@ -1,3 +1,4 @@
+import { BackSvg } from "@/components/HeadingSectionComponent/StyledHeading";
 import {
   CategoryCardAdsCount,
   CategoryCardImage,
@@ -20,6 +21,7 @@ const CategoryCardComponent = ({ title, image, AdsCount, $bordercolor }: categor
       <TitleCountWrapper>
         <CategoryCardTitle>{title}</CategoryCardTitle>
         <CategoryCardAdsCount>{AdsCount} اعلان</CategoryCardAdsCount>
+        <BackSvg src="/back.svg" alt="" className="svg" style={{display:"none"}}/>
       </TitleCountWrapper>
     </CategoryCardWrapper>
   );

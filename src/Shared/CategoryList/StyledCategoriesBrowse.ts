@@ -42,10 +42,14 @@ export const CategoryCardWrapper = styled.div<CategoryCardWrapperProps>`
   background-color: #f4f4f4;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  
   &:hover {
     transform: scale(1.05);
     border-color: var(--00-c-3-b-4, #00c3b4);
     background-color: var(--00-d-9-c-8, #00D9C8);
+    .svg{
+      display:block;
+    }
   }
 `;
 export const CategoryCardImage = styled.img`

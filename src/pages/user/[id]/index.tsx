@@ -73,7 +73,6 @@ const UserID = () => {
     }
   }, [getUserById, userId]);
   
-  console.log(user);
 
   return (
     <div>

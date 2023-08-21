@@ -42,7 +42,6 @@ const BannerWrapper = styled.div<BannerWrapperProps>`
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #000000;
     opacity: 0.6;
     width: 100%;
     height: 100%;

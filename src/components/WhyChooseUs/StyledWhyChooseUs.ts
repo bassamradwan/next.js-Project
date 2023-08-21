@@ -57,8 +57,14 @@ export const StatisticsItem = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 300px;
+  max-width: 280px;
   height: 100%;
+  transition: background-color 0.3s ease-in-out;
+  &:hover{
+    background-color:#fff;
+hight:228px;
+
+  }
   @media (max-width: 768px) {
     max-width: 100%;
   }

@@ -86,7 +86,7 @@ export const AdsSubTitle = styled.span`
   flex-direction: row;
   align-items: center;
   gap: 5px;
-  color: var(--color-gainsboro-500);
+  color: var(--00-d-9-c-8, #00D9C8);
   font-size: 12px;
   font-family: var(--font-family-secondary);
   font-weight: var(--font-weight-bold);
@@ -100,6 +100,7 @@ export const InfoSection = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  justify-content: space-around;
   width: 100%;
   margin-top: 20px;
   @media (max-width: 768px) {
@@ -113,13 +114,14 @@ export const AdsCardImage = styled.img`
   width: 55.4px;
   height: 55.4px;
   object-fit: cover;
-`;
+  border-radius: 727.34px;
+  `;
 
 export const AdsCardTitle = styled.p`
-  color: var(--color-black);
-  font-size: 14px;
-  font-family: var(--font-family-secondary);
-  font-weight: 600;
+  color:#1A2D2C;
+  font-size: 18px;
+  font-family: Bahij TheSansArabic;
+  font-weight: 500;
   line-height: var(--line-height-3xl);
   margin: 0;
   padding: 0;
@@ -135,33 +137,44 @@ export const AdsCardPrice = styled.span`
   font-family: var(--font-family-secondary);
   font-weight: 600;
   line-height: var(--line-height-3xl);
-  margin: 0;
   padding: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 10px;
+  color: var(--00-d-9-c-8, #00D9C8);
 `;
 
 export const AdsCardLocation = styled.span`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 5px;
+  column-gap: 8px;
+  color: #808B8A;
+
 `;
 
 export const AdsCardDate = styled.span`
   display: flex;
   align-items: center;
-  gap: 5px;
+  column-gap: 8px;
   justify-content: center;
+  border-left:1px solid #E1E1E1;
+  color: #808B8A;
+  padding-left:10px;
+  padding-right:10px;
 `;
 
 export const AdsApplicant = styled.span`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 5px;
+  column-gap: 8px;
+  justify-content: center;
+  border-left:1px solid #E1E1E1;
+  color: #808B8A;
+  padding-left:10px;
+  padding-right:10px;
+
 `;
 
 export const LocationSvg = styled.img`
@@ -184,6 +197,11 @@ export const LeftSection = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 10px;
+ justify-content:space-between;
+ 
 `;
 
-export const RightSection = styled.div``;
+export const RightSection = styled.div`
+display: flex;
+justify-content:flex-end;
+`;

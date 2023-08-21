@@ -12,6 +12,8 @@ interface Category {
     [key: string]: string;
   };
   image: string;
+  AdsCount:string;
+
 }
 
 interface CategoriesListComponentProps {
@@ -48,7 +50,7 @@ const CategoriesListComponent = (props: CategoriesListComponentProps) => {
           key={category.id}
           title={category.name[locale]}
           image={category.image}
-          AdsCount="22"
+          AdsCount={category.AdsCount}
           $bordercolor={props.$bordercolor}
         />
       ))}

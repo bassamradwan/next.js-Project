@@ -36,6 +36,7 @@ const AdBanner = ({
   return (
     <BannerWrapper>
       <AdInfoContainer>
+      <img  src="/frame1.svg" style={{zIndex:"2",position:"absolute",left:"0px",height:"80vh",width:"50%"}}/>
         <AdInfoHeader>
           <AdInfoImage src={adBannerImage} />
           <AdInfoSubHeader>

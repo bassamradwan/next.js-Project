@@ -18,17 +18,11 @@ const   CategoriesBrowse = () => {
         SubHeadingTxt={t("allSectionsAndCategories")}
       />
       <CategoiesListComponent $bordercolor="#F4F4F4" />
-      <SectionBtn 
-        onClick={() => {
-          router.push(`/ads`);
-        }}
-   
-      >
-        <BackSvg src="/back.svg" alt=""
-       
-        />
-        {t("showAllCategories")}
+      <SectionBtn>
+        <BackSvg src="/back.svg" alt="" />
+        {t("showAllAds")}
       </SectionBtn>
+    
     </CategoriesWrapper>
   );
 };

@@ -1,9 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-// font-family: 'Amiri', serif;
-// font-family: 'Anton', sans-serif;
-// font-family: "Bahij", sans-serif;
-// font-family: 'Roboto Serif', serif;
+
 const GlobalStyle = createGlobalStyle`
   html,
   body {

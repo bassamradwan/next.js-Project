@@ -9,8 +9,8 @@ export const BlogPostItemWrapper = styled.div`
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease-in-out;
   width: 100%;
-  max-width: 345px;
-
+  max-width: 389.744px;
+  max-height: 376.125px;
   &:hover {
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     cursor: pointer;

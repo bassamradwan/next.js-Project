@@ -1,6 +1,11 @@
 import AdBanner from "@/components/Banners/AdBanner";
 import AdvertiserContactComponent from "@/components/Advertiser";
 import Navbar from "@/components/Navbar";
+import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/router";
+import useUser from "@/hooks/useUser";
+import { useLocale } from "next-intl";
+import { Id, User } from "@/types";
 
 const AdvertiserInfo = {
   title: "Ad Title",
@@ -10,7 +15,45 @@ const AdvertiserInfo = {
   category: "Ad Category",
   image: "/hospital1.png",
 };
+
 const AdvertiserContactPage = () => {
+
+  const router = useRouter();
+  const { getUserById } = useUser();
+  const userId = useMemo(() => router.query.id as Id, [router.query.id]);
+  const locale = useLocale();
+  const [user, setUser] = useState<User>({
+    about: "",
+    accomplish_tasks: 0,
+    address: "",
+    average_cost: 0,
+    birth_date: "",
+    certificates: [],
+    city_id: "",
+    email: "",
+    experiences: [],
+    graduation_year: "",
+    id: 0,
+    image: "",
+    last_name: "",
+    name: "",
+    phone: "",
+    rate: 0,
+    skills: [],
+    specialization: "",
+    type: "",
+    university: "",
+    created_at:"",
+  });
+
+  useEffect(() => {
+    if (userId) {
+      getUserById(userId).then(res => {
+        setUser(res);
+      });
+    }
+  }, [getUserById, userId]);
+
   return (
     <div>
       <Navbar />
@@ -22,7 +65,7 @@ const AdvertiserContactPage = () => {
         adBannerImage={AdvertiserInfo.image}
         category={AdvertiserInfo.category}
       />
-      <AdvertiserContactComponent />
+      <AdvertiserContactComponent user={user}/>
     </div>
   );
 };

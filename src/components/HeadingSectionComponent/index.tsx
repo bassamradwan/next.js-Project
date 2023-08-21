@@ -49,7 +49,7 @@ const HeadingSectionComponent = ({
               justifyContent: "center",
             }}
           >
-            <BackSvg src="/back.svg" alt="" />
+            <BackSvg src="/back.svg" alt="" id="svg" />
             {BtnTxt}
 
 
@@ -66,7 +66,7 @@ const HeadingSectionComponent = ({
               justifyContent: "center",
             }}
           >
-            <BackSvg src="/back.svg" alt="" />
+            <BackSvg src="/back.svg" alt="" id="svg"/>
             {BtnTxt}
           </div>
         )}

@@ -61,6 +61,7 @@ const TopNavWrapperAppMenu = styled.div`
   flex-direction: column;
   gap: 20px;
   margin-bottom: 20px;
+  
   @media (min-width: 768px) {
     display: none;
   }
@@ -130,6 +131,7 @@ const AppMenu = (props: AppMenuProps) => {
             return (
               <MenuItemJoinUs key={item.key}>
                 <Button
+                style={{width:"148px", height:"48px",borderRadius:"8px"}}
                   type="primary"
                   onClick={() => {
                     router.push("/login");

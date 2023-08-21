@@ -18,9 +18,9 @@ export const SectionBtn = styled.button`
   color: #00c3b4;
   background-color: #fff;
   cursor: pointer;
-  &:hover {
-    background-color: var(--00-d-9-c-8, #00D9C8);
-  }
+  font-size: 1em;
+  font-family: "Bahij", sans-serif;
+  font-weight: 500;
   @media (max-width: 768px) {
     display: flex;
   }
@@ -30,6 +30,8 @@ export const HeadingSectionBtn = styled.button`
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  width: 150px;
+  height: 50px;
   padding: 10px;
   gap: 10px;
   border-radius: 8px;
@@ -39,10 +41,17 @@ export const HeadingSectionBtn = styled.button`
   cursor: pointer;
   font-size: 1em;
   font-family: "Bahij", sans-serif;
-  font-weight: 300;
+  font-weight: 500;
+  transition: background-color 0.3s ease-in-out;
   &:hover {
     color:#fff;
     background-color: var(--00-d-9-c-8, #00D9C8);
+    #svg{
+      transform: rotate(40deg);
+      margin:5px;
+      color:#fff;
+    }
+   
   }
   @media (max-width: 768px) {
     display: none;

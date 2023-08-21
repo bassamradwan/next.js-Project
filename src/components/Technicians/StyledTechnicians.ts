@@ -14,7 +14,7 @@ export const CarousalContainer = styled.div`
 `;
 export const TabWrapper = styled.div`
   display: flex !important;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 20px;
   margin-top: 30px;
 `;

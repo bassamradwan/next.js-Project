@@ -64,6 +64,7 @@ const NavbarWithDrawer = () => {
       {/* ------------Menu in the Desktop--------------- */}
       <span className="headerMenu">
         <TopNavbar />
+      <div >
         <div
           style={{
             backgroundColor: "#00D9C8",
@@ -94,7 +95,7 @@ const NavbarWithDrawer = () => {
               src="/websitelogo.svg"
               alt="site logo"
               style={{
-                width: "100px",
+                width: "125px",
                 height: "50px",
                 marginInlineStart: "20px",
                 marginTop: "10px",
@@ -114,6 +115,7 @@ const NavbarWithDrawer = () => {
             <AppMenu />
           </div>
         </div>
+       </div> 
       </span>
       {/*--------------- Menu in the Mobile------------- */}
       <Drawer
