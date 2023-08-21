@@ -18,6 +18,16 @@ const BannerWrapper = styled.div<BannerWrapperProps>`
         $bannerImage !== "none"
           ? `
         background-image: url("${$bannerImage}");
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          background-color: rgba(0, 22, 20, 0.70);
+          opacity: 1.0;
+          width: 100%;
+          height: 100%;
+        }
       `
           : `
         background-image: url("bannerimg3.png");
@@ -37,15 +47,7 @@ const BannerWrapper = styled.div<BannerWrapperProps>`
   margin-top: -60px;
   position: relative;
   // z-index: -1;
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0.6;
-    width: 100%;
-    height: 100%;
-  }
+
 
   @media (max-width: 768px) {
     margin-top: 0;
