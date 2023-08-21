@@ -11,6 +11,8 @@ interface BannerProps {
 }
 
 const SearchBannerWrapper = styled.div`
+  display:flex;
+  justify-content:space-evenly;
   margin-top: 30px;
   z-index: 10;
   position: relative;
@@ -31,7 +33,7 @@ const Banner = ({
   return (
     <>
       <BannerWrapper $isHome={$isHome} $bannerImage={$isHome ? $bannerImage : "none"}>
-      <img  src="/frame1.svg" style={{zIndex:"2",position:"absolute",left:"0px",height:"80vh",width:"50%"}}/>
+      <img  src="/frame1.svg" style={{zIndex:"1",position:"absolute",left:"0px",height:"80vh",width:"50%"}}/>
         <BannerWelcome>{title}</BannerWelcome>
         <BannerWelcomSubMsg>{subtitle}</BannerWelcomSubMsg>
         {$isHome && (<>

@@ -12,10 +12,12 @@ const MobileNavWrapper = styled.div`
   display: flex;
   background: #00c3b4;
   justify-content: space-between;
+  justify-content:space-around;
   @media (min-width: 768px) {
     display: none;
   }
 `;
+
 
 const NavbarWithDrawer = () => {
   const router = useRouter();
@@ -71,7 +73,7 @@ const NavbarWithDrawer = () => {
             color: "#000",
             fontSize: "13px",
             border: "none",
-            margin: "0px 10%",
+            margin: "0px 18.5%",
             padding: "25px 25px",
             borderRadius: "24px",
             background: "#FFF",

@@ -7,6 +7,8 @@ export const ComplaintsContainer = styled.div`
   padding: 76px 48px;
   background: #07c2aa;
   width: 80%;
+  position: relative;
+  z-index:-4;
   margin: 0 auto;
   border-radius: 12px;
   @media (max-width: 768px) {
@@ -15,6 +17,7 @@ export const ComplaintsContainer = styled.div`
     width: 100%;
     border-radius: 0;
     gap: 24px;
+
   }
 `;
 export const ComplaintsColumn = styled.div`

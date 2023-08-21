@@ -22,7 +22,8 @@ const GlobalStyle = createGlobalStyle`
 
   @media (max-width: 768px) {
     .headerMenu{
-      display: none;  
+      display: none;
+        
     }
   }
   @media (min-width: 768px) {

@@ -21,7 +21,7 @@ const contactUs = settings?.contacts;
 
   return (
     <ComplaintsContainer>
-      <img src="frame2.svg" style={{zIndex:"2",position:"absolute",left:"0px",height:"80vh",width:"100%"}}/>
+      <img src="frame2.svg" style={{zIndex:"-1",position:"absolute",left:"0px",height:"50vh",width:"100%"}}/>
       <ComplaintsColumn>
         <QuestionTxt>{t("complaintsOrQuestions")}</QuestionTxt>
         <QuestionAnsTxt>{t("contactUsByPhoneOrSocial")}</QuestionAnsTxt>

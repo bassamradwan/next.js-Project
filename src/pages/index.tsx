@@ -22,6 +22,7 @@ export default function Home() {
 
   return (
     <>
+    
       <Navbar />
       <Banner
         title={bannerSettings?.title[locale]}

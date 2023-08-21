@@ -7,7 +7,7 @@ const Navbar = (props: NavbarProps) => {
 
   return (
     <>
-      <NavbarWithDrawer />
+    <NavbarWithDrawer />   
     </>
   );
 };

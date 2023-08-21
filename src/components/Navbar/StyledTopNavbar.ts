@@ -3,6 +3,7 @@ import styled from "styled-components";
 const NavWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  justify-content:space-around;
   align-items: center;
   padding: 20px 10%;
   background: #fdfdfd;

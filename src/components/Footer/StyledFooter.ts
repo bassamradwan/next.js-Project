@@ -30,15 +30,17 @@ const FooterLeft = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    justify-content:space-evenly;
     width: 100%;
     align-items: center;
     align-items: flex-start;
     padding: 0;
+    margin: 0px 6%;
   }
 `;
 
 const FooterWebsiteLogo = styled.img`
-  width: 100px;
+  width: 150px;
   height: 100px;
   margin-right: 24px;
   margin-bottom: 16px;
@@ -149,6 +151,7 @@ const FooterRight = styled.div`
   @media (min-width: 768px) {
     align-items: flex-start;
     padding: 0;
+    margin: 0px 6%;
   }
 `;
 

@@ -3,6 +3,7 @@ import styled from "styled-components";
 const StyledTabs = styled(Tabs)`
   .ant-tabs-nav {
     margin: 0 !important;
+    
   }
   .ant-tabs-tab {
     border-radius: 0 !important;

@@ -92,6 +92,7 @@ const BannerWelcome = styled.h1`
 `;
 
 const BannerWelcomSubMsg = styled.p`
+  width:30%;
   z-index: 1;
   color: #fff;
   font-family: "Bahij", sans-serif;

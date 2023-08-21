@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const CategoriesWrapper = styled.div`
   display: flex;
   flex-direction: column;
+ margin:0px 6%;
   padding: 35px 10%;
 `;
 
